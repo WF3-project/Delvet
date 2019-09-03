@@ -24,22 +24,22 @@ class Courses
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $date_create;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\user", inversedBy="courses")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="courses")
      */
     private $contributor;
 

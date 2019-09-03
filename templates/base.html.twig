@@ -16,12 +16,17 @@
          <ul class="navbar-nav mr-end">
 
         <li class="nav-item">
+<<<<<<< HEAD
             <a class="nav-link" href="{{ path('login') }}">Log-in/out</a>
+=======
+            <a class="nav-link" href="{{ path('app_login') }}">Log-in</a>
+            <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+>>>>>>> origin/loginFini
         </li>
         </ul>
     </nav>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">logo/accueil</a>
+    <a class="navbar-brand" href="{{ path('home') }}">logo/accueil</a>
 
     {% set current_route = app.request.attributes.get('_route') %}
 

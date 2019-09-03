@@ -41,7 +41,14 @@ class AppFixtures extends Fixture
         }
         // $product = new Product();
         // $manager->persist($product);
-
+        for($i=0;$i<=5;$i++)
+        {
+        $course=new Courses();
+        $course->setName('nom du cour');
+        $course->setDescription('un cour');
+        $course->setImage('une immage');
+        $manager->persist($course);
+        }
         $manager->flush();
     }
 }

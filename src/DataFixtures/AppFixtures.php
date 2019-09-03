@@ -21,7 +21,7 @@ class AppFixtures extends Fixture
         // Créer un customer admin
         $customer = new Customer();
         $customer->setEmail('aurelienwalter@orange.fr');
-        $customer->setUsername('aurelien');
+        $customer->setUsername('bichuci');
         $customer->setRoles(['ROLE_ADMIN']);
 
         //On génére le hash du mot de passe test 

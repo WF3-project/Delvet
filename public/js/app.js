@@ -1,17 +1,13 @@
 /**
- * Codons un chat en HTML/CSS/Javascript avec nos amis PHP et MySQL
- */
-
-/**
  * Il nous faut une fonction pour récupérer le JSON des
  * messages et les afficher correctement
  */
 function getMessages(){
-  // 1. Elle doit créer une requête AJAX pour se connecter au serveur, et notamment au fichier handler.php
+  // Rrequête AJAX pour se connecter au serveur, et notamment au fichier handler.php
   const requeteAjax = new XMLHttpRequest();
   requeteAjax.open("GET", "handler.php");
 
-  // 2. Quand elle reçoit les données, il faut qu'elle les traite (en exploitant le JSON) et il faut qu'elle affiche ces données au format HTML
+  // Elle reçoit les données, il faut qu'elle les traite (en exploitant le JSON) et il faut qu'elle affiche ces données au format HTML
   requeteAjax.onload = function(){
     const resultat = JSON.parse(requeteAjax.responseText);
     const html = resultat.reverse().map(function(message){
@@ -30,7 +26,7 @@ function getMessages(){
     messages.scrollTop = messages.scrollHeight;
   }
 
-  // 3. On envoie la requête
+  //  On envoie la requête
   requeteAjax.send();
 }
 
@@ -40,19 +36,19 @@ function getMessages(){
  */
 
 function postMessage(event){
-  // 1. Elle doit stoper le submit du formulaire
+  // Elle  stoppe le submit du formulaire
   event.preventDefault();
 
-  // 2. Elle doit récupérer les données du formulaire
+  //  Elle récupére les données du formulaire
   const author = document.querySelector('#author');
   const content = document.querySelector('#content');
 
-  // 3. Elle doit conditionner les données
+  // Elle conditionne les données
   const data = new FormData();
   data.append('author', author.value);
   data.append('content', content.value);
 
-  // 4. Elle doit configurer une requête ajax en POST et envoyer les données
+  // Elle doit configurer une requête ajax en POST et envoyer les données
   const requeteAjax = new XMLHttpRequest();
   requeteAjax.open('POST', 'handler.php?task=write');
   

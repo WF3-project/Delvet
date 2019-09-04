@@ -11,7 +11,9 @@
     width: 500px;
     margin-top: 30px;
 }
-
+footer{
+  border-top: 1px solid;
+}
 #footer {
     display: flex;
     justify-content: center;
@@ -30,9 +32,6 @@
     flex-direction: row;
     justify-content: center;
 }
-.fourth li:first-child{
-    font-style: bold;
-}
 
 li{
     list-style-type: none;
@@ -40,14 +39,25 @@ li{
 .fourth li{
     padding: 1em;
 }
+.fourth li a img{
+  border-radius:40%;
+  width: 40px;
+}
 .first, .second, .third, .fourth {
-        flex: auto;
-        text-align: center;     
-        
+      flex: auto;
+      text-align: center;        
+}
+.five{
+  height: 50px;
+  text-align: center;
+  background-color: gray;
+  color:white;
 }
 
 .chat{
  width:500px;
+ display: flex;
+ flex-direction: column;
 }
 body, input, button {
   font-family: Ubuntu, sans-serif;
@@ -57,6 +67,7 @@ header {
   text-align: center;
 }
 
+/* ---------- Chatbox -------------- */
 .messages {
   background-color: steelblue;
   border-radius: 5px;

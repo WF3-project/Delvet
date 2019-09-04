@@ -39,7 +39,7 @@ class Courses
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\user", inversedBy="courses")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="courses")
      */
     private $contributor;
 

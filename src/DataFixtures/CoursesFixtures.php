@@ -19,15 +19,14 @@ class CoursesFixtures extends Fixture  implements FixtureGroupInterface
      }
 
 
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct()
     {
-        $this->passwordEncoder = $passwordEncoder;
     }
 
     public function load(ObjectManager $manager)
     {
 
-    
+       $courses=[];
         for($i=0;$i<=5;$i++)
         {
         $course=new Courses();
@@ -35,7 +34,9 @@ class CoursesFixtures extends Fixture  implements FixtureGroupInterface
         $course->setDescription('un cour');
         $course->setImage('une immage');
         $course->setDateCreate(new DateTime());
+        $course->setNumberView(rand(0 , 1000));
         $manager->persist($course);
+        $courses[]=$course;
         }
         $manager->flush();
     }

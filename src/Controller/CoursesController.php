@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Courses;
 use App\Form\CoursesType;
+use App\Repository\CategoriesRepository;
 use App\Repository\CoursesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,12 +17,24 @@ use Symfony\Component\Routing\Annotation\Route;
 class CoursesController extends AbstractController
 {
     /**
-     * @Route("/", name="courses")
+     * @Route("/indexcourses", name="indexcourses")
      */
     public function index(CoursesRepository $coursesRepository): Response
     {
         return $this->render('courses/index.html.twig', [
             'courses' => $coursesRepository->findAll(),
+        ]);
+    }
+     /**
+     * @Route("/", name="courses")
+     */
+    public function listCourses(CoursesRepository $coursesRepository, CategoriesRepository $categoriesRepository
+    ): Response
+    {
+        return $this->render('courses/listCourses.html.twig', [
+            'courses' => $coursesRepository->findAll(),
+            'categories' => $categoriesRepository->findAll()
+
         ]);
     }
 

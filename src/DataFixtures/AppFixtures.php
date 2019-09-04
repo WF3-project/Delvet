@@ -18,37 +18,30 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
 
-        // Créer un customer admin
-        $customer = new Customer();
-        $customer->setEmail('aurelienwalter@orange.fr');
-        $customer->setUsername('bichuci');
-        $customer->setRoles(['ROLE_ADMIN']);
+        // // Créer un customer admin
+        // $customer = new Customer();
+        // $customer->setEmail('aurelienwalter@orange.fr');
+        // $customer->setUsername('bichuci');
+        // $customer->setRoles(['ROLE_ADMIN']);
 
-        //On génére le hash du mot de passe test 
-        $encodedPassword = $this->passwordEncoder->encodePassword($customer, 'test');
-        $customer->setPassword($encodedPassword);
-        $manager->persist($customer);
+        // //On génére le hash du mot de passe test 
+        // $encodedPassword = $this->passwordEncoder->encodePassword($customer, 'test');
+        // $customer->setPassword($encodedPassword);
+        // $manager->persist($customer);
 
 
 
-        // Créer les utilisateurs
-        $users = []; // Le tableau va nous aider à stocker les instances des user
-        for ($i = 0; $i < 10; $i++) {
-            $user = new User();
-            $user->setUsername('Username '.$i);
-            $manager->persist($user);
-            $users[] = $user; // On met l'instance de côté
-        }
+        // // Créer les utilisateurs
+        // $users = []; // Le tableau va nous aider à stocker les instances des user
+        // for ($i = 0; $i < 10; $i++) {
+        //     $user = new User();
+        //     $user->setUsername('Username '.$i);
+        //     $manager->persist($user);
+        //     $users[] = $user; // On met l'instance de côté
+        // }
         // $product = new Product();
         // $manager->persist($product);
-        for($i=0;$i<=5;$i++)
-        {
-        $course=new Courses();
-        $course->setName('nom du cour');
-        $course->setDescription('un cour');
-        $course->setImage('une immage');
-        $manager->persist($course);
-        }
+       
         $manager->flush();
     }
 }

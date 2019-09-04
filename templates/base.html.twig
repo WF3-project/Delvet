@@ -12,7 +12,7 @@
         {% endblock %}
     </head>
     <body>
- <!-- debut de la nav barre -->
+ <!-- debut de la nav -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
@@ -44,17 +44,16 @@
     </nav>
     {# {{ path('cour') }} #}
 
-    <!-- fin de la nav barre -->
+    <!-- fin de la nav -->
 
         {% block body %}{% endblock %}
 <!-- début du footer-->
     <footer>
 
-
-        <div id="ToutesLesColonnes" style="margin-left: auto; margin-right: auto;">
-            <div class="premierecolonne" style="width: 300px; height: 200px; float:left;list-style: none;">
+        <div id="footer">
+            <div class="first">
             <ul>
-                <li style="list-style: none;">Crétaeursréateurs :<br></li>
+                <li style="list-style: none;">Crétaeurs:<br></li>
                 <li style="list-style: none;">Cardon Michel <br></li>
                 <li style="list-style: none;">Spychala Cedric <br></li>
                 <li style="list-style: none;">Anthony <br></li>
@@ -62,7 +61,7 @@
             </ul>
             </div>
 
-            <div class="deuxiemecolonne" style="width: 300px; height: 200px;float:left;list-style: none;">
+            <div class="second">
             <ul>
                 <li style="list-style: none;">Nom des créateurs :<br></li>
                 <li style="list-style: none;">Lorem Lorem Lorem Lorem <br></li>
@@ -71,7 +70,7 @@
             </ul>
             </div>
 
-            <div class="troisiemecolonne" style="width: 300px; height: 200px;float:left;list-style: none;">
+            <div class="third">
             <ul>
                 <li style="list-style: none;">A propos :<br></li>
                 <li style="list-style: none;">- Condition generale <br></li>
@@ -82,24 +81,40 @@
             </ul>
             </div>
 
-            <div class="quatriemecolonne" style="width: 300px; height: 200px;float:left;list-style: none;">
+            <div class="fourth">
             <ul>
                 <li style="list-style: none;"> Nous contacter :<br></li>
-                <li style="float:left; list-style: none; padding:10px;"><img src="twitter.png" style="width:50px; height:50px;"></li>
-                <li style="float:left; list-style: none; padding:10px;"><img src="facebook.png" style="width:50px; height:50px;"></li>
-                <li style="float:left; list-style: none; padding:10px;"><img src="instagram.png" style="width:50px; height:50px;"></li>
-                <li style="float:left; list-style: none; padding:10px;"><img src="youtube.png" style="width:50px; height:50px;"></li>
+                <li style="float:left; list-style: none; padding:10px;"><img src="logos/twitter.png" style="width:50px; height:50px;"></li>
+                <li style="float:left; list-style: none; padding:10px;"><img src="/logos/facebook.png" style="width:50px; height:50px;"></li>
+                <li style="float:left; list-style: none; padding:10px;"><img src="logos/instagram.png" style="width:50px; height:50px;"></li>
+                <li style="float:left; list-style: none; padding:10px;"><img src="logos/youtube.png" style="width:50px; height:50px;"></li>
             </ul>
             </div>
 
         </div>
 
-
-
     </footer>
 
-        {% block javascripts %}<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>{% endblock %}
+    {% block javascripts %}
+    <script>
+        // MDB Lightbox Init
+        $(function () {
+            $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
+        });
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+    {% endblock %}
     </body>
 </html>

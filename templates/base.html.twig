@@ -13,23 +13,6 @@
     </head>
     <body>
 
-    <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-        <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-        Bootstrap
-         </a>
-         <ul class="navbar-nav mr-end">
-
-        <li class="nav-item">
-            <a class="nav-link" href="{{ path('login') }}">Log-in</a>
-            <a class="nav-link" href="{{ path('app_logout') }}">Log-out</a>
-
-        </li>
-        </ul>
-    </nav>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{{ path('home') }}">logo/accueil</a>
-
     {% set current_route = app.request.attributes.get('_route') %}
  <!-- debut de la nav -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -65,27 +48,7 @@
 
     <!-- fin de la nav -->
 
-        <li class="nav-item active">
-            <a class="nav-link{{ current_route == 'home' ? 'active' : '' }}" href="{{ path('home') }}">Home </a>
-            {# {{ path('home') }} #}
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {{ current_route == 'courses' ? 'active' : '' }}" href="{{ path('courses') }}">courses</a>
-            {# {{ path('cour') }} #}
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">contributor</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-    </nav>
+       
         {% block body %}{% endblock %}
 <!-- début du footer-->
     <footer>
@@ -134,12 +97,6 @@
         </div>
 
     </footer>
-        {% block javascripts %}
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
-        {% endblock %}
-
     {% block javascripts %}
     <script>
         // MDB Lightbox Init

@@ -34,6 +34,78 @@ padding: 1em;
     
 }
 
+.logo{
+    width:50px; 
+    height:50px; 
+}
+.fourth ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.fourth li:first-child{
+    font-style: bold;
+}
+
+li{
+    list-style-type: none;
+}
+.fourth li{
+    padding: 1em;
+}
 .first, .second, .third, .fourth {
         flex: auto;
+        text-align: center;     
+        
+}
+
+body, input, button {
+  font-family: Ubuntu, sans-serif;
+}
+
+header {
+  text-align: center;
+}
+
+.messages {
+  background-color: steelblue;
+  border-radius: 5px;
+  padding: 1em;
+  height: 50vh;
+  overflow: auto;
+}
+
+.message {
+  color: white;
+  padding: 0.3em;
+}
+
+.date, .author {
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+  margin-top: 1em;
+  justify-content: space-between;
+}
+
+input, button {
+  padding: 0.5em;
+}
+
+input {
+  margin-right: 10px;
+}
+
+#author {
+  width: 20%;
+}
+
+#content {
+  width: 60%;
+}
+
+button[type="submit"]{
+  width: 20%;
 }

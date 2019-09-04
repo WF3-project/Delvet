@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Categories;
 use App\Entity\Courses;
 use App\Form\CoursesType;
 use App\Repository\CategoriesRepository;
@@ -62,6 +63,18 @@ class CoursesController extends AbstractController
     }
 
     /**
+     * @Route("/category/{slug}", name="categorieCour")
+     */
+    public function categorieCour(Categories $categories,CoursesRepository $coursesRepository, CategoriesRepository $categoriesRepository)
+    {
+        $course=$categories->getCourses();
+        dump($course);
+        return $this->render('courses/categorie.html.twig', [
+            'courses' => $course,
+        ]);
+    }
+
+    /**
      * @Route("/{id}", name="courses_show", methods={"GET"})
      */
     public function show(Courses $course): Response
@@ -104,4 +117,8 @@ class CoursesController extends AbstractController
 
         return $this->redirectToRoute('courses_index');
     }
+
+
+
+
 }

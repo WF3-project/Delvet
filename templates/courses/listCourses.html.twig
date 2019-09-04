@@ -8,13 +8,13 @@
                         
                     {% for category in categories %}
                          <li class="list-group-item">
-                            <a href="#">{{ category.name }}</a>
+                            <a href="{{ path('categorieCour', {slug:category.slug}) }}">{{ category.name }}</a>
                                 {# {{path()}} #}
                         </li>
                     {% endfor %}
                  </ul>
             </div>
-        </div>
+        </div> 
                 
     </div>
 

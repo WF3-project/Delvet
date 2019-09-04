@@ -5,6 +5,7 @@ use App\Entity\Categories;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
+use Cocur\Slugify\Slugify;
 
 class CategoriesFixtures extends Fixture implements FixtureGroupInterface
 {
@@ -16,10 +17,14 @@ class CategoriesFixtures extends Fixture implements FixtureGroupInterface
     public function load(ObjectManager $manager)
     {
         $categories = [];
+
         for($i=0;$i<=5;$i++)
         {
         $categorie=new Categories();
-        $categorie->setName('nom du categories');
+        $name=$categorie->setName('nom de la categories')->getName();
+        $slugify=new Slugify();
+        $slug = $slugify->slugify($name);
+        $categorie->setSlug( $slug );   
         $manager->persist($categorie);
         $categories[]=$categorie;
         }

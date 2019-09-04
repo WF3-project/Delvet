@@ -48,6 +48,11 @@ class Courses
      */
     private $number_view;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Categories", inversedBy="courses")
+     */
+    private $categories;
+
     public function __construct()
     {
         $this->contributor = new ArrayCollection();
@@ -140,6 +145,18 @@ class Courses
     public function setNumberView(int $number_view): self
     {
         $this->number_view = $number_view;
+
+        return $this;
+    }
+
+    public function getCategories(): ?Categories
+    {
+        return $this->categories;
+    }
+
+    public function setCategories(?Categories $categories): self
+    {
+        $this->categories = $categories;
 
         return $this;
     }

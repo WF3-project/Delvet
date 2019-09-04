@@ -1,26 +1,52 @@
 * {
     padding: 0;
     margin: 0;
-    text-decoration: none;
+}
+
+#body{
+  text-decoration: none;
 }
 
 #fullnav{
     display: flex;
+    margin-top: 10px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 20px;
 }
 
 .left{
   display: flex;
   flex: auto;
-  justify-content: space-around;
-  
+  justify-content: center;
+  margin: 0  0 0;
+}
+
+.left a{
+  margin-right: 65px;
 }
 
 .right{
   display: flex;
   flex: auto;
-  justify-content: space-around;
+  justify-content: flex-end;
   text-transform: uppercase;
+  font-weight: bold;  
+  margin-right: 10px;
   
+}
+
+.right a{
+  border:  solid  #4682B4;
+  border-radius: 5px 5px 5px 5px;
+  padding: 5px;
+  margin: 3px;
+  color: #4682B4;
+  
+}
+
+.right .sign{
+background-color: #4682B4;
+color: white;
 }
 
 #searchbar{

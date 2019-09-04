@@ -7,12 +7,15 @@
         {% block stylesheets %}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
         <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
 
         {% endblock %}
     </head>
     <body>
  <!-- debut de la nav -->
+ <header>
+     <img src="logos/delvet.png" alt="">
  <nav>
     <div id="fullnav">
         <div class="left">
@@ -21,7 +24,7 @@
               <a href="#">A propos</a>
         </div>
         <div class="right">
-            <a href="#">s'inscrire</a>
+            <a class="sign" href="#">s'inscrire</a>
             <a href="#">se connecter</a>
         </div>
     </div>
@@ -30,10 +33,11 @@
     <div id="searchbar">
         <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="The Delvet Search !" aria-label="Search">
-      <button class="btn  btn-outline-secondary my-2 my-sm-0" type="submit">Go!</button>
+      <a href="#"><img src="logos/search.png" alt=""></a>
     </form>
     </div>
 </div>
+</header>
     {# {{ path('cour') }} #}
 
     <!-- fin de la nav -->

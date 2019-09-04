@@ -3,6 +3,22 @@
     margin: 0;
 }
 
+#fullnav{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+}
+
+#fullnav li{
+padding: 1em;
+    
+}
+
+#logo{
+    height: 75px;
+}
 
 #PresentationDuSite {
     margin-left: auto;

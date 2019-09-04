@@ -16,6 +16,21 @@ padding: 1em;
     
 }
 
+.center{
+    display: flex;
+    align-items: center;
+}
+
+#searchbar{
+  display: flex;
+justify-content: center;
+}
+
+#searchbar form{
+    display: flex;
+    justify-content: center; 
+}
+
 #logo{
     height: 75px;
 }

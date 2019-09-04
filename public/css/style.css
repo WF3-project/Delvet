@@ -106,10 +106,31 @@ li{
 .fourth li{
     padding: 1em;
 }
+
+.social img{
+  width: 30px;
+  height: 30px;
+}
+
 .first, .second, .third, .fourth {
         flex: auto;
         text-align: center;
 
+}
+
+.contact{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.contact img{
+  width: 30px;
+  height: 30px;
+}
+
+h3{
+  font-weight: bold;
+  font-size: 20px;
 }
 
 body, input, button {

@@ -5,14 +5,12 @@
 
 #fullnav{
     display: flex;
-    align-content: center;
-    align-items: center;
-    align-self: center;
     justify-content: center;
+    
 }
 
 #fullnav li{
-padding: 1em;
+    padding: 1em;
     
 }
 
@@ -29,6 +27,11 @@ justify-content: center;
 #searchbar form{
     display: flex;
     justify-content: center; 
+}
+
+#searchbar input{
+  margin: 0 0 1em 0;
+
 }
 
 #logo{

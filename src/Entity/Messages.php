@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -70,5 +71,9 @@ class Messages
         $this->created_at = $created_at;
 
         return $this;
+    }
+    public function __construct()
+    {
+        $this->created_at = new DateTime();
     }
 }

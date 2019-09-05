@@ -6,6 +6,7 @@ use App\Repository\MessagesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Messages;
 
 class ChatController extends AbstractController
 {
@@ -28,15 +29,20 @@ class ChatController extends AbstractController
         ]);
     }
     //3. Création d'une fonction pour l'envoi des messages 
+    /**
+     * @Route("/chat", name="chat")
+     */
     public function sendMessages(Request $request)
     {
         $message= new Messages();
-
-        $message->handleRequest($request);
-        if ($message->isSubmitted())
+        $form = $this->createForm(MessagesType::class, $message);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
         {
-            $this->getDoctrine()->getManager()->flush();
-           
+            // On récupere Doctrine pour gérer la BDD
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($message);
+            $entityManager->flush();
         }
     }
 }

@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Messages;
+use App\Form\MessagesType;
 
 class ChatController extends AbstractController
 {
@@ -30,7 +31,7 @@ class ChatController extends AbstractController
     }
     //3. Création d'une fonction pour l'envoi des messages 
     /**
-     * @Route("/chat", name="chat")
+     *  @Route("/chat_update", name="chat_update")
      */
     public function sendMessages(Request $request)
     {
@@ -43,7 +44,12 @@ class ChatController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($message);
             $entityManager->flush();
+            
+            return $this->redirectToRoute('chat');
         }
+        return $this->render('chat/index.html.twig', [
+            'controller_name' => 'ChatController',
+        ]);
     }
 }
 

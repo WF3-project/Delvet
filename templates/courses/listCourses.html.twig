@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block title %}tout nos cours{% endblock %}
+{% block body  %}
+    <div class="container " >
+      <div class="card bg-light mb-3" style="width: 18rem; ">
+            <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Catégories</div>
+                <ul class="list-group category_block">
+                        
+                    {% for category in categories %}
+                         <li class="list-group-item">
+                            <a href="{{ path('categorieCour', {slug:category.slug}) }}">{{ category.name }}</a>
+                                {# {{path()}} #}
+                        </li>
+                    {% endfor %}
+                 </ul>
+            </div>
+        </div> 
+                
+    </div>
+
+
+<div class="container d-flex">
+{% for course in courses %}
+
+    <div class="card d-flex " style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{course.name}}</h5>
+        <p class="card-text">{{course.description}}</p>
+        <p class="card-text">{{course.numberView}}
+        <a href="#" class="btn btn-primary" href="">Go somewhere</a>
+        {# {{ path('categorieCour', {id:course.id}) }} #}
+    </div>
+    </div>
+
+{% endfor %}
+</div>
+{% endblock %}

@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Categories;
 use App\Entity\Courses;
 use App\Form\CoursesType;
+use App\Repository\CategoriesRepository;
 use App\Repository\CoursesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,12 +18,24 @@ use Symfony\Component\Routing\Annotation\Route;
 class CoursesController extends AbstractController
 {
     /**
-     * @Route("/", name="courses")
+     * @Route("/indexcourses", name="indexcourses")
      */
     public function index(CoursesRepository $coursesRepository): Response
     {
         return $this->render('courses/index.html.twig', [
             'courses' => $coursesRepository->findAll(),
+        ]);
+    }
+     /**
+     * @Route("/", name="courses")
+     */
+    public function listCourses(CoursesRepository $coursesRepository, CategoriesRepository $categoriesRepository
+    ): Response
+    {
+        return $this->render('courses/listCourses.html.twig', [
+            'courses' => $coursesRepository->findAll(),
+            'categories' => $categoriesRepository->findAll()
+
         ]);
     }
 
@@ -45,6 +59,20 @@ class CoursesController extends AbstractController
         return $this->render('courses/new.html.twig', [
             'course' => $course,
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/category/{slug}", name="categorieCour")
+     */
+    public function categorieCour(Categories $categories,CoursesRepository $coursesRepository, CategoriesRepository $categoriesRepository)
+    {
+        $course=$categories->getCourses();
+        dump($course);
+        return $this->render('courses/categorie.html.twig', [
+            'courses' => $course,
+            'courses' => $coursesRepository->findAllById(),
+            'categories' => $categoriesRepository->findAll()
         ]);
     }
 
@@ -91,4 +119,8 @@ class CoursesController extends AbstractController
 
         return $this->redirectToRoute('courses_index');
     }
+
+
+
+
 }

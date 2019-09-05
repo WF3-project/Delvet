@@ -43,6 +43,16 @@ class Courses
      */
     private $contributor;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $number_view;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Categories", inversedBy="courses")
+     */
+    private $categories;
+
     public function __construct()
     {
         $this->contributor = new ArrayCollection();
@@ -123,6 +133,30 @@ class Courses
         if ($this->contributor->contains($contributor)) {
             $this->contributor->removeElement($contributor);
         }
+
+        return $this;
+    }
+
+    public function getNumberView(): ?int
+    {
+        return $this->number_view;
+    }
+
+    public function setNumberView(int $number_view): self
+    {
+        $this->number_view = $number_view;
+
+        return $this;
+    }
+
+    public function getCategories(): ?Categories
+    {
+        return $this->categories;
+    }
+
+    public function setCategories(?Categories $categories): self
+    {
+        $this->categories = $categories;
 
         return $this;
     }

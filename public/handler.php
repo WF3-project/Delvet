@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Connexion simple à la base de données via PDO !
+ * Connexion à la base de données !
  */
 $db = new PDO('mysql:host=127.0.0.1;dbname=messages;charset=utf8', 'root', '', [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, 

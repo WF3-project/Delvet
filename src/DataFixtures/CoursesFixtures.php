@@ -43,7 +43,6 @@ class CoursesFixtures extends Fixture  implements FixtureGroupInterface
         $categories[]=$categorie;
         }
         $manager->flush();
-
        $courses=[];
         for($i=0;$i<=5;$i++)
         {

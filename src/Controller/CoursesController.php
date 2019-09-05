@@ -27,14 +27,19 @@ class CoursesController extends AbstractController
         ]);
     }
      /**
-     * @Route("/", name="courses")
+     * @Route("/list/{page}", name="courses")
      */
-    public function listCourses(CoursesRepository $coursesRepository, CategoriesRepository $categoriesRepository
+    public function listCourses($page=1 , CoursesRepository $coursesRepository, CategoriesRepository $categoriesRepository
     ): Response
     {
+        $max_pages = ceil($coursesRepository->count([]) / 25);
+        $courses = $coursesRepository->findAllWithPagination($page);
+
         return $this->render('courses/listCourses.html.twig', [
-            'courses' => $coursesRepository->findAll(),
-            'categories' => $categoriesRepository->findAll()
+            'courses' => $courses,
+            'categories' => $categoriesRepository->findAll(),
+            'max_pages' => $max_pages,
+            'current_page' => $page,
 
         ]);
     } 
@@ -68,7 +73,7 @@ class CoursesController extends AbstractController
             $entityManager->persist($course);
             $entityManager->flush();
 
-            return $this->redirectToRoute('courses_index');
+            return $this->redirectToRoute('courses');
         }
 
         return $this->render('courses/new.html.twig', [
@@ -116,7 +121,7 @@ class CoursesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('courses_index');
+            return $this->redirectToRoute('courses');
         }
 
         return $this->render('courses/edit.html.twig', [
@@ -136,7 +141,7 @@ class CoursesController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('courses_index');
+        return $this->redirectToRoute('courses');
     }
 
 

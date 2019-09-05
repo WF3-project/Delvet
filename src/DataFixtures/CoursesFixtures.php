@@ -45,7 +45,7 @@ class CoursesFixtures extends Fixture  implements FixtureGroupInterface
         }
         $manager->flush();
        $courses=[];
-        for($i=0;$i<=20;$i++)
+        for($i=0;$i<=100;$i++)
         {
         $course=new Courses();
         $course->setName('nom du cour');

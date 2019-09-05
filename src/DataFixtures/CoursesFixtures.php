@@ -42,7 +42,8 @@ class CoursesFixtures extends Fixture  implements FixtureGroupInterface
         $manager->persist($categorie);
         $categories[]=$categorie;
         }
-
+        // NB : si un un probleme survient pour Load la BDD mettre la partie ci-dessous en commentaire (hormis flush)
+        // Load, puis décommenter et Load à nouveau
        $courses=[];
         for($i=0;$i<=5;$i++)
         {

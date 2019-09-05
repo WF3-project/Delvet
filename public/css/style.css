@@ -205,8 +205,6 @@ display: flex;
 justify-content: center;
 color: #4682B4;
 font-weight: bold;
-
-
 }
 
 #section2 .container ul{
@@ -214,6 +212,7 @@ font-weight: bold;
     justify-content: space-around;
     flex-direction: row;
     font-weight: bold;
+    margin-bottom: 40px;
     
 }
 
@@ -231,3 +230,17 @@ font-weight: bold;
   width: 40px;
   align-self: center;
 }
+
+#section3 h3{
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  color: #4682B4;
+}
+
+#section3 .container3 ul{
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
+}
+

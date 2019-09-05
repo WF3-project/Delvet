@@ -71,6 +71,8 @@ class CoursesController extends AbstractController
         dump($course);
         return $this->render('courses/categorie.html.twig', [
             'courses' => $course,
+            'courses' => $coursesRepository->findAllById(),
+            'categories' => $categoriesRepository->findAll()
         ]);
     }
 

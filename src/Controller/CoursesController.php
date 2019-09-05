@@ -37,7 +37,22 @@ class CoursesController extends AbstractController
             'categories' => $categoriesRepository->findAll()
 
         ]);
-    }
+    } 
+    
+    /**
+    * @Route("/course/{id}", name="course")
+    */
+   public function Course(Courses $id , CoursesRepository $coursesRepository
+   ): Response
+   {
+       dump($id);
+       dump($coursesRepository->findById($id));
+       return $this->render('courses/Course.html.twig', [
+           'course' => $id,
+           
+
+       ]);
+   }
 
     /**
      * @Route("/new", name="courses_new", methods={"GET","POST"})
@@ -65,14 +80,18 @@ class CoursesController extends AbstractController
     /**
      * @Route("/category/{slug}", name="categorieCour")
      */
-    public function categorieCour(Categories $categories,CoursesRepository $coursesRepository, CategoriesRepository $categoriesRepository)
+    public function categorieCour(Categories $categorie,CoursesRepository $coursesRepository, CategoriesRepository $categoriesRepository)
     {
-        $course=$categories->getCourses();
+        dump($categorie);
+        $course=$categorie->getCourses();
         dump($course);
+        $cat=$categoriesRepository->findByslug($categorie);
+        dump($categorie->getId());
+        dump($cat);
+        
         return $this->render('courses/categorie.html.twig', [
-            'courses' => $course,
-            'courses' => $coursesRepository->findAllById(),
-            'categories' => $categoriesRepository->findAll()
+            'courses' => $coursesRepository->findAllByCategoriesId($categorie->getId()),           
+            'categorie' => $categorie
         ]);
     }
 

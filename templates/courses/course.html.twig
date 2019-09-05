@@ -6,10 +6,10 @@
             <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Catégories</div>
                 <ul class="list-group category_block">
                         
-                    
+                    {% set slugcat =  (null != course.categories  ? course.categories.slug : '')    %}
                          <li class="list-group-item">
-                            <a href="{{ path('categorieCour', {slug:categorie.slug}) }}">{{ categorie.name }}</a>
-                                {# {{path()}} #}
+                            <a href="{{ path('categorieCour', {slug:(null != course.categories  ? course.categories.slug : '')}) }}">{{ null != course.categories  ? course.categories.name : ''  }}</a>
+                                {# {{ path('categorieCour', {slug: slugcat}) }} #}
                         </li>
                    
                  </ul>
@@ -19,21 +19,23 @@
     </div>
 
 
-<div class="container d-flex">
-{% for course in courses %}
+<div class="container d-flex flex-wrap">
 
-    <div class="card d-flex " style="width: 18rem;">
+
+    <div class="card d-flex mr-2 mb-2 " style="width: 200px;">
     <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i>{{course.name}}</div>
     <img src="..." class="card-img-top" alt="...">
     <div class="card-body">
-        <h5 class="card-title">Categorie</h5>
+    
+        <h5 class="card-title">{{ null != course.categories  ? course.categories.name : ''  }}</h5> 
+   
         <p class="card-text">{{course.description}}</p>
         <p class="card-text text-center">nombres de vues {{course.numberView}}
-        <a  class="btn btn-primary" href="{{ path('course', {id:course.id}) }}">Go somewhere</a>
-        {# {{ path('categorieCour', {id:course.id}) }} #}
+        
+        {# {{ path('couse', {id:course.id}) }} #}
     </div>
     </div>
 
-{% endfor %}
+
 </div>
 {% endblock %}

@@ -5,34 +5,39 @@ namespace App\Controller;
 use App\Repository\MessagesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class ChatController extends AbstractController
 {
     /**
      * @Route("/chat", name="chat")
      */
-    public function index(MessagesRepository $messagesRepository)
+    public function index()
     {
         return $this->render('chat/index.html.twig', [
             'controller_name' => 'ChatController',
-            'messages' => $messagesRepository->findAll()
         ]);
     }
     //1. Création d'une fonction pour générer la route depuis un twig ( a peu près = include)
   
     //2. Création d'une fonction pour load les messages depuis la BDD
-    public function getMessages()
+    public function getMessages(MessagesRepository $messagesRepository)
     {
-
+        return $this->render('chat/index.html.twig', [
+        'messages' => $messagesRepository->findAll()
+        ]);
     }
     //3. Création d'une fonction pour l'envoi des messages 
-    public function sendMessages()
+    public function sendMessages(Request $request)
     {
-        $messages= new Messages();
+        $message= new Messages();
 
-        if ($messages->isSubmitted())
+        $message->handleRequest($request);
+        if ($message->isSubmitted())
         {
-        $this->getDoctrine()->getManager()->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($message);
+            $entityManager->flush();
         }
     }
 }

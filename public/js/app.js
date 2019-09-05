@@ -1,8 +1,4 @@
 /**
- * Codons un chat en HTML/CSS/Javascript avec nos amis PHP et MySQL
- */
-
-/**
  * Il nous faut une fonction pour récupérer le JSON des
  * messages et les afficher correctement
  */

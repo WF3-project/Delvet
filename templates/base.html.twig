@@ -13,13 +13,15 @@
         {% endblock %}
     </head>
     <body>
+
+    {% set current_route = app.request.attributes.get('_route') %}
  <!-- debut de la nav -->
  <header>
      <img src="logos/delvet.png" alt="">
  <nav>
     <div id="fullnav">
         <div class="left">
-              <a href="#">Cours</a>
+              <a href="{{ path('courses') }}">Cours</a>
               <a href="#">Professeurs</a>
               <a href="#">A propos</a>
         </div>
@@ -42,6 +44,7 @@
 
     <!-- fin de la nav -->
 
+       
         {% block body %}{% endblock %}
 <!-- début du footer-->
     <footer>
@@ -88,7 +91,6 @@
         </div>
 
     </footer>
-
     {% block javascripts %}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

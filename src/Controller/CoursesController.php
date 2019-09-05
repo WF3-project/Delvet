@@ -27,17 +27,37 @@ class CoursesController extends AbstractController
         ]);
     }
      /**
-     * @Route("/", name="courses")
+     * @Route("/list/{page}", name="courses")
      */
-    public function listCourses(CoursesRepository $coursesRepository, CategoriesRepository $categoriesRepository
+    public function listCourses($page=1 , CoursesRepository $coursesRepository, CategoriesRepository $categoriesRepository
     ): Response
     {
+        $max_pages = ceil($coursesRepository->count([]) / 25);
+        $courses = $coursesRepository->findAllWithPagination($page);
+
         return $this->render('courses/listCourses.html.twig', [
-            'courses' => $coursesRepository->findAll(),
-            'categories' => $categoriesRepository->findAll()
+            'courses' => $courses,
+            'categories' => $categoriesRepository->findAll(),
+            'max_pages' => $max_pages,
+            'current_page' => $page,
 
         ]);
-    }
+    } 
+    
+    /**
+    * @Route("/course/{id}", name="course")
+    */
+   public function Course(Courses $id , CoursesRepository $coursesRepository
+   ): Response
+   {
+       dump($id);
+       dump($coursesRepository->findById($id));
+       return $this->render('courses/Course.html.twig', [
+           'course' => $id,
+           
+
+       ]);
+   }
 
     /**
      * @Route("/new", name="courses_new", methods={"GET","POST"})
@@ -53,7 +73,7 @@ class CoursesController extends AbstractController
             $entityManager->persist($course);
             $entityManager->flush();
 
-            return $this->redirectToRoute('courses_index');
+            return $this->redirectToRoute('courses');
         }
 
         return $this->render('courses/new.html.twig', [
@@ -65,14 +85,18 @@ class CoursesController extends AbstractController
     /**
      * @Route("/category/{slug}", name="categorieCour")
      */
-    public function categorieCour(Categories $categories,CoursesRepository $coursesRepository, CategoriesRepository $categoriesRepository)
+    public function categorieCour(Categories $categorie,CoursesRepository $coursesRepository, CategoriesRepository $categoriesRepository)
     {
-        $course=$categories->getCourses();
+        dump($categorie);
+        $course=$categorie->getCourses();
         dump($course);
+        $cat=$categoriesRepository->findByslug($categorie);
+        dump($categorie->getId());
+        dump($cat);
+        
         return $this->render('courses/categorie.html.twig', [
-            'courses' => $course,
-            'courses' => $coursesRepository->findAllById(),
-            'categories' => $categoriesRepository->findAll()
+            'courses' => $coursesRepository->findAllByCategoriesId($categorie->getId()),           
+            'categorie' => $categorie
         ]);
     }
 
@@ -97,7 +121,7 @@ class CoursesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('courses_index');
+            return $this->redirectToRoute('courses');
         }
 
         return $this->render('courses/edit.html.twig', [
@@ -117,7 +141,7 @@ class CoursesController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('courses_index');
+        return $this->redirectToRoute('courses');
     }
 
 

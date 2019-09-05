@@ -1,23 +1,59 @@
 {% extends 'base.html.twig' %}
+{% block title %}tout nos cours{% endblock %}
+{% block body  %}
+    <div class="container " >
+      <div class="card bg-light mb-3" style="width: 18rem; ">
+            <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> {{ categorie.name }}</div>
+                <ul class="list-group category_block">
+                        
+                    
+                         {# <li class="list-group-item">
+                            <a href="{{ path('categorieCour', {slug:categorie.slug}) }}">{{ categorie.name }}</a>
+                                
+                        </li> #}
+                   
+                 </ul>
+            </div>
+        </div> 
+                
+    </div>
 
-{% block body %}
-    {% for product in products %}
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="card">
-                                <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title"><a href="{{ path('my_product_show', {slug: product.slug}) }}" title="View Product">{{ product.name }}</a></h4>
-                                    <p class="card-text">{{ product.description }}</p>
-                                    <div class="row">
-                                        <div class="col">
-                                            <p class="btn btn-danger btn-block">{{ product.price }} &euro;</p>
-                                        </div>
-                                        <div class="col">
-                                            <a href="{{ path('cart_add', {id: product.id}) }}" class="btn btn-success btn-block">Ajouter au panier</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-    {% endfor  %}
+
+<div class="container d-flex">
+{% for course in courses %}
+
+    <div class="card d-flex " style="width: 18rem;">
+    <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i>{{course.name}}</div>
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{course.categories.name}}</h5>
+        <p class="card-text">{{course.description}}</p>
+        <p class="card-text text-center">nombres de vues {{course.numberView}}
+        <a  class="btn btn-primary" href="{{ path('course', {id:course.id}) }}">Go somewhere</a>
+        {# {{ path('categorieCour', {id:course.id}) }} #}
+    </div>
+    </div>
+
+{% endfor %}
+</div>
+
+
+<div class="col-12 d-flex justify-content-center">
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li class="page-item">
+                 <a class="page-link" href="{{ path('courses', {page: current_page - 1}) }}">Précédent</a>
+            </li>
+             
+             {% for page in 1..max_pages %}
+                <li class="page-item {{ (page == current_page) ? 'active' : '' }}">
+                    <a class="page-link" href="{{ path('courses', {page: page}) }}">{{ page }}</a>
+                </li>
+             {% endfor %}
+            <li class="page-item">
+                  <a class="page-link" href="{{ path('courses', {page: current_page + 1}) }}">Suivant</a>
+            </li>
+        </ul>
+     </nav>
+</div>
 {% endblock %}

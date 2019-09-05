@@ -21,6 +21,7 @@ class CoursesType extends AbstractType
             ->add('name')
             ->add('image')
             ->add('date_create')
+            ->add('number_view')            
             ->add('description', CKEditorType::class)
             ->add('contributor')
         ;

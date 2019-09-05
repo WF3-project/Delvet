@@ -35,9 +35,8 @@ class ChatController extends AbstractController
         $message->handleRequest($request);
         if ($message->isSubmitted())
         {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($message);
-            $entityManager->flush();
+            $this->getDoctrine()->getManager()->flush();
+           
         }
     }
 }

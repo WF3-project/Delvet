@@ -195,9 +195,39 @@ button[type="submit"]{
   display: flex;
   justify-content: center;
   align-self: center;
-  align-items: center; 
+  align-items: center;
+  flex-direction: column; 
 }
 
-#section h1{
-  font-weight: bold;
+#section2 h2{
+  margin-top: 25px;
+display: flex;
+justify-content: center;
+color: #4682B4;
+font-weight: bold;
+
+
+}
+
+#section2 .container ul{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    font-weight: bold;
+    
+}
+
+#section2 .container ul li{
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 20px;
+  border-bottom:    #4682B4 dotted ;
+  
+}
+
+#section2 img{
+  display: flex;
+  height: 40px;
+  width: 40px;
+  align-self: center;
 }

@@ -57,16 +57,16 @@ function postMessage(event){
   // 1. Elle doit stoper le submit du formulaire
   event.preventDefault();
 
-  // 2. Elle doit récupérer les données du formulaire
+  // Récupérer les données du formulaire
   const author = document.querySelector('#author');
   const content = document.querySelector('#content');
 
-  // 3. Elle doit conditionner les données
+  //  Conditionner les données
   const data = new FormData();
   data.append('author', author.value);
   data.append('content', content.value);
 
-  // 4. Elle doit configurer une requête ajax en POST et envoyer les données
+  // Configurer une requête ajax en POST et envoyer les données
   const requeteAjax = new XMLHttpRequest();
   requeteAjax.open('POST', 'handler.php?task=write');
   

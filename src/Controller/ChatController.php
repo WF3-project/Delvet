@@ -35,20 +35,28 @@ class ChatController extends AbstractController
      */
     public function sendMessages(Request $request)
     {
+        if(!array_key_exists('author', $_POST) || !array_key_exists('content', $_POST)){
+
+            echo json_encode(["status" => "error", "message" => "One field or many have not been sent"]);
+            return;
+        
+        }
         $message= new Messages();
         $form = $this->createForm(MessagesType::class, $message);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid())
         {
             // On récupere Doctrine pour gérer la BDD
+            echo json_encode(["status" => "success"]);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($message);
             $entityManager->flush();
-            
-            return $this->redirectToRoute('chat');
+           
+            return $this->redirectToRoute('home');
+           
         }
-        return $this->render('chat/index.html.twig', [
-            'controller_name' => 'ChatController',
+        return $this->render('home/index.html.twig', [
+            'message' => $message,
         ]);
     }
 }

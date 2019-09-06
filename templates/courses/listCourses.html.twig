@@ -42,18 +42,22 @@
 <div class="col-12 d-flex justify-content-center">
     <nav aria-label="...">
         <ul class="pagination">
+        {% if current_page != 1 %}
             <li class="page-item">
                  <a class="page-link" href="{{ path('courses', {page: current_page - 1}) }}">Précédent</a>
             </li>
+        {% endif %}
              
              {% for page in 1..max_pages %}
                 <li class="page-item {{ (page == current_page) ? 'active' : '' }}">
                     <a class="page-link" href="{{ path('courses', {page: page}) }}">{{ page }}</a>
                 </li>
              {% endfor %}
+        {% if current_page != max_pages %}
             <li class="page-item">
                   <a class="page-link" href="{{ path('courses', {page: current_page + 1}) }}">Suivant</a>
             </li>
+        {% endif %}
         </ul>
      </nav>
 </div>

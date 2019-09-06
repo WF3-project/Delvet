@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+<div class="container d-flex justify-content-center">
+    <h3>Bonjour {{user.email}} </h3>
+</div>
+
+<div class="container d-flex justify-content-center">
+    <h3>Vos Cours</h3>
+    <div>
+        <ul>
+            {% for course in Courses %}
+                <li>
+                     {{course.image}}
+                    {{course.name}}
+                </li>
+            {% endfor %}
+            <li></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

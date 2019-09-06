@@ -1,108 +1,108 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
+
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >{% endblock %}
+        <title>{% block title %}Welcome to Delvet{% endblock %}</title>
+        {% block stylesheets %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+
+        {% endblock %}
     </head>
     <body>
 
-    <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-        <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-        Bootstrap
-         </a>
-         <ul class="navbar-nav mr-end">
-
-        <li class="nav-item">
-            <a class="nav-link" href="#">Log-in/out</a>
-        </li>
-        </ul>
-    </nav>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">logo/accueil</a>
-
     {% set current_route = app.request.attributes.get('_route') %}
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-
-        <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            {# {{ path('home') }} #}
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">coures</a>
-            {# {{ path('cour') }} #}
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">contributteur</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-    </nav>
-        {% block body %}{% endblock %}
-    <footer >
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-lg-4 col-xl-3">
-                    <h5>A propos</h5>
-                    <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-                    <p class="mb-0">
-                        Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
-                    </p>
-                </div>
-
-                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto">
-                    <h5>Informations</h5>
-                    <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-                    <ul class="list-unstyled">
-                        <li><a href="">Link 1</a></li>
-                        <li><a href="">Link 2</a></li>
-                        <li><a href="">Link 3</a></li>
-                        <li><a href="">Link 4</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto">
-                    <h5>Others links</h5>
-                    <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-                    <ul class="list-unstyled">
-                        <li><a href="">Link 1</a></li>
-                        <li><a href="">Link 2</a></li>
-                        <li><a href="">Link 3</a></li>
-                        <li><a href="">Link 4</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-4 col-lg-3 col-xl-3">
-                    <h5>Contact</h5>
-                    <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-                    <ul class="list-unstyled">
-                        <li><i class="fa fa-home mr-2"></i> My company</li>
-                        <li><i class="fa fa-envelope mr-2"></i> email@example.com</li>
-                        <li><i class="fa fa-phone mr-2"></i> + 33 12 14 15 16</li>
-                        <li><i class="fa fa-print mr-2"></i> + 33 12 14 15 16</li>
-                    </ul>
-                </div>
-                <div class="col-12 copyright mt-3">
-                    <p class="float-left">
-                        <a href="#">Back to top</a>
-                    </p>
-                </div>
-            </div>
+ <!-- debut de la nav -->
+ <header>
+     <img src="logos/delvet.png" alt="">
+ <nav>
+    <div id="fullnav">
+        <div class="left">
+              <a href="{{ path('courses') }}">Cours</a>
+              <a href="#">Professeurs</a>
+              <a href="#">A propos</a>
         </div>
+        <div class="right">
+            <a class="sign" href="{{ path('app_register') }}">s'inscrire</a>
+            <a href="{{ path('app_login') }}">se connecter</a>
+        </div>
+    </div>
+
+</nav>
+    <div id="searchbar">
+        <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="The Delvet Search !" aria-label="Search">
+      <a href="#"><img src="logos/search.png" alt=""></a>
+    </form>
+    </div>
+</div>
+</header>
+    {# {{ path('cour') }} #}
+
+    <!-- fin de la nav -->
+
+       
+        {% block body %}{% endblock %}
+<!-- début du footer-->
+    <footer>
+
+        <div id="footer">
+            <div class="first">
+            <h3>Auteurs</h3>
+            <ul>
+                <li>Michel </li>
+                <li>Cedric </li>
+                <li>Anthony </li>
+                <li>Aurélien </li>
+            </ul>
+            </div>
+
+            <div class="third">
+            <h3>Autres</h3>
+            <ul>
+                
+                <li>- Mentions légales </li>
+                <li>- Politique de confidentialité </li>
+                <li>- Charte éditoriale </li>
+               
+            </ul>
+            </div>
+
+            <div class="fourth">
+            <h3>Contactez-nous</h3>
+            <div class="contact">
+            <li><a href="#"><img src="logos/mail.png"  class="logo"></a></li>
+            <li><a href="#"><img src="logos/phone.png"  class="logo"></a></li>
+        </div>
+            <div class="social">
+                <h3>Retrouvez notre actualité</h3>
+            <ul>
+                <li><a href="#"><img src="logos/twitter.png"  class="logo"></a></li>
+                <li><a href="#"><img src="/logos/facebook.png" class="logo"></a></li>
+                <li><a href="#"><img src="logos/instagram.png" class="logo"></a></li>
+                <li><a href="#"><img src="logos/youtube.png"  class="logo"></a></li>
+            </ul>
+            </div>
+            </div>
+
+        </div>
+
     </footer>
-        {% block javascripts %}<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>{% endblock %}
+    {% block javascripts %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    {% endblock %}
     </body>
 </html>

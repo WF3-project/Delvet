@@ -47,4 +47,24 @@ class CoursesRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findAllByCategoriesId($id)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.categories = :val')
+            ->setParameter('val', $id)
+            ->orderBy('p.categories') // LIMIT 27, 9// Only 9 products one time
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findAllWithPagination($page)
+    {
+        return $this->createQueryBuilder('p')
+            ->setFirstResult(($page - 1) * 25) // LIMIT 27, 9
+            ->setMaxResults(25) // Only 9 products one time
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

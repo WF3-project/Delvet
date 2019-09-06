@@ -97,6 +97,7 @@ class Categories
 
         return $this;
     }
+<<<<<<< HEAD
 
     public function __ToString()
     {
@@ -104,4 +105,6 @@ class Categories
     }
 
 
+=======
+>>>>>>> develop
 }

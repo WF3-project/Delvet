@@ -10,7 +10,11 @@ use Doctrine\Common\Persistence\ObjectManager;
 class UserFixtures extends Fixture
 {
     private $passwordEncoder;
+<<<<<<< HEAD
     // test
+=======
+
+>>>>>>> develop
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->passwordEncoder = $passwordEncoder;

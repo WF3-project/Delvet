@@ -53,9 +53,15 @@ class Courses
      */
     private $categories;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="course")
+     */
+    private $users;
+
     public function __construct()
     {
         $this->contributor = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -163,5 +169,33 @@ class Courses
 
     public function __ToString(){
         return $this->name;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addCourse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->contains($user)) {
+            $this->users->removeElement($user);
+            $user->removeCourse($this);
+        }
+
+        return $this;
     }
 }

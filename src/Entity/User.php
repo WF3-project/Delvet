@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -34,6 +36,16 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Courses", inversedBy="users")
+     */
+    private $course;
+
+    public function __construct()
+    {
+        $this->course = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -115,5 +127,31 @@ class User implements UserInterface
     public function __toString()
     {
         return $this->getUsername();
+    }
+
+    /**
+     * @return Collection|Courses[]
+     */
+    public function getCourse(): Collection
+    {
+        return $this->course;
+    }
+
+    public function addCourse(Courses $course): self
+    {
+        if (!$this->course->contains($course)) {
+            $this->course[] = $course;
+        }
+
+        return $this;
+    }
+
+    public function removeCourse(Courses $course): self
+    {
+        if ($this->course->contains($course)) {
+            $this->course->removeElement($course);
+        }
+
+        return $this;
     }
 }

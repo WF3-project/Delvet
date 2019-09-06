@@ -1,7 +1,8 @@
 var app = require('express')();
 var server = require('http').Server(app);
 var io = require('socket.io').listen(server);
-import { encode } from 'ent'; // Permet de bloquer les caractères HTML (sécurité équivalente à htmlentities en PHP)
+var ent = require('ent');
+// Permet de bloquer les caractères HTML (sécurité équivalente à htmlentities en PHP)
 
 server.listen(8000);
 // Chargement de la page index.html

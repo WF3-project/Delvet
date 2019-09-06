@@ -3,8 +3,9 @@
     "version": "0.1.0",
     "dependencies": {
         "ent": "^0.1.0",
-        "express": "^3.21.2",
-        "socket.io": "^1.2.1"
+        "express": "^4.17.1",
+        "http": "0.0.0",
+        "socket.io": "^2.2.0"
     },
     "author": "user",
     "description": "test du chat avec socket.io"

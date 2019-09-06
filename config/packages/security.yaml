@@ -1,10 +1,6 @@
 security:
     encoders:
-<<<<<<< HEAD
         App\Entity\Customer:
-=======
-        App\Entity\User:
->>>>>>> develop
             algorithm: auto
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers

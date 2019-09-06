@@ -22,11 +22,7 @@
 <div class="container d-flex">
 {% for course in courses %}
 
-<<<<<<< HEAD
     <div class="card d-flex mr-2 mb-2" style="width: 18rem;">
-=======
-    <div class="card d-flex " style="width: 18rem;">
->>>>>>> develop
     <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i>{{course.name}}</div>
     <img src="..." class="card-img-top" alt="...">
     <div class="card-body">
@@ -45,7 +41,6 @@
 <div class="col-12 d-flex justify-content-center">
     <nav aria-label="...">
         <ul class="pagination">
-<<<<<<< HEAD
          {% if current_page != 1 %}
             <li class="page-item">
                  <a class="page-link" href="{{ path('categorieCour', {slug: categorie.slug},{page:current_page - 1 }) }}">Précédent</a>
@@ -63,20 +58,6 @@
                   <a class="page-link" href="{{ path('categorieCour', {slug: categorie.slug},{page: current_page + 1}) }}">Suivant</a>
             </li>
         {% endif %}
-=======
-            <li class="page-item">
-                 <a class="page-link" href="{{ path('courses', {page: current_page - 1}) }}">Précédent</a>
-            </li>
-             
-             {% for page in 1..max_pages %}
-                <li class="page-item {{ (page == current_page) ? 'active' : '' }}">
-                    <a class="page-link" href="{{ path('courses', {page: page}) }}">{{ page }}</a>
-                </li>
-             {% endfor %}
-            <li class="page-item">
-                  <a class="page-link" href="{{ path('courses', {page: current_page + 1}) }}">Suivant</a>
-            </li>
->>>>>>> develop
         </ul>
      </nav>
 </div>

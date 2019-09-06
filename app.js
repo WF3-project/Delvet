@@ -7,7 +7,7 @@ var ent = require('ent');
 server.listen(8000);
 // Chargement de la page index.html
 app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/index.html.twig');
+  res.sendfile(__dirname + '/templates/chat/index.html.twig');
 });
 
 io.sockets.on('connection', function (socket, pseudo) {

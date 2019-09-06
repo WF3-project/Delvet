@@ -1,6 +1,7 @@
 security:
     encoders:
-        App\Entity\Customer:
+        App\Entity\User:
+            # Cette valeur auto choisie le meilleur algorithme pour hasher le mdp
             algorithm: auto
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
@@ -19,12 +20,14 @@ security:
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthentificatorAuthenticator
-
+                    - App\Security\TokenAuthenticator
+                entry_point: App\Security\LoginFormAuthentificatorAuthenticator
             form_login:
                 login_path: login
                 check_path: login
             logout:
                 path: app_logout
+                target: home
                 # where to redirect after logout
                 # target: app_any_route
             remember_me:
@@ -34,7 +37,6 @@ security:
                 # checkbox in the login form (see below), uncomment the
                 # following line to always enable it.
                 always_remember_me: true
-
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication

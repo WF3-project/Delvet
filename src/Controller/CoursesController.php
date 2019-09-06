@@ -82,21 +82,39 @@ class CoursesController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/category/{slug}", name="categorieCour")
+   
+     
+
+     /**
+     * @Route("/category/{slug}/{page}", name="categorieCour")
      */
-    public function categorieCour(Categories $categorie,CoursesRepository $coursesRepository, CategoriesRepository $categoriesRepository)
+    public function categorieCour($page=1, Categories $categorie,CoursesRepository $coursesRepository, CategoriesRepository $categoriesRepository)
     {
-        dump($categorie);
-        $course=$categorie->getCourses();
-        dump($course);
-        $cat=$categoriesRepository->findByslug($categorie);
-        dump($categorie->getId());
-        dump($cat);
+        
+        $max_pages = ceil(count($coursesRepository->findAllByCategoriesId($categorie->getId()))/25);
         
         return $this->render('courses/categorie.html.twig', [
             'courses' => $coursesRepository->findAllByCategoriesId($categorie->getId()),           
-            'categorie' => $categorie
+            'categorie' => $categorie,
+            'max_pages' => $max_pages,
+            'current_page' => $page,
+            
+        ]);
+    }
+    /**
+     * @Route("/categoriepage/{page}", name="categorieCourpage")
+     */
+    public function categorieCourpage($page=1, Categories $categorie,CoursesRepository $coursesRepository, CategoriesRepository $categoriesRepository)
+    {
+        
+        $max_pages = ceil(count($coursesRepository->findAllByCategoriesId($categorie->getId()))/25);
+        
+        return $this->render('courses/categorie.html.twig', [
+            'courses' => $coursesRepository->findAllByCategoriesId($categorie->getId()),           
+            'categorie' => $categorie,
+            'max_pages' => $max_pages,
+            'current_page' => $page,
+            
         ]);
     }
 

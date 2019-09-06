@@ -41,11 +41,11 @@ class CoursesFixtures extends Fixture  implements FixtureGroupInterface
         $categorie->setSlug( $slug );   
         $manager->persist($categorie);
         $categories[]=$categorie;
+        
         }
-        // NB : si un un probleme survient pour Load la BDD mettre la partie ci-dessous en commentaire (hormis flush)
-        // Load, puis décommenter et Load à nouveau
+        $manager->flush();
        $courses=[];
-        for($i=0;$i<=5;$i++)
+        for($i=0;$i<=100;$i++)
         {
         $course=new Courses();
         $course->setName('nom du cour');
@@ -53,8 +53,14 @@ class CoursesFixtures extends Fixture  implements FixtureGroupInterface
         $course->setImage('une immage');
         $course->setDateCreate(new DateTime());
         $course->setNumberView(rand(0 , 1000));
-        $categorie_cour=rand(0, count($categories));
-        $course->setCategories($categories[$categorie_cour]);
+        // $categories_id=[];
+        // foreach($categories as $categorie){
+        //     $categories_id[]=$categorie->getId();
+        // }
+     
+        // $categorie_cour=rand(0, count($categories_id));
+        // $id=$categories_id[$categorie_cour];
+        // $course->setCategories($id);
         $manager->persist($course);
         $courses[]=$course;
         }

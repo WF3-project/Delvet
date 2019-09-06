@@ -26,8 +26,8 @@
               <a href="#">A propos</a>
         </div>
         <div class="right">
-            <a class="sign" href="#">s'inscrire</a>
-            <a href="#">se connecter</a>
+            <a class="sign" href="{{ path('app_register') }}">s'inscrire</a>
+            <a href="{{ path('app_login') }}">se connecter</a>
         </div>
     </div>
 
@@ -92,7 +92,6 @@
 
     </footer>
     {% block javascripts %}
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -104,7 +103,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-
     {% endblock %}
     </body>
 </html>

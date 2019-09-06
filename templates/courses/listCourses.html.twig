@@ -19,20 +19,46 @@
     </div>
 
 
-<div class="container d-flex">
+<div class="container d-flex flex-wrap">
 {% for course in courses %}
 
-    <div class="card d-flex " style="width: 18rem;">
+    <div class="card d-flex mr-2 mb-2 " style="width: 200px;">
+    <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i>{{course.name}}</div>
     <img src="..." class="card-img-top" alt="...">
     <div class="card-body">
-        <h5 class="card-title">{{course.name}}</h5>
+    
+        <h5 class="card-title">{{ null != course.categories  ? course.categories.name : ''  }}</h5> 
+   
         <p class="card-text">{{course.description}}</p>
-        <p class="card-text">{{course.numberView}}
-        <a href="#" class="btn btn-primary" href="">Go somewhere</a>
+        <p class="card-text text-center">nombres de vues {{course.numberView}}
+        <a  class="btn btn-primary" href="{{ path('course', {id:course.id}) }}">Go somewhere</a>
         {# {{ path('categorieCour', {id:course.id}) }} #}
     </div>
     </div>
 
 {% endfor %}
+</div>
+
+<div class="col-12 d-flex justify-content-center">
+    <nav aria-label="...">
+        <ul class="pagination">
+        {% if current_page != 1 %}
+            <li class="page-item">
+                 <a class="page-link" href="{{ path('courses', {page: current_page - 1}) }}">Précédent</a>
+            </li>
+        {% endif %}
+             
+             {% for page in 1..max_pages %}
+                <li class="page-item {{ (page == current_page) ? 'active' : '' }}">
+                    <a class="page-link" href="{{ path('courses', {page: page}) }}">{{ page }}</a>
+                </li>
+             {% endfor %}
+        {% if current_page != max_pages %}
+            <li class="page-item">
+                  <a class="page-link" href="{{ path('courses', {page: current_page + 1}) }}">Suivant</a>
+            </li>
+        {% endif %}
+        </ul>
+     </nav>
 </div>
 {% endblock %}

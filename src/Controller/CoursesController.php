@@ -82,7 +82,6 @@ class CoursesController extends AbstractController
         ]);
     }
 
-<<<<<<< HEAD
    
      
 
@@ -116,23 +115,6 @@ class CoursesController extends AbstractController
             'max_pages' => $max_pages,
             'current_page' => $page,
             
-=======
-    /**
-     * @Route("/category/{slug}", name="categorieCour")
-     */
-    public function categorieCour(Categories $categorie,CoursesRepository $coursesRepository, CategoriesRepository $categoriesRepository)
-    {
-        dump($categorie);
-        $course=$categorie->getCourses();
-        dump($course);
-        $cat=$categoriesRepository->findByslug($categorie);
-        dump($categorie->getId());
-        dump($cat);
-        
-        return $this->render('courses/categorie.html.twig', [
-            'courses' => $coursesRepository->findAllByCategoriesId($categorie->getId()),           
-            'categorie' => $categorie
->>>>>>> develop
         ]);
     }
 

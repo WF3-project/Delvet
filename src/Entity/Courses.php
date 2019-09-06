@@ -160,11 +160,8 @@ class Courses
 
         return $this;
     }
-<<<<<<< HEAD
 
     public function __ToString(){
         return $this->name;
     }
-=======
->>>>>>> develop
 }

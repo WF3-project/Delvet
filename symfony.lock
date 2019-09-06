@@ -1,4 +1,7 @@
 {
+    "cboden/ratchet": {
+        "version": "v0.4.1"
+    },
     "cocur/slugify": {
         "version": "v3.2"
     },
@@ -124,6 +127,9 @@
     "egulias/email-validator": {
         "version": "2.1.11"
     },
+    "evenement/evenement": {
+        "version": "v3.0.1"
+    },
     "fig/link-util": {
         "version": "1.0.0"
     },
@@ -138,6 +144,18 @@
         "files": [
             "./config/packages/fos_ckeditor.yaml"
         ]
+    },
+    "gos/pubsub-router-bundle": {
+        "version": "v0.3.5"
+    },
+    "gos/web-socket-bundle": {
+        "version": "v1.10.0"
+    },
+    "gos/websocket-client": {
+        "version": "v0.1.2"
+    },
+    "guzzlehttp/psr7": {
+        "version": "1.6.1"
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
@@ -172,11 +190,41 @@
     "psr/container": {
         "version": "1.0.0"
     },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/link": {
         "version": "1.0.0"
     },
     "psr/log": {
         "version": "1.1.0"
+    },
+    "ralouphie/getallheaders": {
+        "version": "3.0.3"
+    },
+    "ratchet/rfc6455": {
+        "version": "v0.2.5"
+    },
+    "react/cache": {
+        "version": "v1.0.0"
+    },
+    "react/dns": {
+        "version": "v1.2.0"
+    },
+    "react/event-loop": {
+        "version": "v1.1.0"
+    },
+    "react/promise": {
+        "version": "v2.7.1"
+    },
+    "react/promise-timer": {
+        "version": "v1.5.1"
+    },
+    "react/socket": {
+        "version": "v1.3.0"
+    },
+    "react/stream": {
+        "version": "v1.1.0"
     },
     "sensio/framework-extra-bundle": {
         "version": "5.2",

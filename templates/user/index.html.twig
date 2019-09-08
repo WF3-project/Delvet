@@ -26,8 +26,8 @@
         </ul>
     </div>
 </div>
-
-<div class="card" style="width: 18rem;">
+<div class="container d-flex justify-content-center">
+<div class="card d-flex" style="width: 50vw;">
    <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> les 5 dernier cours </div>
 {% for course in Courses %}
     <div class="card-body">
@@ -36,6 +36,6 @@
             <a href="{{path('course', {id:course.id})}}" class="btn btn-primary">Go somewhere</a>
     </div>
 {% endfor %}
-
+</div>
 </div>
 {% endblock %}

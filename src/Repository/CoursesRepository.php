@@ -67,4 +67,14 @@ class CoursesRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public function findLastCreatedAt()
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.createdAt', 'DESC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

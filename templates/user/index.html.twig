@@ -3,22 +3,38 @@
 {% block title %}Hello UserController!{% endblock %}
 
 {% block body %}
-<div class="container d-flex justify-content-center">
+<div class="container d-flex justify-content-center mr-auto">
     <h3>Bonjour {{user.email}} </h3>
 </div>
 
-<div class="container d-flex justify-content-center">
-    <h3>Vos Cours</h3>
-    <div>
+
+    
+<div class="container " >
+    <div class="card bg-light mb-3" style="width:50vw; ">
+         <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i>    <h3>Vos Cours</h3>
+         </div>
+
         <ul>
-            {% for course in Courses %}
+            {% for course in CoursesUser %}
                 <li>
-                     {{course.image}}
+                     
                     {{course.name}}
                 </li>
             {% endfor %}
-            <li></li>
+            
         </ul>
     </div>
+</div>
+
+<div class="card" style="width: 18rem;">
+   <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> les 5 dernier cours </div>
+{% for course in Courses %}
+    <div class="card-body">
+            <h5 class="card-title">{{Courses.title}}</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+{% endfor %}
+
 </div>
 {% endblock %}

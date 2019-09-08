@@ -18,7 +18,8 @@
             {% for course in CoursesUser %}
                 <li>
                      
-                    {{course.name}}
+                    {{course.name}}<br>
+                    <a href="{{path('course', {id:course.id})}}" class="btn btn-primary">Go somewhere</a>
                 </li>
             {% endfor %}
             
@@ -30,9 +31,9 @@
    <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> les 5 dernier cours </div>
 {% for course in Courses %}
     <div class="card-body">
-            <h5 class="card-title">{{Courses.title}}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">{{courses.title}}</h5>
+            <p class="card-text">{{course.description}}</p>
+            <a href="{{path('course', {id:course.id})}}" class="btn btn-primary">Go somewhere</a>
     </div>
 {% endfor %}
 

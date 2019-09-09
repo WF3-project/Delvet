@@ -18,7 +18,7 @@ class UserController extends AbstractController
         public function coursesUser( UserRepository $userRepository, CoursesRepository $coursesRepository )
         {     
             
-            $user=$this->get('security.token_storage')->getToken()->getUser()->getCourse();
+            $user=$this->get('security.token_storage')->getToken()->getUser();
            
             dump($user);
                 $courses=$coursesRepository->findLastCreatedAt();

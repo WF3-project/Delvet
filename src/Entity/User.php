@@ -37,20 +37,23 @@ class User implements UserInterface
      */
     private $password;
  
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Courses", inversedBy="user")
-     */
-    private $course;
+   
 
     public function __construct()
     {
         $this->course = new ArrayCollection();
+        $this->courses_user = new ArrayCollection();
     }
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $resetToken;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Courses", inversedBy="users")
+     */
+    private $courses_user;
 
     public function getId(): ?int
     {
@@ -142,29 +145,36 @@ class User implements UserInterface
         return $this;
     }
 
+    
+
     /**
      * @return Collection|Courses[]
      */
-    public function getCourse(): Collection
+    public function getCoursesUser(): Collection
     {
-        return $this->course;
+        return $this->courses_user;
     }
 
-    public function addCourse(Courses $course): self
+    public function addCoursesUser(Courses $coursesUser): self
     {
-        if (!$this->course->contains($course)) {
-            $this->course[] = $course;
+        if (!$this->courses_user->contains($coursesUser)) {
+            $this->courses_user[] = $coursesUser;
         }
 
         return $this;
     }
 
-    public function removeCourse(Courses $course): self
+    public function removeCoursesUser(Courses $coursesUser): self
     {
-        if ($this->course->contains($course)) {
-            $this->course->removeElement($course);
+        if ($this->courses_user->contains($coursesUser)) {
+            $this->courses_user->removeElement($coursesUser);
         }
 
         return $this;
     }
+
+    public function __ToString(){
+        return $this->email;
+    }
+
 }

@@ -2,12 +2,18 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CoursesRepository")
+ * @Vich\Uploadable
  */
 class Courses
 {
@@ -24,12 +30,27 @@ class Courses
     private $name;
 
     /**
+     *
      * @ORM\Column(type="string", length=255)
+     *
+     * @var string|null
+     */
+    private $fileName;
+
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Vich\UploadableField(mapping="cour_image", fileNameProperty="fileName", size="imageSize")
+     * 
+     * @var File|null
      */
     private $image;
 
+    
+
+
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $date_create;
 
@@ -53,14 +74,16 @@ class Courses
      */
     private $categories;
 
+    
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="course")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="courses_user")
      */
-    private $user;
+    private $users;
 
     public function __construct()
     {
         $this->contributor = new ArrayCollection();
+        
         $this->users = new ArrayCollection();
     }
 
@@ -85,10 +108,29 @@ class Courses
     {
         return $this->image;
     }
-
-    public function setImage(string $image): self
+    /** 
+     * @param null|File $image
+     * 
+     */
+    public function setImage(?File $image = null):Courses 
     {
         $this->image = $image;
+
+        
+        if ($this->image instanceof UploadedFile ) {
+            $this->date_create = new  \DateTime('now');
+        }
+        return $this;
+    }
+    
+    public function getFileName(): ?string
+    {
+        return $this->fileName;
+    }
+
+    public function setFileName(string $fileName): self
+    {
+        $this->fileName = $fileName;
 
         return $this;
     }
@@ -171,28 +213,30 @@ class Courses
         return $this->name;
     }
 
+    
+
     /**
      * @return Collection|User[]
      */
-    public function getUser(): Collection
+    public function getUsers(): Collection
     {
-        return $this->user;
+        return $this->users;
     }
-
-    public function addUser(User $user): self
+    
+    public function addUsers(User $user): self
     {
-        if (!$this->user->contains($user)) {
-            $this->user[] = $user;
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
             $user->addCourse($this);
         }
 
         return $this;
     }
 
-    public function removeUser(User $user): self
+    public function removeUsers(User $user): self
     {
-        if ($this->user->contains($user)) {
-            $this->user->removeElement($user);
+        if ($this->users->contains($user)) {
+            $this->users->removeElement($user);
             $user->removeCourse($this);
         }
 

@@ -3,26 +3,24 @@
 {% block title %}Hello ChatController!{% endblock %}
 
 {% block body %}
-<h1>Public chat</h1>
-<ul id="chat-list"></ul>
-<hr>
-<textarea id="form-message" placeholder="Your public message here"></textarea>
-<input type="button" id="form-submit" value="Send message"/>
-
+ <header>
+    <h1>What a Dev !</h1>
+  </header>
+  
+  <section class="chat">
+  
+    <div class="messages">
+     
+    </div>
+    <div class="user-inputs">
+      <form action="handler.php?task=write" method="POST">
+        <input type="text" name="author" id="author" placeholder="Nickname ?">
+        <input type="text" id="content" name="content" placeholder="Type in your message right here bro !">
+        <button type="submit"> Send !</button>
+      </form>
+    </div>
+  </section>
 {% endblock %}
-
 {% block javascripts %}
-
-
-<script>
-var websocket = WS.connect("ws://127.0.0.1.8080");
-
-websocket.on("socket/connect", function(session)){
-    console.log(Succesfully Connected !);
-}
-
-websocket.on("socket/disconnect", function(error)){
-    console.log("Disconnected for " +error.reason+ "with code"+error.code);
-}
-</script>
+  <script type="text/javascript" src="{{ asset('bundles/app/js/app.js') }}"></script>
 {% endblock %}

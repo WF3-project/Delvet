@@ -11,20 +11,24 @@ use Symfony\Component\Routing\Annotation\Route;
 class ChatController extends AbstractController
 {
     /**
-     * @Route("/chat", name="chat")
-     */
+    * @Route("/chat", name="chat")
+    */
     public function index()
     {
         return $this->render('chat/index.html.twig', [
-            'ws_url' => 'localhost:8000',
+            'controller_name' => 'ChatController',
         ]);
     }
-    public function loadMessage(Messages $message)
+
+    public function getMessages(Messages $message)
     {
         return $this->render('chat/index.html.twig', [
             'message' => $message,
         ]);
+
+        echo json_encode($message);
     }
+
     public function addMessage(Request $request, Messages $message)
     {
         new Messages();

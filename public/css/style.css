@@ -257,6 +257,7 @@ font-weight: bold;
   #section4{
     display: flex;
     justify-content: center;
+      margin-bottom: 25px;
   }
 
   #section4 h3{

@@ -24,14 +24,17 @@
 
             <div class="card d-flex mr-2 mb-2 " style="width: 200px;">
             <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i>{{course.name}}</div>
-            <img src="..." class="card-img-top" alt="...">
+            <img src="public/images/cour/".{{course.image}} class="card-img-top" >
             <div class="card-body">
             
                 <h5 class="card-title">{{ null != course.categories  ? course.categories.name : ''  }}</h5> 
         
                 <p class="card-text">{{course.description}}</p>
                 <p class="card-text text-center">nombres de vues {{course.numberView}}
+                <form>
+                <input class="number_view" id="number_view"  type="hidden" value="{{course.numberView + 1 }}">
                 <a  class="btn btn-primary" href="{{ path('course', {id:course.id}) }}">Go somewhere</a>
+                </form>
                 {# {{ path('categorieCour', {id:course.id}) }} #}
             </div>
             </div>

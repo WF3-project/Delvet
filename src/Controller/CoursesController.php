@@ -35,7 +35,7 @@ class CoursesController extends AbstractController
     {
         $max_pages = ceil($coursesRepository->count([]) / 25);
         $courses = $coursesRepository->findAllWithPagination($page);
-
+           dump($courses);
         return $this->render('courses/listCourses.html.twig', [
             'courses' => $courses,
             'categories' => $categoriesRepository->findAll(),

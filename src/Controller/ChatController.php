@@ -29,27 +29,19 @@ class ChatController extends AbstractController
         'messages' => $messagesRepository->findAll()
         ]);
     }
-    //3. Création d'une fonction pour l'envoi des messages 
-    /**
-     *  @Route("/chat_update", name="chat_update")
-     */
-    public function sendMessages(Request $request)
-    {
-        $message= new Messages();
-        $form = $this->createForm(MessagesType::class, $message);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid())
-        {
-            // On récupere Doctrine pour gérer la BDD
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($message);
-            $entityManager->flush();
-            
-            return $this->redirectToRoute('chat');
-        }
-        return $this->render('chat/index.html.twig', [
-            'controller_name' => 'ChatController',
-        ]);
-    }
+
+    // public function sendMessages(Request $request)
+    // {
+    //     $message= new Messages();
+    //     $form = $this->createForm(MessagesType::class, $message);
+    //     $form->handleRequest($request);
+    //     if ($form->isSubmitted() && $form->isValid())
+    //     {
+    //         // On récupere Doctrine pour gérer la BDD
+    //         $entityManager = $this->getDoctrine()->getManager();
+    //         $entityManager->persist($message);
+    //         $entityManager->flush();
+    //     }
+    // }
 }
 

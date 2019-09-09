@@ -84,6 +84,8 @@ margin-bottom: 35px;
 #footer {
     display: flex;
     justify-content: center;
+    background-color: lightgray;
+    padding-top: 20px;
 
 }
 
@@ -244,3 +246,25 @@ font-weight: bold;
   font-weight: bold;
 }
 
+  #section4{
+    display: flex;
+    justify-content: center;
+  }
+
+  #section4 h3{
+    color: #4682B4;
+  }
+
+  #section4 .sign{
+    background-color: #4682B4;
+    text-align: center;
+    border-radius: 5px 5px 5px 5px;
+    padding: 5px;
+    margin: 3px;
+    display: flex;
+    justify-content: center;
+  }
+
+  #section4 a{
+    color: white;
+  }

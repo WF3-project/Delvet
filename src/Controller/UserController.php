@@ -18,11 +18,17 @@ class UserController extends AbstractController
         public function coursesUser( UserRepository $userRepository, CoursesRepository $coursesRepository )
         {     
             
-            $user=$this->get('security.token_storage')->getToken()->getUser();
-            $courses=$coursesRepository->findAllfindLastCreatedAt();
+            $user=$this->get('security.token_storage')->getToken()->getUser()->getCourse();
+           
+            dump($user);
+                $courses=$coursesRepository->findLastCreatedAt();
+            dump($userRepository->findByEmail($this->get('security.token_storage')->getToken()->getUser()->getEmail()));
+            
             if($user != 'anon.')
             {
                 $CoursesUser=$user->getCourse();
+                
+                dump($CoursesUser);
                 return $this->render('user/index.html.twig', [
                     'user' => $userRepository->findByEmail($this->get('security.token_storage')->getToken()->getUser()->getEmail()),
                     'coursesUser' => $CoursesUser,

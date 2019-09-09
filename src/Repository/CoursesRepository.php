@@ -71,7 +71,7 @@ class CoursesRepository extends ServiceEntityRepository
     public function findLastCreatedAt()
     {
         return $this->createQueryBuilder('p')
-            ->orderBy('p.createdAt', 'DESC')
+            ->orderBy('p.date_create', 'DESC')
             ->setMaxResults(5)
             ->getQuery()
             ->getResult()

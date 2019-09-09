@@ -38,7 +38,7 @@ class User implements UserInterface
     private $password;
  
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Courses", inversedBy="users")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Courses", inversedBy="user")
      */
     private $course;
 

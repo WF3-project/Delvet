@@ -56,7 +56,7 @@ class Courses
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="course")
      */
-    private $users;
+    private $user;
 
     public function __construct()
     {
@@ -174,15 +174,15 @@ class Courses
     /**
      * @return Collection|User[]
      */
-    public function getUsers(): Collection
+    public function getUser(): Collection
     {
-        return $this->users;
+        return $this->user;
     }
 
     public function addUser(User $user): self
     {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
+        if (!$this->user->contains($user)) {
+            $this->user[] = $user;
             $user->addCourse($this);
         }
 
@@ -191,8 +191,8 @@ class Courses
 
     public function removeUser(User $user): self
     {
-        if ($this->users->contains($user)) {
-            $this->users->removeElement($user);
+        if ($this->user->contains($user)) {
+            $this->user->removeElement($user);
             $user->removeCourse($this);
         }
 

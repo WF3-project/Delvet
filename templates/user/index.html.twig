@@ -4,7 +4,9 @@
 
 {% block body %}
 <div class="container d-flex justify-content-center mr-auto">
-    <h3>Bonjour {{user.email}} </h3>
+{% for user in user %}
+    <h3>Bonjour {{user.course}} </h3>
+{% endfor %}
 </div>
 
 

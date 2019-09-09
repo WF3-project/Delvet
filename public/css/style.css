@@ -242,8 +242,16 @@ font-weight: bold;
 
 #section3 .container3 ul{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+
+}
+
+#section3 li{
   font-weight: bold;
+}
+
+#section3 .container3 :last-child{
+  padding: 30px;
 }
 
   #section4{
@@ -252,19 +260,23 @@ font-weight: bold;
   }
 
   #section4 h3{
+    margin-top: 25px;
     color: #4682B4;
+    margin-bottom: 25px;
   }
 
   #section4 .sign{
-    background-color: #4682B4;
     text-align: center;
-    border-radius: 5px 5px 5px 5px;
-    padding: 5px;
-    margin: 3px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    
   }
 
   #section4 a{
     color: white;
+    background-color: #4682B4;
+    border-radius: 5px 5px 5px 5px;
+    padding: 5px;
+    margin: 3px;
   }

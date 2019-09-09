@@ -1,0 +1,339 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#body{
+  text-decoration: none;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+#fullnav{
+    display: flex;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.left{
+  display: flex;
+  flex: auto;
+  justify-content: center;
+}
+
+.left a{
+  margin-right: 65px;
+}
+
+.right{
+  display: flex;
+  flex: auto;
+  justify-content: flex-end;
+  text-transform: uppercase;
+  font-weight: bold;  
+  margin-right: 10px;
+  
+}
+
+.right a{
+  border:  solid  #4682B4;
+  border-radius: 5px 5px 5px 5px;
+  padding: 5px;
+  margin: 3px;
+  color: #4682B4;
+  
+}
+
+.right .sign{
+background-color: #4682B4;
+color: white;
+}
+
+#searchbar{
+  display: flex;
+justify-content: center;
+align-content: center;
+align-items: center;
+align-self: center;
+justify-content: center;
+margin-bottom: 35px;
+}
+
+#searchbar form{
+    display: flex;
+    justify-content: center;
+}
+
+#searchbar input{
+  margin: 0 0 1em 0;
+
+}
+
+#logo{
+    height: 75px;
+}
+
+
+#PresentationDuSite {
+    margin-left: auto;
+    margin-right: auto;
+    height: 420px;
+    width: 500px;
+    margin-top: 30px;
+}
+
+#footer {
+    display: flex;
+    justify-content: center;
+
+}
+
+.logo{
+    width:50px;
+    height:50px;
+}
+.fourth ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.fourth li:first-child{
+    font-style: bold;
+}
+
+li{
+    list-style-type: none;
+}
+.fourth li{
+    padding: 1em;
+}
+
+.social img{
+  width: 30px;
+  height: 30px;
+}
+
+.first, .second, .third, .fourth {
+        flex: auto;
+        text-align: center;
+
+}
+
+.contact{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.contact img{
+  width: 30px;
+  height: 30px;
+}
+
+h3{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+body, input, button {
+  font-family: Ubuntu, sans-serif;
+}
+
+header {
+  text-align: center;
+}
+
+.messages {
+  background-color: steelblue;
+  border-radius: 5px;
+  padding: 1em;
+  height: 50vh;
+  overflow: auto;
+}
+
+.message {
+  color: white;
+  padding: 0.3em;
+}
+
+.date, .author {
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+  margin-top: 1em;
+  justify-content: space-between;
+}
+
+input, button {
+  padding: 0.5em;
+}
+
+input {
+  margin-right: 10px;
+}
+
+#author {
+  width: 20%;
+}
+
+#content {
+  width: 60%;
+}
+
+button[type="submit"]{
+  width: 20%;
+}
+
+/* Fin base Twig */
+
+/* Debut index */
+
+#section{
+  background-color: #4682B4;
+  color: white;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  flex-direction: column; 
+}
+
+#section2 h2{
+  margin-top: 25px;
+display: flex;
+justify-content: center;
+color: #4682B4;
+font-weight: bold;
+}
+
+#section2 .container ul{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    font-weight: bold;
+    margin-bottom: 40px;
+    
+}
+
+#section2 .container ul li{
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 20px;
+  border-bottom:    #4682B4 dotted ;
+  
+}
+
+#section2 img{
+  display: flex;
+  height: 40px;
+  width: 40px;
+  align-self: center;
+}
+
+#section3 h3{
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  color: #4682B4;
+}
+
+#section3 .container3 ul{
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
+}
+
+/* Style de l'inscription */
+
+.register
+{
+  width : 40%;
+  margin: 0 auto;
+}
+.register form
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.register h1
+{
+  display: flex;
+  justify-content: center;
+}
+.register form button
+{
+  margin: 0 auto;
+}
+.register form div
+{
+  margin: 0 auto;
+}
+
+/* Style du login */
+
+.login
+{
+  width: 40%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.login h1
+{
+  margin: 5px auto;
+}
+.login label
+{
+  margin: 5px auto;
+}
+.login a
+{
+  margin: 5px auto;
+}
+.login button
+{
+  margin: 5px auto;
+}
+
+/* Style du mdp oublié */
+
+.forgotten
+{
+  width: 40%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.forgotten h1
+{
+  margin: 5px auto;
+}
+.forgotten button
+{
+  margin: 5px auto;
+}
+
+/* Style du reset password */
+
+.reset
+{
+  width: 40%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.reset h1
+{
+  margin: 5px auto;
+}
+
+.reset button
+{
+  margin: 5px auto;
+}

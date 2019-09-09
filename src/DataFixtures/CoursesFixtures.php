@@ -50,7 +50,7 @@ class CoursesFixtures extends Fixture  implements FixtureGroupInterface
         $course=new Courses();
         $course->setName('nom du cour');
         $course->setDescription('un cour');
-        $course->setImage('une immage');
+            $course->setImage();
         $course->setDateCreate(new DateTime());
         $course->setNumberView(rand(0 , 1000));
         // $categories_id=[];

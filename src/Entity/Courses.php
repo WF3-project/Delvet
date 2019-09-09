@@ -39,10 +39,10 @@ class Courses
 
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Vich\UploadableField(mapping="cour_image", fileNameProperty="fileName", size="imageSize")
+     *@var File|null
+     * @Vich\UploadableField(mapping="cour_image", fileNameProperty="fileName")
      * 
-     * @var File|null
+     * 
      */
     private $image;
 
@@ -104,7 +104,7 @@ class Courses
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getImage(): ?File
     {
         return $this->image;
     }

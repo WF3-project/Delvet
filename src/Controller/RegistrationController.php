@@ -72,7 +72,7 @@ class RegistrationController extends AbstractController
            $em->flush();
            return $this->redirectToRoute('app_login');
         } else {
-            return $this->render('registration/token-expire.html.twig');
+            return $this->render('registration/register.html.twig');
         }
     }
     /**
@@ -83,7 +83,7 @@ class RegistrationController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws \Exception
      */
-    public function sendConfirmationToken(Request $request, MailerService $mailerService, \Swift_Mailer $mailer): RedirectResponse
+    public function sendConfirmationToken(Request $request, \Swift_Mailer $mailer): RedirectResponse
     {
         $em = $this->getDoctrine()->getManager();
         $email = $request->request->get('email');
@@ -98,7 +98,6 @@ class RegistrationController extends AbstractController
         $token = $user->getConfirmationToken();
         $email = $user->getEmail();
         $username = $user->getUsername();
-        $mailerService->sendToken($mailer, $token, $email, $username, 'registration.html.twig');
         return $this->redirectToRoute('app_login');
     }
 

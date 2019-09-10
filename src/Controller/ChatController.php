@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class ChatController extends AbstractController
-{
+{   
     /**
     * @Route("/chat", name="chat")
     */

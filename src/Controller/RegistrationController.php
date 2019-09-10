@@ -35,8 +35,12 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
             $token = $tokenGenerator->generateToken();
-            $url = $this->generateUrl('app_register', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
+            $url = $this->generateUrl('app_login', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
 
             // Envoie du mail avec swift mailer
             $message =(new \Swift_Message('Validation du mail'))
@@ -47,6 +51,7 @@ class RegistrationController extends AbstractController
             $mailer->send($message);
 
             $this->addFlash('notice', 'Mail send');
+            return $this->redirectToRoute('app_login');
 
         }
 

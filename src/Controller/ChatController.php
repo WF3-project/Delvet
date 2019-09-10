@@ -5,8 +5,10 @@ namespace App\Controller;
 use App\Entity\Messages;
 use App\Form\MessagesType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class ChatController extends AbstractController
 {
@@ -20,15 +22,22 @@ class ChatController extends AbstractController
         ]);
     }
 
-    public function getMessages(Messages $message)
+    /**
+     * @Route("/chat/messages", name="chat_view")
+     */
+    public function getMessages(SerializerInterface $serializer)
     {
-        return $this->render('chat/index.html.twig', [
-            'message' => $message,
-        ]);
-
-        echo json_encode($message);
+        $messages = $this->getDoctrine()->getRepository(Messages::class)->findAll();
+        $json = $serializer->serialize(
+            $messages,
+            'json'
+        );
+        return new Response( $json );
     }
 
+    /**
+     * @Route("/chat/addmessage", name="chat_update")
+     */
     public function addMessage(Request $request, Messages $message)
     {
         new Messages();

@@ -19,6 +19,7 @@ class CoursesType extends AbstractType
             ->add('image',FileType::class,['required' =>false])
             ->add('content', CKEditorType::class)
             ->add('description')
+            ->add('categories')
         ;
     }
 

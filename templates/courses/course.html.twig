@@ -28,11 +28,12 @@
     <div class="card-body">
     
         <h5 class="card-title">{{ null != course.categories  ? course.categories.name : ''  }}</h5> 
-        <p class="card-text">{{course.content}}</p>
+        <p class="card-text">{{course.content | raw}}</p>
         <p class="card-text">{{course.description}}</p>
+        
         <p class="card-text text-center">nombres de vues {{course.numberView}} </p>
-        <a  class="btn btn-success " href="{{ path('userCourse', {id:course.id}) }}">ajouter à votre liste des cours</a>
-        {# {{ path('couse', {id:course.id}) }} #}
+        <p><a  class="btn btn-success " href="{{ path('userCourse', {id:course.id}) }}">ajouter à votre liste des cours</a></p>
+        
     </div>
     </div>
 

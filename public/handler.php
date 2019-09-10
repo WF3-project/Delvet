@@ -3,7 +3,7 @@
 /**
  * Connexion à la base de données !
  */
-$db = new PDO('mysql:host=127.0.0.1;dbname=messages;charset=utf8', 'root', '', [
+$db = new PDO('mysql:host=127.0.0.1;dbname=delvet;charset=utf8', 'root', '', [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, 
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
 ]);

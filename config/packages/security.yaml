@@ -17,10 +17,7 @@ security:
             security: false
         main:
             anonymous: ~
-<<<<<<< HEAD
-=======
             user_checker: App\Security\UserChecker
->>>>>>> origin/StyleLogin
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthentificatorAuthenticator

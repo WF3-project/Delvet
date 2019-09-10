@@ -17,10 +17,7 @@ class CoursesType extends AbstractType
         $builder
             ->add('name')
             ->add('image',FileType::class,['required' =>false])
-            ->add('fileName')  
             ->add('description', CKEditorType::class)
-            ->add('contributor')
-           ->add('number_view')
         ;
     }
 

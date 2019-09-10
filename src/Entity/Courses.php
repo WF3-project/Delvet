@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\Validator\Constraints\Date;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CoursesRepository")
@@ -67,7 +67,7 @@ class Courses
     /**
      * @ORM\Column(type="integer")
      */
-    private $number_view;
+    private $number_view = 0;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Categories", inversedBy="courses")

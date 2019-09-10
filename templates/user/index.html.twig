@@ -4,9 +4,7 @@
 
 {% block body %}
 <div class="container d-flex justify-content-center mr-auto">
-{% for user in user %}
-    <h3>Bonjour {{user.course}} </h3>
-{% endfor %}
+    <h3>Bonjour {{user.email}} </h3>
 </div>
 
 
@@ -17,7 +15,7 @@
          </div>
 
         <ul>
-            {% for course in CoursesUser %}
+            {% for course in coursesUser %}
                 <li>
                      
                     {{course.name}}<br>
@@ -31,9 +29,9 @@
 <div class="container d-flex justify-content-center">
 <div class="card d-flex" style="width: 50vw;">
    <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> les 5 dernier cours </div>
-{% for course in Courses %}
+{% for course in courses %}
     <div class="card-body">
-            <h5 class="card-title">{{courses.title}}</h5>
+            <h5 class="card-title">{{course.name}}</h5>
             <p class="card-text">{{course.description}}</p>
             <a href="{{path('course', {id:course.id})}}" class="btn btn-primary">Go somewhere</a>
     </div>

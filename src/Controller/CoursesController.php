@@ -51,8 +51,17 @@ class CoursesController extends AbstractController
    public function Course(Courses $id , CoursesRepository $coursesRepository
    ): Response
    {
-       dump($id);
-       dump($coursesRepository->findById($id));
+     
+       $course=$coursesRepository->findById($id);
+        $cour=$course[0];
+        dump($cour);
+
+        $view= $cour->getNumberView() + 1;
+        $cour->setNumberview($view);
+        dump($cour);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($cour);
+        $entityManager->flush();
        return $this->render('courses/Course.html.twig', [
            'course' => $id,
            
@@ -69,6 +78,7 @@ class CoursesController extends AbstractController
         $form = $this->createForm(CoursesType::class, $course);
         $form->handleRequest($request);
 
+        $course->setContributor( $this->getUser() );
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($course);

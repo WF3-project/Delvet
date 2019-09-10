@@ -14,6 +14,7 @@ class MessagesType extends AbstractType
         $builder
             ->add('author')
             ->add('content')
+            ->add('created_at')
         ;
     }
 

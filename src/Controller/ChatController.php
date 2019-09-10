@@ -38,22 +38,23 @@ class ChatController extends AbstractController
     /**
      * @Route("/chat/addmessage", name="chat_update")
      */
-    public function addMessage(Request $request, Messages $message)
+    public function addMessage(Request $request)
     {
-        new Messages();
-        $form = $this->createForm(MessageType::class, $message);
+        $message= new Messages();
+        $form = $this->createForm(MessagesType::class, $message);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($message);
             $entityManager->flush();
-
-            return $this->redirectToRoute('messages');
+           
+            return $this;
         }
         return $this->render('chat/index.html.twig', [
             'message' => $message,
         ]);
+        
     }
     
 }

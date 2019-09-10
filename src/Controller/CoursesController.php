@@ -56,8 +56,8 @@ class CoursesController extends AbstractController
         $cour=$course[0];
         dump($cour);
 
-        $view= $cour->getNumberView() + 1;
-        $cour->setNumberview($view);
+        
+        $cour->setNumberview($cour->getNumberView() + 1);
         dump($cour);
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($cour);
@@ -78,7 +78,7 @@ class CoursesController extends AbstractController
         $form = $this->createForm(CoursesType::class, $course);
         $form->handleRequest($request);
 
-        $course->setContributor( $this->getUser() );
+        $course->addContributor( $this->getUser() );
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($course);

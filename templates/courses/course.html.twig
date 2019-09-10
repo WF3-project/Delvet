@@ -22,16 +22,16 @@
 <div class="container d-flex flex-wrap">
 
 
-    <div class="card d-flex mr-2 mb-2 " style="width: 200px;">
+    <div class="card d-flex mr-2 mb-2 " style="width: 90%;">
     <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i>{{course.name}}</div>
     <img src="..." class="card-img-top" alt="...">
     <div class="card-body">
     
         <h5 class="card-title">{{ null != course.categories  ? course.categories.name : ''  }}</h5> 
-   
+        <p class="card-text">{{course.content}}</p>
         <p class="card-text">{{course.description}}</p>
-        <p class="card-text text-center">nombres de vues {{course.numberView}}
-        
+        <p class="card-text text-center">nombres de vues {{course.numberView}} </p>
+        <a  class="btn btn-success " href="{{ path('userCourse', {id:course.id}) }}">ajouter à votre liste des cours</a>
         {# {{ path('couse', {id:course.id}) }} #}
     </div>
     </div>

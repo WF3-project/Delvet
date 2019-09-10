@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190909135249 extends AbstractMigration
+final class Version20190910100424 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,7 +22,7 @@ final class Version20190909135249 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE courses CHANGE categories_id categories_id INT DEFAULT NULL');
+        $this->addSql('ALTER TABLE courses ADD content LONGTEXT NOT NULL, DROP image, CHANGE categories_id categories_id INT DEFAULT NULL, CHANGE description description VARCHAR(255) NOT NULL');
         $this->addSql('ALTER TABLE user CHANGE roles roles JSON NOT NULL, CHANGE reset_token reset_token VARCHAR(255) DEFAULT NULL');
     }
 
@@ -31,7 +31,7 @@ final class Version20190909135249 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE courses CHANGE categories_id categories_id INT DEFAULT NULL');
+        $this->addSql('ALTER TABLE courses ADD image VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci, DROP content, CHANGE categories_id categories_id INT DEFAULT NULL, CHANGE description description LONGTEXT NOT NULL COLLATE utf8mb4_unicode_ci');
         $this->addSql('ALTER TABLE user CHANGE roles roles LONGTEXT NOT NULL COLLATE utf8mb4_bin, CHANGE reset_token reset_token VARCHAR(255) DEFAULT \'NULL\' COLLATE utf8mb4_unicode_ci');
     }
 }

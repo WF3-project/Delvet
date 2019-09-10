@@ -15,9 +15,10 @@ class CoursesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('name', )
             ->add('image',FileType::class,['required' =>false])
-            ->add('description', CKEditorType::class)
+            ->add('content', CKEditorType::class)
+            ->add('description')
         ;
     }
 

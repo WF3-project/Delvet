@@ -19,7 +19,9 @@ class UserController extends AbstractController
         {     
             
             $user = $this->getUser();
+            dump($user);
             $courses=$coursesRepository->findLastCreatedAt();
+
             
             if( !empty( $user) )
             {
@@ -39,6 +41,32 @@ class UserController extends AbstractController
             ]);
             
         }
+
+
+
+       
         
+    /**
+     * @Route("/user/{id}", name="userCourse")
+     */
     
+    public function coursesAdd( Courses $course, CoursesRepository $coursesRepository )
+    {     
+        dump($course);
+        $user = $this->getUser();
+        dump($user);
+        $user->addCoursesUser($course);
+        dump($user);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('user');
+       
+        
+        
+    }
+
+
 }

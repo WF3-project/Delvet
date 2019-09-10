@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -26,6 +27,7 @@ class Courses
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $name;
 
@@ -41,7 +43,10 @@ class Courses
     /**
      *@var File|null
      * @Vich\UploadableField(mapping="cour_image", fileNameProperty="fileName")
-     * 
+     * @Assert\File(
+     *     maxSize = "1024k",
+     *     mimeTypesMessage = "Please upload a valid file"
+     * )
      * 
      */
     private $image;
@@ -56,8 +61,9 @@ class Courses
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
      */
-    private $description;
+    private $content;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="courses")
@@ -79,6 +85,12 @@ class Courses
      * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="courses_user")
      */
     private $users;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     */
+    private $description;
 
     public function __construct()
     {
@@ -147,14 +159,14 @@ class Courses
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getContent(): ?string
     {
-        return $this->description;
+        return $this->content;
     }
 
-    public function setDescription(string $description): self
+    public function setContent(string $content): self
     {
-        $this->description = $description;
+        $this->content = $content;
 
         return $this;
     }
@@ -239,6 +251,18 @@ class Courses
             $this->users->removeElement($user);
             $user->removeCourse($this);
         }
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

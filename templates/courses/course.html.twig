@@ -2,7 +2,7 @@
 {% block title %}tout nos cours{% endblock %}
 {% block body  %}
     <div class="container " >
-      <div class="card bg-light mb-3" style="width: 18rem; ">
+      <div class="card bg-light mb-3" style="width: 18em; ">
             <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Catégories</div>
                 <ul class="list-group category_block">
                         
@@ -19,12 +19,12 @@
     </div>
 
 
-<div class="container d-flex flex-wrap">
+<div class=" container d-flex flex-wrap"  >
 
 
-    <div class="card d-flex mr-2 mb-2 " style="width: 200px;">
+    <div class="card d-flex mr-2 mb-2 justify-content-center" >
     <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i>{{course.name}}</div>
-    <img src="{{ asset( 'images/cour/' ~ course.fileName ) }}" class="card-img-top" alt="...">
+   
     <div class="card-body">
     
         <h5 class="card-title">{{ null != course.categories  ? course.categories.name : ''  }}</h5> 

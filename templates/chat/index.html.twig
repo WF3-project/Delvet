@@ -3,17 +3,24 @@
 {% block title %}Hello ChatController!{% endblock %}
 
 {% block body %}
-
-<section class="chat">
+ <header>
+    <h1>What a Dev !</h1>
+  </header>
+  
+  <section class="chat">
+  
     <div class="messages">
-   
+     
     </div>
     <div class="user-inputs">
-      <form method='POST'>
+      <form class="chatform">
         <input type="text" name="author" id="author" placeholder="Nickname ?">
         <input type="text" id="content" name="content" placeholder="Type your message here">
         <button type="submit"> Send !</button>
       </form>
     </div>
   </section>
+{% endblock %}
+{% block javascripts %}
+  <script type="text/javascript" src="{{ asset('bundles/app/js/app.js') }}"></script>
 {% endblock %}

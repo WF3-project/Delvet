@@ -48,9 +48,14 @@ background-color: #4682B4;
 color: white;
 }
 
-#searchbar
-{
-  margin:0 auto;  
+#searchbar{
+  display: flex;
+justify-content: center;
+align-content: center;
+align-items: center;
+align-self: center;
+justify-content: center;
+margin-bottom: 35px;
 }
 
 #searchbar form{
@@ -79,6 +84,8 @@ color: white;
 #footer {
     display: flex;
     justify-content: center;
+    background-color: lightgray;
+    padding-top: 20px;
 
 }
 
@@ -372,3 +379,39 @@ font-weight: bold;
   margin:0 auto;
 
 }
+
+#section3 li{
+  font-weight: bold;
+}
+
+#section3 .container3 :last-child{
+  padding: 30px;
+}
+
+  #section4{
+    display: flex;
+    justify-content: center;
+      margin-bottom: 25px;
+  }
+
+  #section4 h3{
+    margin-top: 25px;
+    color: #4682B4;
+    margin-bottom: 25px;
+  }
+
+  #section4 .sign{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+  }
+
+  #section4 a{
+    color: white;
+    background-color: #4682B4;
+    border-radius: 5px 5px 5px 5px;
+    padding: 5px;
+    margin: 3px;
+  }

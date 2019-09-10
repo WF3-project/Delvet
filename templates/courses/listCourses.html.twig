@@ -22,32 +22,22 @@
         <div class="container d-flex flex-wrap">
         {% for course in courses %}
 
-<<<<<<< HEAD
             <div class="card d-flex mr-2 mb-2  " style="width: 200px;">
             <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i>{{course.name}}</div>
             <img src="{{ asset( 'images/cour/' ~ course.fileName ) }}" class="card-img-top" >
-=======
-            <div class="card d-flex mr-2 mb-2 " style="width: 200px;">
-            <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i>{{course.name}}</div>
-            <img src="..." class="card-img-top" alt="...">
->>>>>>> origin/StyleLogin
             <div class="card-body">
             
                 <h5 class="card-title">{{ null != course.categories  ? course.categories.name : ''  }}</h5> 
         
                 <p class="card-text">{{course.description}}</p>
                 <p class="card-text text-center">nombres de vues {{course.numberView}}
-<<<<<<< HEAD
                 <form>
                 <input class="number_view" id="number_view"  type="hidden" value="{{course.numberView + 1 }}">
                 <div class="d-flex justify-content-center flex-wrap">
                     <p><a  class="btn btn-primary" href="{{ path('course', {id:course.id}) }}">Go somewhere</a></p>
-                    <p><a  class="btn btn-success" href="{{ path('userCourse', {id:course.id}) }}">ajouter à votre liste des cours</a></p>
+                   <p><a  class="btn btn-success {{ user == null ? 'invisible' : ''  }}" href="{{ path('userCourse', {id:course.id}) }}">ajouter à votre liste des cours</a></p>
                 </div>
                 </form>
-=======
-                <a  class="btn btn-primary" href="{{ path('course', {id:course.id}) }}">Go somewhere</a>
->>>>>>> origin/StyleLogin
                 {# {{ path('categorieCour', {id:course.id}) }} #}
             </div>
             </div>

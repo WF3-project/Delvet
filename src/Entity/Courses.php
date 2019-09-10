@@ -64,6 +64,11 @@ class Courses
      * @Assert\NotBlank
      */
     private $content;
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     */
+    private $description;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="courses")

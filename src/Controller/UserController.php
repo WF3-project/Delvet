@@ -28,7 +28,7 @@ class UserController extends AbstractController
                 
                 return $this->render('user/index.html.twig', [
                     'user' => $user,
-                    'coursesUser' => $user->getCoursesUser(),
+                    'coursesUser' => $user->getCourse(),
                     'courses'=> $courses
                 ]);
 
@@ -55,7 +55,7 @@ class UserController extends AbstractController
         dump($course);
         $user = $this->getUser();
         dump($user);
-        $user->addCoursesUser($course);
+        $user->addCourse($course);
         dump($user);
 
         $entityManager = $this->getDoctrine()->getManager();

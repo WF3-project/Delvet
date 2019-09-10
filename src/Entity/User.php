@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -23,7 +25,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * 
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
      */
+    
     private $email;
 
     /**
@@ -51,6 +59,17 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $resetToken;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $enabled;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $ConfirmationToken;
+
 
     public function getId(): ?int
     {
@@ -167,4 +186,30 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function getEnabled(): ?bool
+    {
+        return $this->enabled;
+    }
+
+    public function setEnabled(?bool $enabled): self
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    public function getConfirmationToken(): ?bool
+    {
+        return $this->ConfirmationToken;
+    }
+
+    public function setConfirmationToken(?bool $ConfirmationToken): self
+    {
+        $this->ConfirmationToken = $ConfirmationToken;
+
+        return $this;
+    }
+
+   
 }

@@ -48,14 +48,9 @@ background-color: #4682B4;
 color: white;
 }
 
-#searchbar{
-  display: flex;
-justify-content: center;
-align-content: center;
-align-items: center;
-align-self: center;
-justify-content: center;
-margin-bottom: 35px;
+#searchbar
+{
+  margin:0 auto;  
 }
 
 #searchbar form{
@@ -261,6 +256,7 @@ font-weight: bold;
 {
   display: flex;
   justify-content: center;
+  font-weight: bold;
 }
 .register form button
 {
@@ -269,6 +265,12 @@ font-weight: bold;
 .register form div
 {
   margin: 0 auto;
+}
+.register label
+{
+  display: flex;
+  justify-content: center;
+  margin: 5px 0;
 }
 
 /* Style du login */
@@ -284,12 +286,10 @@ font-weight: bold;
 
 .login h1
 {
+  font-size: 40px;
   margin: 5px auto;
 }
-.login label
-{
-  margin: 5px auto;
-}
+
 .login a
 {
   margin: 5px auto;
@@ -298,6 +298,22 @@ font-weight: bold;
 {
   margin: 5px auto;
 }
+.login p
+{
+  margin: 5px auto;
+}
+.login input
+{
+  width:40%;
+  margin: 0 auto;
+  
+}
+.login label
+{
+  width:40%;
+  margin : 5px auto;
+}
+
 
 /* Style du mdp oublié */
 
@@ -312,8 +328,19 @@ font-weight: bold;
 .forgotten h1
 {
   margin: 5px auto;
+  font-size: 40px;
+  font-weight: bold;
 }
 .forgotten button
+{
+  margin: 5px auto;
+}
+.forgotten input
+{
+  width: 40%;
+  margin: 0 auto;
+}
+.forgotten p
 {
   margin: 5px auto;
 }
@@ -330,10 +357,18 @@ font-weight: bold;
 }
 .reset h1
 {
+  font-weight: bold;
+  font-size: 40px;
   margin: 5px auto;
 }
 
 .reset button
 {
   margin: 5px auto;
+}
+.reset input
+{
+  width: 40%;
+  margin:0 auto;
+
 }

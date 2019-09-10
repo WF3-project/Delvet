@@ -8,6 +8,7 @@ use App\Security\TokenAuthenticator;
 use App\Routing\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -25,13 +26,14 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
 
-        if ($form->isSubmitted() && $form->isValid()) 
+        if ($form->isSubmitted() && $form->isValid() ) 
         {
             // encode the plain password
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
                     $form->get('plainPassword')->getData()
+
                 )
             );
 
@@ -78,7 +80,6 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/send-token-confirmation", name="send_confirmation_token")
      * @param Request $request
-     * @param MailerService $mailerService
      * @param \Swift_Mailer $mailer
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws \Exception
@@ -96,8 +97,16 @@ class RegistrationController extends AbstractController
         $em->persist($user);
         $em->flush();
         $token = $user->getConfirmationToken();
-        $email = $user->getEmail();
-        $username = $user->getUsername();
+        $email = $user->getEmail(); 
+        $url = $this->generateUrl('app_login', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
+
+        // Envoie du mail avec swift mailer
+        $message =(new \Swift_Message('Validation du mail'))
+            ->setFrom('no_reply.delvet@gmail.com')
+            ->setTo($user->getEmail())
+            ->setBody("Click on the following link to validate your account: " . $url, 'text/html');
+
+        $mailer->send($message);
         return $this->redirectToRoute('app_login');
     }
 

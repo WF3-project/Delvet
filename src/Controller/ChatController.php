@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Messages;
 use App\Form\MessagesType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -42,18 +43,23 @@ class ChatController extends AbstractController
     {
         $message= new Messages();
         $form = $this->createForm(MessagesType::class, $message);
-        $form->handleRequest($request);
+        $form->submit( array(
+            'author' => $this->getUser()->getEmail(),
+            'content' => $request->request->get('content'),
+        ));
         
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ( $form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($message);
             $entityManager->flush();
-           
-            return $this;
+        
+            return new JsonResponse( array(
+                'status' => true
+            ));
         }
-        return $this->render('chat/index.html.twig', [
-            'message' => $message,
-        ]);
+        return new JsonResponse( array(
+            'status' => false
+        ));
         
     }
     

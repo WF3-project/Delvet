@@ -14,7 +14,6 @@ class MessagesType extends AbstractType
         $builder
             ->add('author')
             ->add('content')
-            ->add('created_at')
         ;
     }
 
@@ -22,6 +21,7 @@ class MessagesType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Messages::class,
+            'csrf_protection' => false
         ]);
     }
 }

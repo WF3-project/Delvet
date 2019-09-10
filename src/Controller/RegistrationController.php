@@ -60,6 +60,48 @@ class RegistrationController extends AbstractController
         ]);
     }
 
+    public function confirmAccount($token, $username): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)->findOneBy(['username' => $username]);
+        $tokenExist = $user->getConfirmationToken();
+        if($token === $tokenExist) {
+           $user->setConfirmationToken(null);
+           $user->setEnabled(true);
+           $em->persist($user);
+           $em->flush();
+           return $this->redirectToRoute('app_login');
+        } else {
+            return $this->render('registration/token-expire.html.twig');
+        }
+    }
+    /**
+     * @Route("/send-token-confirmation", name="send_confirmation_token")
+     * @param Request $request
+     * @param MailerService $mailerService
+     * @param \Swift_Mailer $mailer
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws \Exception
+     */
+    public function sendConfirmationToken(Request $request, MailerService $mailerService, \Swift_Mailer $mailer): RedirectResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $email = $request->request->get('email');
+        $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['email' => $email]);
+        if($user === null) {
+            $this->addFlash('not-user-exist', 'utilisateur non trouvé');
+            return $this->redirectToRoute('app_register');
+        }
+        $user->setConfirmationToken($this->generateToken());
+        $em->persist($user);
+        $em->flush();
+        $token = $user->getConfirmationToken();
+        $email = $user->getEmail();
+        $username = $user->getUsername();
+        $mailerService->sendToken($mailer, $token, $email, $username, 'registration.html.twig');
+        return $this->redirectToRoute('app_login');
+    }
+
 
     /**
      * @Route("/forgotten_password", name="forgotten_password")

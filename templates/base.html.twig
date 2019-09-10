@@ -28,8 +28,9 @@
               <a href="#">A propos</a>
         </div>
         <div class="right">
-            <a class="sign" href="#">s'inscrire</a>
-            <a href="#">se connecter</a>
+            <a class="sign" href="{{ path('app_register') }}">s'inscrire</a>
+            <a href="{{ path('app_login') }}">se connecter</a>
+            <a href="{{ path('app_logout')}}">se deconnecter</a>
         </div>
     </div>
 

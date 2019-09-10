@@ -41,6 +41,7 @@ class UserController extends AbstractController
             ]);
             
         }
+<<<<<<< HEAD
 
 
 
@@ -69,4 +70,8 @@ class UserController extends AbstractController
     }
 
 
+=======
+        
+    
+>>>>>>> origin/StyleLogin
 }

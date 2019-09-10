@@ -80,22 +80,14 @@ class Courses
      */
     private $categories;
 
-    
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="courses_user")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="course")
      */
     private $users;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank
-     */
-    private $description;
 
     public function __construct()
     {
         $this->contributor = new ArrayCollection();
-        
         $this->users = new ArrayCollection();
     }
 

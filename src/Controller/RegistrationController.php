@@ -8,6 +8,7 @@ use App\Security\TokenAuthenticator;
 use App\Routing\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -25,18 +26,23 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
 
-        if ($form->isSubmitted() && $form->isValid()) 
+        if ($form->isSubmitted() && $form->isValid() ) 
         {
             // encode the plain password
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
                     $form->get('plainPassword')->getData()
+
                 )
             );
 
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
             $token = $tokenGenerator->generateToken();
-            $url = $this->generateUrl('app_register', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
+            $url = $this->generateUrl('app_login', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
 
             // Envoie du mail avec swift mailer
             $message =(new \Swift_Message('Validation du mail'))
@@ -47,12 +53,61 @@ class RegistrationController extends AbstractController
             $mailer->send($message);
 
             $this->addFlash('notice', 'Mail send');
+            return $this->redirectToRoute('app_login');
 
         }
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
+    }
+
+    public function confirmAccount($token, $username): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)->findOneBy(['username' => $username]);
+        $tokenExist = $user->getConfirmationToken();
+        if($token === $tokenExist) {
+           $user->setConfirmationToken(null);
+           $user->setEnabled(true);
+           $em->persist($user);
+           $em->flush();
+           return $this->redirectToRoute('app_login');
+        } else {
+            return $this->render('registration/register.html.twig');
+        }
+    }
+    /**
+     * @Route("/send-token-confirmation", name="send_confirmation_token")
+     * @param Request $request
+     * @param \Swift_Mailer $mailer
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws \Exception
+     */
+    public function sendConfirmationToken(Request $request, \Swift_Mailer $mailer): RedirectResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $email = $request->request->get('email');
+        $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['email' => $email]);
+        if($user === null) {
+            $this->addFlash('not-user-exist', 'utilisateur non trouvé');
+            return $this->redirectToRoute('app_register');
+        }
+        $user->setConfirmationToken($this->generateToken());
+        $em->persist($user);
+        $em->flush();
+        $token = $user->getConfirmationToken();
+        $email = $user->getEmail(); 
+        $url = $this->generateUrl('app_login', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
+
+        // Envoie du mail avec swift mailer
+        $message =(new \Swift_Message('Validation du mail'))
+            ->setFrom('no_reply.delvet@gmail.com')
+            ->setTo($user->getEmail())
+            ->setBody("Click on the following link to validate your account: " . $url, 'text/html');
+
+        $mailer->send($message);
+        return $this->redirectToRoute('app_login');
     }
 
 

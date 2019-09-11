@@ -5,11 +5,16 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -19,72 +24,61 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=180, unique=true)
+     * 
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
      */
-    private $lastname;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $firstname;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    
     private $email;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $password;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $pseudo;
 
     /**
      * @ORM\Column(type="json")
      */
-    private $role = [];
+    private $roles = [];
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Courses", mappedBy="contributor")
+     * @var string The hashed password
+     * @ORM\Column(type="string")
      */
-    private $courses;
+    private $password;
+ 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Courses", inversedBy="users")
+     */
+    private $course;
 
     public function __construct()
     {
-        $this->courses = new ArrayCollection();
+        $this->course = new ArrayCollection();
     }
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $resetToken;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $enabled;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $ConfirmationToken;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nickname;
+
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getLastname(): ?string
-    {
-        return $this->lastname;
-    }
-
-    public function setLastname(string $lastname): self
-    {
-        $this->lastname = $lastname;
-
-        return $this;
-    }
-
-    public function getFirstname(): ?string
-    {
-        return $this->firstname;
-    }
-
-    public function setFirstname(string $firstname): self
-    {
-        $this->firstname = $firstname;
-
-        return $this;
     }
 
     public function getEmail(): ?string
@@ -99,9 +93,41 @@ class User
         return $this;
     }
 
-    public function getPassword(): ?string
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
     {
-        return $this->password;
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getPassword(): string
+    {
+        return (string) $this->password;
     }
 
     public function setPassword(string $password): self
@@ -111,26 +137,31 @@ class User
         return $this;
     }
 
-    public function getPseudo(): ?string
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
     {
-        return $this->pseudo;
+        // not needed when using the "bcrypt" algorithm in security.yaml
     }
 
-    public function setPseudo(string $pseudo): self
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
     {
-        $this->pseudo = $pseudo;
-
-        return $this;
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 
-    public function getRole(): ?array
+    public function getResetToken(): ?string
     {
-        return $this->role;
+        return $this->resetToken;
     }
 
-    public function setRole(array $role): self
+    public function setResetToken(?string $resetToken): self
     {
-        $this->role = $role;
+        $this->resetToken = $resetToken;
 
         return $this;
     }
@@ -138,16 +169,15 @@ class User
     /**
      * @return Collection|Courses[]
      */
-    public function getCourses(): Collection
+    public function getCourse(): Collection
     {
-        return $this->courses;
+        return $this->course;
     }
 
     public function addCourse(Courses $course): self
     {
-        if (!$this->courses->contains($course)) {
-            $this->courses[] = $course;
-            $course->addContributor($this);
+        if (!$this->course->contains($course)) {
+            $this->course[] = $course;
         }
 
         return $this;
@@ -155,11 +185,52 @@ class User
 
     public function removeCourse(Courses $course): self
     {
-        if ($this->courses->contains($course)) {
-            $this->courses->removeElement($course);
-            $course->removeContributor($this);
+        if ($this->course->contains($course)) {
+            $this->course->removeElement($course);
         }
 
         return $this;
     }
+
+    public function getEnabled(): ?bool
+    {
+        return $this->enabled;
+    }
+
+    public function setEnabled(?bool $enabled): self
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    public function getConfirmationToken(): ?bool
+    {
+        return $this->ConfirmationToken;
+    }
+
+    public function setConfirmationToken(?bool $ConfirmationToken): self
+    {
+        $this->ConfirmationToken = $ConfirmationToken;
+
+        return $this;
+    }
+
+    public function __ToString(){
+        return $this->email;
+    }
+
+    public function getNickname(): ?string
+    {
+        return $this->nickname;
+    }
+
+    public function setNickname(string $nickname): self
+    {
+        $this->nickname = $nickname;
+
+        return $this;
+    }
+
+   
 }

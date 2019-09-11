@@ -24,7 +24,7 @@
 
             <div class="card d-flex mr-2 mb-2  " style="width: 200px;">
             <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i>{{course.name}}</div>
-            <img src="{{ asset( 'images/cour/' ~ course.fileName ) }}" class="card-img-top" >
+            <img src="{{ asset( 'images/cour/' ~ course.fileName ) }}" class="card-img-top {{ course.fileName == null ? 'invisible' : ''}}" >
             <div class="card-body">
             
                 <h5 class="card-title">{{ null != course.categories  ? course.categories.name : ''  }}</h5> 
@@ -54,7 +54,7 @@
                     </li>
                 {% endif %}
                     
-                    {% for page in 1..max_pages %}
+                    {% for page in 1.. max_pages   %}
                         <li class="page-item {{ (page == current_page) ? 'active' : '' }}">
                             <a class="page-link" href="{{ path('courses', {page: page}) }}">{{ page }}</a>
                         </li>

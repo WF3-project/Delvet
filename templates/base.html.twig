@@ -27,11 +27,13 @@
               <a href="#">Professeurs</a>
               <a href="{{ path('user') }}">Profil</a>
               <a href="#">A propos</a>
+              <a href="{{ path('chat') }}" class"hide">{{app.user}}</a>
+
         </div>
         <div class="right">
             <a class="sign" href="{{ path('app_register') }}">s'inscrire</a>
             <a href="{{ path('app_login') }}">se connecter</a>
-            <a href="{{ path('app_logout')}}">se deconnecter</a>
+            <a href="{{ path('app_logout')}}" class="hide">se deconnecter</a>
         </div>
     </div>
 
@@ -107,6 +109,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+    <script src="{{ asset('app/js/hide.js') }}"></script>
     {% endblock %}
     </body>
 </html>

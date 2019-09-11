@@ -12,6 +12,18 @@ function pressEnter(event) {
       document.querySelector('form.chatform').submit();
   }
 }
+function checkvalue(){
+  var check=document.querySelector('chatform');
+  console.log(check);
+  if(check != "null") {
+    return true;
+  }
+  else {
+    alert("Saisissez votre message");
+    return false;
+  }
+
+}
 
 function getMessages(){
   // 1. Elle doit créer une requête AJAX pour se connecter au serveur, et notamment au fichier handler.php
@@ -49,6 +61,7 @@ function getMessages(){
 document.querySelector('form.chatform').addEventListener('submit', function(e){
   e.preventDefault();
   postMessage(e);
+  checkvalue();
   });
 
 function postMessage(event){

@@ -67,6 +67,20 @@ class UserController extends AbstractController
         
         
     }
+    /**
+     * @Route("/user/delete/{id}", name="userCourseDelete")
+     */
+    public function coursesDelet(Courses $course)
+    {
+        $user = $this->getUser();
+        
+        $user->removeCourse($course);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->flush();
+
+        return $this->redirectToRoute('user');
+
+    }
 
 
 }

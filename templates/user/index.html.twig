@@ -27,7 +27,10 @@
                             <p class="card-text">{{course.description}}</p>
                             
                         </div>
-                         <a href="{{path('course', {id:course.id})}}" class="btn btn-info font-weight-bold mt-3 mb-3 mr-3 ">Go somewhere</a>
+                        <div class="d-flex flex-column">
+                            <a href="{{path('course', {id:course.id})}}" class="btn btn-info font-weight-bold mt-3 mb-1 mr-3 ">Go somewhere</a>
+                            <a href="{{path('userCourseDelete', {id:course.id})}}" class="btn btn-primary font-weight-bold mb-2 mr-3" >retirer de la list</a>
+                        </div>
                     </div>
                     </div>
                     
@@ -48,13 +51,14 @@
 {% for course in courses %}
         <div class="card mr-2" >
         <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i>{{course.name}}  </div>
-        <img src="{{ asset( 'images/cour/' ~ course.fileName ) }}" class="card-img-top"  >
+        <div class="m-2">
+            <img src="{{ asset( 'images/cour/' ~ course.fileName ) }}" class="card-img "  >
+        </div>
         <div class="body">
             <p class="card-text text-center">{{course.description}}</p>
-            <p class="card-text text-center">{{course.NumberView}}</p>
-        </div>
+            <p class="card-text text-center">{{course.NumberView}}</p>  
             <a href="{{path('course', {id:course.id})}}" class="btn btn-primary">Go somewhere</a>
-        </div>
+            
         
     
 {% endfor %}

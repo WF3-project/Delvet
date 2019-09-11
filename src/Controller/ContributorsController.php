@@ -32,13 +32,11 @@ class ContributorsController extends AbstractController
      * @Route("/contributors/course/{id}", name="contributorsCourse")
      */
     public function contributorCourse( Contributors $contributor ,ContributorsRepository $contributorsRepository)
-    {
-        // $contributor = $contributorsRepository->find( $id );
-        
-       
-        
-        dump($contributor);
-        return $this->render('contributors/contributorCourse.html.twig');
+    {      
+        return $this->render('contributors/contributorCourse.html.twig', [
+            'courses' => $contributor->getCourseCreate(),
+            'contributor'=> $contributor
+        ]);
     }
     
 }

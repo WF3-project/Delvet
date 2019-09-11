@@ -20,7 +20,7 @@ class CoursesType extends AbstractType
             ->add('content', CKEditorType::class)
             ->add('description')
             ->add('categories')
-        ;
+        ; 
     }
 
     public function configureOptions(OptionsResolver $resolver)

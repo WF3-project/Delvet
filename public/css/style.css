@@ -242,10 +242,16 @@ font-weight: bold;
 
 #section3 .container3 ul{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding-left:2em;
   font-weight: bold;
+  text-align: center;
 }
 
+.container3 ul li{
+  font-size: 20px;
+  padding-bottom: 5px;
+}
 /* Style de l'inscription */
 
 .register
@@ -384,10 +390,6 @@ font-weight: bold;
   font-weight: bold;
 }
 
-#section3 .container3 :last-child{
-  padding: 30px;
-}
-
   #section4{
     display: flex;
     justify-content: center;
@@ -400,7 +402,7 @@ font-weight: bold;
     margin-bottom: 25px;
   }
 
-  #section4 #sign{
+  #section4{
     text-align: center;
     display: flex;
     justify-content: center;
@@ -415,3 +417,39 @@ font-weight: bold;
     padding: 5px;
     margin: 3px;
   }
+
+/*------------ Responsive design ------------ */
+@media screen and (max-width: 1000px) {
+
+  #fullnav{
+    display: flex;
+    flex-direction: column-reverse;
+    padding-left: 2em;
+  }
+  #fullnav .right{
+    justify-content: center;
+    padding-left: 6em;    
+  }
+  #fullnav .right:last-child{
+    padding-right: 6em;
+    align-items: center;  
+  }
+  #fullnav .left{
+    flex-direction: column;
+  }
+  .container3 ul{
+    flex-direction: column;
+    text-align: center;
+    padding-right: 2em;
+  }
+  .container3 ul li{
+    text-align: center;
+  }
+  #section4 a{
+    display: flex;
+    justify-content: center;
+  }
+  #footer{
+    flex-direction: column;
+  }
+}

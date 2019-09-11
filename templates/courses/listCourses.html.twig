@@ -24,7 +24,7 @@
 
             <div class="card d-flex mr-2 mb-2  " style="width: 200px;">
             <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i>{{course.name}}</div>
-            <img src="{{ asset( 'images/cour/' ~ course.fileName ) }}" class="card-img-top {{ course.fileName == null ? 'invisible' : ''}}" >
+            <img src="{{ asset( 'images/cour/' ~ course.fileName) }}" class="card-img-top {{ course.fileName == null ? 'invisible' : ''}}" >
             <div class="card-body">
             
                 <h5 class="card-title">{{ null != course.categories  ? course.categories.name : ''  }}</h5> 

@@ -17,9 +17,15 @@ class ContributorsController extends AbstractController
      */
     public function index(contributorsRepository $contributorsRepository)
     {
+        $user=[];
+        $contributors=$contributorsRepository->findAll();
+       
+        
+        dump($contributors);
         return $this->render('contributors/index.html.twig', [
-            'controller_name' => $contributorsRepository->findAll(),
-            dump($contributorsRepository->findAll()),
+            'contributors' => $contributorsRepository->findAll(),
+           
         ]);
     }
+    
 }

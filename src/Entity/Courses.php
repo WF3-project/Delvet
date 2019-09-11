@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use DateTime;
+use App\Entity\Contributors;
+use App\Controller\UserController;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -98,6 +100,8 @@ class Courses
     public function __construct()
     {
         $this->contributor = new ArrayCollection();
+       
+       
         $this->users = new ArrayCollection();
     }
 
@@ -220,7 +224,7 @@ class Courses
     {
         $this->categories = $categories;
 
-        return $this;
+        return $this; 
     }
 
     public function __ToString(){
@@ -232,7 +236,7 @@ class Courses
     /**
      * @return Collection|User[]
      */
-    public function getUsers(): Collection
+    public function getUsers(): Collection 
     {
         return $this->users;
     }

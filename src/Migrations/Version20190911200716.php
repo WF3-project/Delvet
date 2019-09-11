@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190911123719 extends AbstractMigration
+final class Version20190911200716 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,7 +22,6 @@ final class Version20190911123719 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE contributors CHANGE user_id user_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE courses CHANGE categories_id categories_id INT DEFAULT NULL, CHANGE contributors_id contributors_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE user CHANGE roles roles JSON NOT NULL, CHANGE reset_token reset_token VARCHAR(255) DEFAULT NULL, CHANGE enabled enabled TINYINT(1) DEFAULT NULL, CHANGE confirmation_token confirmation_token TINYINT(1) DEFAULT NULL');
     }
@@ -32,7 +31,6 @@ final class Version20190911123719 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE contributors CHANGE user_id user_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE courses CHANGE categories_id categories_id INT DEFAULT NULL, CHANGE contributors_id contributors_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE user CHANGE roles roles LONGTEXT NOT NULL COLLATE utf8mb4_bin, CHANGE reset_token reset_token VARCHAR(255) DEFAULT \'NULL\' COLLATE utf8mb4_unicode_ci, CHANGE enabled enabled TINYINT(1) DEFAULT \'NULL\', CHANGE confirmation_token confirmation_token TINYINT(1) DEFAULT \'NULL\'');
     }

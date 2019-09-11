@@ -19,14 +19,22 @@ class Contributors
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\user", cascade={"persist", "remove"})
+     * @ORM\Column(type="integer")
      */
-    private $user;
+    private $user_id;
 
+    
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\courses", mappedBy="contributors")
      */
     private $course_create;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="contributors", cascade={"persist", "remove"})
+     */
+    private $user;
+
+   
 
     public function __construct()
     {
@@ -38,14 +46,16 @@ class Contributors
         return $this->id;
     }
 
-    public function getUser(): ?user
+   
+
+    public function getUserId() : ?int
     {
-        return $this->user;
+        return $this->user_id;
     }
 
-    public function setUser(?user $user): self
+    public function setUserId(?int $user_id): self
     {
-        $this->user = $user;
+        $this->user_id = $user_id;
 
         return $this;
     }
@@ -80,4 +90,18 @@ class Contributors
 
         return $this;
     }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+   
 }

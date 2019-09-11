@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Categories;
 use App\Entity\Courses;
+use App\Entity\User;
+use App\Entity\Contributors;
 use App\Form\CoursesType;
 use App\Repository\CategoriesRepository;
 use App\Repository\CoursesRepository;
@@ -88,7 +90,16 @@ class CoursesController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($course);
             $entityManager->flush();
+            $contributors = new Contributors();
+            $user=$this->get('security.token_storage')->getToken()->getUser();
+            $contributors->setUserId($user->getId());
+            $user->setContributors($contributors);
+            
 
+           
+            
+            $entityManager->flush();
+            
             return $this->redirectToRoute('courses');
         }
 

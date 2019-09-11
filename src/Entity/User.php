@@ -75,6 +75,11 @@ class User implements UserInterface
      */
     private $nickname;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Contributors", mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $contributors;
+
 
     public function getId(): ?int
     {
@@ -228,6 +233,24 @@ class User implements UserInterface
     public function setNickname(string $nickname): self
     {
         $this->nickname = $nickname;
+
+        return $this;
+    }
+
+    public function getContributors(): ?Contributors
+    {
+        return $this->contributors;
+    }
+
+    public function setContributors(?Contributors $contributors): self
+    {
+        $this->contributors = $contributors;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newUser = $contributors === null ? null : $this;
+        if ($newUser !== $contributors->getUser()) {
+            $contributors->setUser($newUser);
+        }
 
         return $this;
     }

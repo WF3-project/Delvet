@@ -18,10 +18,7 @@ class ContributorsController extends AbstractController
     public function index(ContributorsRepository $contributorsRepository)
     {
        
-        $contributors=$contributorsRepository->findAll();
        
-        
-        dump($contributors);
         return $this->render('contributors/index.html.twig', [
             'contributors' => $contributorsRepository->findAll(),
            
@@ -37,6 +34,6 @@ class ContributorsController extends AbstractController
             'courses' => $contributor->getCourseCreate(),
             'contributor'=> $contributor
         ]);
-    }
+    } 
     
 }

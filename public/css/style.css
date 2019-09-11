@@ -18,10 +18,14 @@
   display: flex;
   flex: auto;
   justify-content: center;
+  vertical-align: center;
 }
 
 .left a{
   margin-right: 65px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .right{
@@ -30,17 +34,28 @@
   justify-content: flex-end;
   text-transform: uppercase;
   font-weight: bold;  
-  margin-right: 10px;
+  margin-right: 10px 10px;
   
 }
-
-.right a{
-  border:  solid  #4682B4;
-  border-radius: 5px 5px 5px 5px;
-  padding: 5px;
-  margin: 3px;
-  color: #4682B4;
   
+.right button
+{
+  margin : auto 5px;
+  
+}
+#leftbtn
+{
+  background-color: white;
+  color:#007bff;
+  box-shadow: 5px 5px 5px #007bff;
+}
+#leftbtn:hover
+{
+  background-color: whitesmoke;
+}
+#rightbtn
+{
+  box-shadow: 5px 5px 5px grey;
 }
 
 .right .sign{
@@ -49,13 +64,14 @@ color: white;
 }
 
 #searchbar{
-  display: flex;
+display: flex;
 justify-content: center;
 align-content: center;
 align-items: center;
 align-self: center;
 justify-content: center;
 margin-bottom: 35px;
+margin-top: 10px;
 }
 
 #searchbar form{
@@ -234,7 +250,7 @@ font-weight: bold;
 }
 
 #section3 h3{
-  margin-top: 25px;
+  margin: 25px;
   display: flex;
   justify-content: center;
   color: #4682B4;
@@ -245,7 +261,23 @@ font-weight: bold;
   justify-content: space-around;
   font-weight: bold;
 }
-
+#section3 li{
+  display:flex;
+  justify-content: center;
+  color: #4682B4;
+}
+div .li2
+{
+  width:30%;
+}
+div .li1
+{
+  width:30%;
+}
+div .li3
+{
+  width:30%;
+}
 /* Style de l'inscription */
 
 .register
@@ -397,10 +429,14 @@ font-weight: bold;
 
 #section3 li{
   font-weight: bold;
+  margin: 10px;
 }
-
+#section3 p
+{
+  margin: 10px;
+}
 #section3 .container3 :last-child{
-  padding: 30px;
+  height: 40%;
 }
 
   #section4{

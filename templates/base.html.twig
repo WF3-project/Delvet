@@ -32,8 +32,13 @@
 
         </div>
         <div class="right">
-            <a class="sign" href="{{ path('app_register') }}">s'inscrire</a>
-            <a href="{{ path('app_login') }}">se connecter</a>
+      
+            <button class="btn btn-lg btn-primary" id="leftbtn"  type="submit" onclick="location.href='/register';">
+            S'inscrire
+            </button>
+            <button class="btn btn-lg btn-primary" id = "rightbtn" type="submit" onclick="location.href='/login';">   
+            Se connecter
+            </button>
             <a href="{{ path('app_logout')}}" class="hide">se deconnecter</a>
         </div>
     </div>

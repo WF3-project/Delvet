@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContributorsController!{% endblock %}
+
+{% block body %}
+
+{% for contributor in contributors %}
+{{ contributor.getUser.getEmail}}
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">nickname</th>
+      <th scope="col">listes de ses cours</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{ contributor.getUser.getId}}</th>
+      <td>{{ contributor.getUser.getNickname}}</td>
+      <td><a  class="btn go" href="{{ path('contributorsCourses') }}">Go somewhere</a></td>
+     
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+{% endblock %}
+

@@ -1,44 +1,45 @@
 {% extends 'base.html.twig' %}
 {% block title %}tout nos cours{% endblock %}
 {% block body  %}
-     <div class="container " >
-            <div class="card bg-light mb-3" style="width: 18rem; ">
-                    <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Catégories</div>
-                        <ul class="list-group category_block">
-                                
-                            {% for category in categories %}
-                                <li class="list-group-item">
-                                    <a href="{{ path('categorieCour', {slug:category.slug}) }}">{{ category.name }}</a>
-                                        {# {{path()}} #}
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div> 
+     <div class="container d-flex flex-wrap" >
+            <div class="card bg-light m-2 cardlist" style="width: 18rem; ">
+                    <div class="card-header  text-white text-uppercase"><i class="fa fa-list"></i> Catégories</div>
                         
-            </div>
+                            <ul class="list-group  ">
+                                    
+                                {% for category in categories %}
+                                    <li class="list-group-item">
+                                        <a class="textDeco" href="{{ path('categorieCour', {slug:category.slug}) }}">{{ category.name }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                    </div>
+                    
+               
+                        
+            
 
 
-        <div class="container d-flex flex-wrap">
+        
         {% for course in courses %}
 
-            <div class="card d-flex mr-2 mb-2  " style="width: 200px;">
-            <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i>{{course.name}}</div>
+            <div class="card d-flex mr-2 mb-2  " style="width: 15em;">
+            <div class="card-header  text-white text-uppercase"><i class="fa fa-list"></i>{{course.name}}</div>
             <img src="{{ asset( 'images/cour/' ~ course.fileName ) }}" class="card-img-top {{ course.fileName == null ? 'invisible' : ''}}" >
-            <div class="card-body">
+            <div class="card-body text-center">
             
-                <h5 class="card-title">{{ null != course.categories  ? course.categories.name : ''  }}</h5> 
+                <h5 class="card-title font-weight-bold"> {{ null != course.categories  ? ' Categorie : ' ~ course.categories.name : ''  }}</h5> 
         
                 <p class="card-text">{{course.description}}</p>
                 <p class="card-text text-center">nombres de vues {{course.numberView}}
                 <form>
                 <input class="number_view" id="number_view"  type="hidden" value="{{course.numberView + 1 }}">
                 <div class="d-flex justify-content-center flex-wrap">
-                    <p><a  class="btn btn-primary" href="{{ path('course', {id:course.id}) }}">Go somewhere</a></p>
-                   <p><a  class="btn btn-success {{ user == null ? 'invisible' : ''  }}" href="{{ path('userCourse', {id:course.id}) }}">ajouter à votre liste des cours</a></p>
+                    <p><a  class="btn btn-primary" href="{{ path('course', {id:course.id}) }}">Voir le cours</a></p>
+                   <p><a  class="btn btn-success {{ user == null ? 'invisible' : ''  }}" href="{{ path('userCourse', {id:course.id}) }}">Ajouter le cour à votre liste</a></p>
                 </div>
                 </form>
-                {# {{ path('categorieCour', {id:course.id}) }} #}
+                
             </div>
             </div>
 

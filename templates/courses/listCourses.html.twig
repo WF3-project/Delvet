@@ -23,6 +23,7 @@
 
     {% for course in courses %}
 
+    
     <div class="card d-flex mr-2 mb-2  " style="width: 15em;">
         <div class="card-header  text-white text-uppercase"><i class="fa fa-list"></i>{{course.name}}</div>
         <img src="{{ asset( 'images/cour/' ~ course.fileName ) }}"
@@ -45,6 +46,7 @@
 
         </div>
     </div>
+    
 
     {% endfor %}
 </div>

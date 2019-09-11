@@ -35,7 +35,7 @@
                 <input class="number_view" id="number_view"  type="hidden" value="{{course.numberView + 1 }}">
                 <div class="d-flex justify-content-center flex-wrap">
                     <p><a  class="btn btn-primary" href="{{ path('course', {id:course.id}) }}">Voir le cours</a></p>
-                   <p><a  class="btn btn-success {{ user == null ? 'invisible' : ''  }}" href="{{ path('userCourse', {id:course.id}) }}">Ajouter le cours à votre liste</a></p>
+                   <p><a  class="btn btn-success {{ user == null ? 'invisible' : ''  }}" href="{{ path('userCourse', {id:course.id}) }}">Ajouter le cour à votre liste</a></p>
                 </div>
                 </form>
                 {# {{ path('categorieCour', {id:course.id}) }} #}

@@ -317,11 +317,26 @@ font-weight: bold;
 }
 .login label
 {
+  margin: 0 auto;
   width:40%;
-  margin : 5px auto;
+  display: flex;
+  justify-content: space-between;
 }
-
-
+.remember
+{
+  width:40%;
+  margin : 10px auto;
+}
+.frgtMdp
+{
+  width : 40%;
+  margin: 0 auto;
+}
+.login a 
+{
+  display: flex;
+  justify-content: center;
+}
 /* Style du mdp oublié */
 
 .forgotten

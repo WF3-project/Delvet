@@ -6,6 +6,13 @@
  * Il nous faut une fonction pour récupérer le JSON des
  * messages et les afficher correctement
  */
+function pressEnter(event) {
+  var code=event.which || event.keyCode; //Selon le navigateur c'est which ou keyCode
+  if (code==13) { //le code de la touche Enter
+      document.querySelector('form.chatform').submit();
+  }
+}
+
 function getMessages(){
   // 1. Elle doit créer une requête AJAX pour se connecter au serveur, et notamment au fichier handler.php
   const requeteAjax = new XMLHttpRequest();
@@ -53,7 +60,6 @@ function postMessage(event){
 
   // 3. Elle doit conditionner les données
   const data = new FormData();
-  data.append('author', author.value);
   data.append('content', content.value);
 
   // 4. Elle doit configurer une requête ajax en POST et envoyer les données

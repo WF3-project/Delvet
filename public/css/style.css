@@ -507,6 +507,17 @@ background-color:#4682b4;
 #lastcourses .card-body p:first-child{
 font-weight: bold;
 }
+/* -----------------Affichage du chat ------------------- */
+#buttonchat{
+  position: fixed;
+  display: block;
+  top:10px;
+}
+.chat{
+  position: fixed;
+  width:700px;
+  top:100px;
+}
 /*------------ Responsive design ------------ */
 @media screen and (max-width: 1000px) {
 
@@ -562,4 +573,5 @@ font-weight: bold;
   width:100%;
   box-shadow: 5px 5px 5px grey;
 }
+
 }

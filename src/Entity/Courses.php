@@ -90,6 +90,11 @@ class Courses
      */
     private $users;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Contributors", inversedBy="course_create")
+     */
+    private $contributors;
+
     public function __construct()
     {
         $this->contributor = new ArrayCollection();
@@ -260,6 +265,18 @@ class Courses
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getContributors(): ?Contributors
+    {
+        return $this->contributors;
+    }
+
+    public function setContributors(?Contributors $contributors): self
+    {
+        $this->contributors = $contributors;
 
         return $this;
     }

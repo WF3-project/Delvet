@@ -24,17 +24,18 @@
  <nav>
     <div id="fullnav">
         <div class="left">
+              <a href="{{ path('easyadmin') }}" class="{{ app.user == null ? 'invisible' : "" }}">Admin</a>
               <a href="{{ path('courses') }}">Cours</a>
               <a href="#">Professeurs</a>
               <a href="{{ path('user') }}">Profil</a>
               <a href="#">A propos</a>
-              <a href="{{ path('chat') }}" class"hide">Chat</a>
+                <a href="{{ path('chat') }}" class="{{ app.user == null ? 'invisible' : "" }}">Chat</a>
 
         </div>
         <div class="right">
             <a class="sign" href="{{ path('app_register') }}">s'inscrire</a>
-            <a href="{{ path('app_login') }}">se connecter</a>
-            <a href="{{ path('app_logout')}}" class="hide">se deconnecter</a>
+            <a href="{{ path('app_login') }}" class="{{ app.user != null ? 'invisible' : "" }}">se connecter</a>
+              <a href="{{ path('app_logout') }}" class="{{ app.user == null ? 'invisible' : "" }}">Se deconnecter</a>
         </div>
     </div>
 

@@ -28,7 +28,7 @@ function checkvalue(){
 function getMessages(){
   // 1. Elle doit créer une requête AJAX pour se connecter au serveur, et notamment au fichier handler.php
   const requeteAjax = new XMLHttpRequest();
-  requeteAjax.open("GET","/chat/messages");
+  requeteAjax.open("GET","/messages");
 
   // 2. Quand elle reçoit les données, il faut qu'elle les traite (en exploitant le JSON) et il faut qu'elle affiche ces données au format HTML
   requeteAjax.onload = function(){
@@ -77,7 +77,7 @@ function postMessage(event){
 
   // 4. Elle doit configurer une requête ajax en POST et envoyer les données
   const requeteAjax = new XMLHttpRequest();
-  requeteAjax.open('POST', '/chat/addmessage');
+  requeteAjax.open('POST', '/addmessage');
   
   requeteAjax.onload = function(){
     content.value = '';

@@ -14,17 +14,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 class ChatController extends AbstractController
 {   
     /**
-    * @Route("/chat", name="chat")
-    */
-    public function index()
-    {
-        return $this->render('chat/index.html.twig', [
-            'controller_name' => 'ChatController',
-        ]);
-    }
-
-    /**
-     * @Route("/chat/messages", name="chat_view")
+     * @Route("/messages", name="chat_view")
      */
     public function getMessages(SerializerInterface $serializer)
     {
@@ -37,7 +27,7 @@ class ChatController extends AbstractController
     }
 
     /**
-     * @Route("/chat/addmessage", name="chat_update")
+     * @Route("/addmessage", name="chat_update")
      */
     public function addMessage(Request $request)
     {

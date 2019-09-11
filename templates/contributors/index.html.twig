@@ -4,10 +4,14 @@
 
 {% block body %}
 
-{% for contributor in contributors %}
-{{ contributor.getUser.getEmail}}
+<section class="container mb-5">
+  <h2>comment devenir contributeur ?</h2>
+  <p>c'est simple il suffit de creer un cour correct</p>
+  <a class="btn go" href="{{ path('courses_new')}}">Devenir contributeur</a>
+</section>
 
-<table class="table table-striped">
+<h2 class="container" >list contributeur</h2>
+<table class="table table-striped container">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -17,12 +21,15 @@
     </tr>
   </thead>
   <tbody>
+{% for contributor in contributors %}
+
     <tr>
       <th scope="row">{{ contributor.getUser.getId}}</th>
       <td>{{ contributor.getUser.getNickname}}</td>
-      <td><a  class="btn go" href="{{ path('contributorsCourses') }}">Go somewhere</a></td>
-     
+      <td><a  class="btn go"  href="{{ path('contributorsCourse', {id:contributor.getId} ) }}">Go somewhere</a></td>
+     {# {{ path('contributorsCourses') }} #} 
     </tr>
+    {% endfor %}
     
   </tbody>
 </table>

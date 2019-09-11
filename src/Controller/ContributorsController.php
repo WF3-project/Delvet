@@ -15,9 +15,9 @@ class ContributorsController extends AbstractController
     /**
      * @Route("/contributors", name="contributors")
      */
-    public function index(contributorsRepository $contributorsRepository)
+    public function index(ContributorsRepository $contributorsRepository)
     {
-        $user=[];
+       
         $contributors=$contributorsRepository->findAll();
        
         
@@ -26,6 +26,19 @@ class ContributorsController extends AbstractController
             'contributors' => $contributorsRepository->findAll(),
            
         ]);
+    }
+
+    /**
+     * @Route("/contributors/course/{id}", name="contributorsCourse")
+     */
+    public function contributorCourse( Contributors $contributor ,ContributorsRepository $contributorsRepository)
+    {
+        // $contributor = $contributorsRepository->find( $id );
+        
+       
+        
+        dump($contributor);
+        return $this->render('contributors/contributorCourse.html.twig');
     }
     
 }

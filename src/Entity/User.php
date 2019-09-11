@@ -70,6 +70,11 @@ class User implements UserInterface
      */
     private $ConfirmationToken;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nickname;
+
 
     public function getId(): ?int
     {
@@ -213,6 +218,18 @@ class User implements UserInterface
 
     public function __ToString(){
         return $this->email;
+    }
+
+    public function getNickname(): ?string
+    {
+        return $this->nickname;
+    }
+
+    public function setNickname(string $nickname): self
+    {
+        $this->nickname = $nickname;
+
+        return $this;
     }
 
    

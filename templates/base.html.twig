@@ -33,7 +33,7 @@
 
         </div>
         <div class="right">
-            <a class="sign" href="{{ path('app_register') }}">s'inscrire</a>
+            <a id="sign" href="{{ path('app_register') }}" class="{{ app.user != null ? 'invisible' : "" }}">s'inscrire</a>
             <a href="{{ path('app_login') }}" class="{{ app.user != null ? 'invisible' : "" }}">se connecter</a>
               <a href="{{ path('app_logout') }}" class="{{ app.user == null ? 'invisible' : "" }}">Se deconnecter</a>
         </div>

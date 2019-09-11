@@ -20,7 +20,7 @@
    
  <!-- debut de la nav -->
  <header>
-     <img src="/logos/delvet.png" >
+     <a href="/"><img src="/logos/delvet.png"></a>
  <nav>
     <div id="fullnav">
         <div class="left">
@@ -32,8 +32,12 @@
 
         </div>
         <div class="right">
-            <a id="sign" href="{{ path('app_register') }}" class="{{ app.user != null ? 'invisible' : "" }}">s'inscrire</a>
-            <a href="{{ path('app_login') }}" class="{{ app.user != null ? 'invisible' : "" }}">se connecter</a>
+            <button class="btn btn-lg btn-primary" id="leftbtn"  type="submit" onclick="location.href='/register';">
+            S'inscrire
+            </button>
+            <button class="btn btn-lg btn-primary" id = "rightbtn" type="submit" onclick="location.href='/login';">   
+            Se connecter
+            </button>
               <a href="{{ path('app_logout') }}" class="{{ app.user == null ? 'invisible' : "" }}">Se deconnecter</a>
         </div>
     </div>
@@ -56,12 +60,13 @@
         {% block body %}{% endblock %}
 <!-- début du footer-->
 <section class="chat">
-<div class="btn-group dropup">
+  <div class="btn-group dropup">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropup
   </button>
   <div class="dropdown-menu">
-      <div class="messages">
+    <div class="messages">
+     
     </div>
     <div class="user-inputs">
       <form class="chatform">
@@ -70,11 +75,8 @@
         <button type="submit"> Send !</button>
       </form>
     </div>
-  </div>
+      </div>
 </div>
-
-
-  
   </section>
 
     <footer>

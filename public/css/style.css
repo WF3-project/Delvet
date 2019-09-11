@@ -13,6 +13,25 @@ font-family: 'Roboto Condensed', sans-serif;
   margin-top: 10px;
   font-size: 20px;
 }
+.right button
+{
+  margin : auto 5px;
+  
+}
+#leftbtn
+{
+  background-color: white;
+  color:#007bff;
+  box-shadow: 5px 5px 5px #007bff;
+}
+#leftbtn:hover
+{
+  background-color: whitesmoke;
+}
+#rightbtn
+{
+  box-shadow: 5px 5px 5px grey;
+}
 
 .left{
 display: flex;
@@ -115,6 +134,18 @@ li{
 .fourth li{
   padding: 1em;
 }
+.fourth
+{
+  width:30%;
+}
+.third
+{
+  width:30%;
+}
+.first
+{
+  width:30%;
+}
 
 .social img{
 width: 30px;
@@ -209,11 +240,13 @@ flex-direction: column;
 }
 
 #section2 h2{
-margin-top: 25px;
+width:60%;
 display: flex;
 justify-content: center;
+margin:15px auto;
 color: #4682B4;
 font-weight: bold;
+padding-right: 45px;
 }
 
 #section2 .container ul{
@@ -241,24 +274,46 @@ align-self: center;
 }
 
 #section3 h3{
-margin-top: 25px;
+width:60%;
+margin:15px auto;
 display: flex;
 justify-content: center;
+
 color: #4682B4;
 }
-
+#section3 .li1
+{
+  width:30%;
+  margin:15px 0;
+}
+#section3 .li2
+{
+  width:30%;
+  margin:15px 0;
+}
+#section3 .li3
+{
+  width:30%;
+  margin:15px 0;
+}
 #section3 .container3 ul{
 display: flex;
 justify-content: space-between;
-padding-left:4em;
+padding:10px;
 font-weight: bold;
 text-align: center;
+}
+
+#section3 p
+{
+  margin: 15px 0;
 }
 
 .container3 ul li{
 font-size: 20px;
 padding-bottom: 5px;
 }
+
 /* Style de l'inscription */
 
 .register
@@ -475,11 +530,32 @@ font-weight: bold;
 .container3 ul li{
   text-align: center;
 }
+#section2 h2
+{
+  padding-left: 45px;
+}
+#section3 ul
+{
+  align-items: center;
+}
 #section4 a{
   display: flex;
   justify-content: center;
 }
 #footer{
+  align-items: center;
   flex-direction: column;
+}
+#leftbtn
+{
+  width:100%;
+  background-color: white;
+  color:#007bff;
+  box-shadow: 5px 5px 5px #007bff;
+}
+#rightbtn
+{
+  width:100%;
+  box-shadow: 5px 5px 5px grey;
 }
 }

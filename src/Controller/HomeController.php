@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Messages;
 use App\Form\MessagesType;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -18,11 +19,8 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        
-
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
-            
         ]);
     }
    /**

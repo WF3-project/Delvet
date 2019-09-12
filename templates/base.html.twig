@@ -34,6 +34,7 @@
                 {% endif %}
               {% endfor %}
             {% endif %}
+<<<<<<< HEAD
              {% if app.user != null %}
            {{dump(app.user.roles)}}
              {% for role in app.user.roles %}
@@ -48,12 +49,26 @@
               <a href="{{ path('contributors') }}" class="{{ app.user == NULL ? 'invisible' : "" }}">Professeurs</a>
               <a href="{{ path('user') }}" class="{{ app.user == NULL ? 'invisible' : "" }}">Profil</a>
               <a href="{{ path('legal_mentions') }}">A propos</a>
+=======
+              <a href="{{ path('courses') }}" class="{{ app.user == NULL ? 'invisible' : "" }}">Cours</a>
+              <a href="{{ path('contributors') }}">Professeurs</a>
+              <a href="{{ path('user') }}">Profil</a>
+              <a href="#">A propos</a>
+>>>>>>> 14647625d4c9100d6a6687c37638d9e2c32c6265
 
         </div>
         <div class="right">
-            <a id="sign" href="{{ path('app_register') }}" class="{{ app.user != null ? 'invisible' : "" }}">s'inscrire</a>
-            <a href="{{ path('app_login') }}" class="{{ app.user != null ? 'invisible' : "" }}">se connecter</a>
-              <a href="{{ path('app_logout') }}" class="{{ app.user == null ? 'invisible' : "" }}">Se deconnecter</a>
+        <ul>
+             <button class="btn btn-lg btn-primary {{ app.user != null ? 'invisible' : "" }}" id="leftbtn"  type="submit" onclick="location.href='{{ path('app_register') }}';">
+            S'inscrire
+            </button>
+            <button class="btn btn-lg btn-primary {{ app.user != null ? 'invisible' : "" }}" id = "rightbtn" type="submit" onclick="location.href='{{ path('app_login') }}';">   
+            Se connecter
+            </button>
+             <button class="btn btn-lg btn-primary {{ app.user == null ? 'invisible' : "" }}" id = "rightbtn" type="submit" onclick="location.href='{{ path('app_logout') }}';">   
+            Se déconnecter
+            </button>
+        </ul>
         </div>
     </div>
     
@@ -83,6 +98,7 @@
             </div>
             <div class="user-inputs">
                 <form class="chatform">
+                    <div id="author"></div>
                     <input type="text" id="content" name="content" placeholder="Ecrivez votre message ici">
                     <button type="submit"> Send !</button>
                 </form>

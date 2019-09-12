@@ -12,9 +12,10 @@
   <h2>Delvet :</h2>
   <div class="container">
     <ul>
-        <li><img src="logos/cours.png" alt="">Cours</li>
-        <li><img src="logos/forum.png" alt="">Forum</li>
-        <li><img src="logos/groupe.png" alt="">Communauté</li>
+        <li><img src="logos/cours.png" alt=""><p>Cours</p></li>
+        
+        <li><img src="logos/forum.png" alt=""><p>Forum</p></li>
+        <li><img src="logos/groupe.png" alt=""><p>Communauté</p></li>
     </ul>
   </div>
 </div>
@@ -24,15 +25,15 @@
   <div class="container3">
     <ul>
       <div class="li1">
-      <li>Des cours gratuits</li>
+      <li>Des cours gratuits :</li>
       <p>Des cours gratuits pour tous par tous, car l'open source et l'entraide est le coeur du dev</p>
     </div>
     <div class="li2">
-      <li>Un Chat</li>
+      <li>Un Chat :</li>
       <p>Celà permet un échange direct avec la communauté, plus rapide qu'un formum ;) </p>
     </div>
     <div class="li3">
-      <li>une communauté de devs</li>
+      <li>Une communauté de devs :</li>
       <p>Notre force ? nous tous ! rejoignez la communauté de devs, apprenez et devenez vous même un contributeur ! </p>
     </div>
     </ul>
@@ -43,7 +44,7 @@
   <div id="section4">
     <div class="sign">
     <h3>Rejoignez la communauté</h3>
-    <button class="btn btn-lg btn-primary" id="leftbtn"  type="submit" onclick="location.href='/register';">
+    <button class="btn btn-lg btn-primary" id="leftbtn"  type="submit" onclick="location.href='{{ path('app_register')}}';">
             S'inscrire
     </button>
   </div>

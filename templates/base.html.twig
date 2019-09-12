@@ -24,9 +24,19 @@
  <nav>
     <div id="fullnav">
         <div class="left">
-              <a href="{{ path('easyadmin') }}" class="{{ app.user == null ? 'invisible' : "" }}">Admin</a>
+            {% if app.user != null %}
+            {{dump(app.user.roles)}}
+             {% for role in app.user.roles %}
+                {% if role == 'PROF' %}
+                
+                    <a href="{{ path('easyadmin') }}" >Admin</a>
+                    {# {{ app.user.roles == 'ROLE_PROF' ? 'invisible' : "" }} #}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
               <a href="{{ path('courses') }}">Cours</a>
-              <a href="{{ path('contributors') }}">Professeurs</a>
+              <a href="{{ path('contributors') }}" class="{{ app.user == NULL ? 'invisible' : "" }}">Professeurs</a>
+              {# {{ app.user.roles == 'ROLE_ANNO' ? 'invisible' : "" }} #}
               <a href="{{ path('user') }}">Profil</a>
               <a href="#">A propos</a>
 
@@ -64,7 +74,7 @@
             </div>
             <div class="user-inputs">
                 <form class="chatform">
-                    <div id="author">{{ pseudo }}</div>
+                    <div id="author">PSEUDO</div>
                     <input type="text" id="content" name="content" placeholder="Ecrivez votre message ici">
                     <button type="submit"> Send !</button>
                 </form>

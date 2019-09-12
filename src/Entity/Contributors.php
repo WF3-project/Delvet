@@ -19,12 +19,12 @@ class Contributors
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\user", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\User", cascade={"persist", "remove"})
      */
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\courses", mappedBy="contributors")
+     * @ORM\OneToMany(targetEntity="App\Entity\Courses", mappedBy="contributors")
      */
     private $course_create;
 

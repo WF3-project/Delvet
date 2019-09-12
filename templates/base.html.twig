@@ -24,8 +24,17 @@
  <nav>
     <div id="fullnav">
         <div class="left">
-              <a href="{{ path('easyadmin') }}" class="{{ app.user == null ? 'invisible' : "" }}">Admin</a>
-              <a href="{{ path('courses') }}">Cours</a>
+              {% if app.user != null %}
+           {{dump(app.user.roles)}}
+             {% for role in app.user.roles %}
+                {% if role == 'ROLE_PROF' %}
+                
+                    <a href="{{ path('easyadmin') }}" >Admin</a>
+                    {# {{ app.user.roles == 'ROLE_PROF' ? 'invisible' : "" }} #}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+              <a href="{{ path('courses') }}" class="{{ app.user == NULL ? 'invisible' : "" }}">Cours</a>
               <a href="{{ path('contributors') }}">Professeurs</a>
               <a href="{{ path('user') }}">Profil</a>
               <a href="#">A propos</a>
@@ -81,9 +90,9 @@
     </div>
 
   <button type="button" id ="buttonchat"class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropup
+    Chat
   </button>
-</div> 
+</div>
 
 
 

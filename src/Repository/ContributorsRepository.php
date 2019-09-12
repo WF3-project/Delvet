@@ -47,4 +47,14 @@ class ContributorsRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findByUserId($id)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.user_id = :val')
+            ->setParameter('val', $id)
+            ->orderBy('p.user_id') // LIMIT 27, 9// Only 9 products one time
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }

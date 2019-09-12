@@ -24,6 +24,11 @@
  <nav>
     <div id="fullnav">
         <div class="left">
+ 
+              <a href="{{ path('courses') }}" >Cours</a>
+              <a href="{{ path('contributors') }}">Professeurs</a>
+              <a href="{{ path('legal_mentions') }}">A propos</a>
+              <a href="{{ path('user') }}" class="{{ app.user == NULL ? 'invisible' : "" }}">Profil</a>
               {% if app.user != null %}
              {% for role in app.user.roles %}
                 {% if role == 'ROLE_PROF' %}
@@ -155,6 +160,6 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
         <script type="text/javascript" src="{{ asset('app/js/app.js') }}"></script>
-    {% block javascripts %}Ò{% endblock %}
+    {% block javascripts %}{% endblock %}
     </body>
 </html>

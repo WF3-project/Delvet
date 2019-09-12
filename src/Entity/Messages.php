@@ -23,7 +23,7 @@ class Messages
     private $author;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text", nullable=false)
      */
     private $content;
 
@@ -66,9 +66,9 @@ class Messages
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): self
+    public function setCreatedAt( $created_at): self
     {
-        $this->created_at = $created_at;
+        $this->create_ad = $created_at;
 
         return $this;
     }

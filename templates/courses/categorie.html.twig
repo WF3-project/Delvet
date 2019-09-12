@@ -24,12 +24,12 @@
 
     <div class="card d-flex mr-2 mb-2" style="width: 18rem;">
     <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i>{{course.name}}</div>
-    <img src="..." class="card-img-top" alt="...">
+    <img src="{{ asset( 'images/cour/' ~ course.fileName ) }}" class="card-img-top" >
     <div class="card-body">
         <h5 class="card-title">{{course.categories.name}}</h5>
         <p class="card-text">{{course.description}}</p>
         <p class="card-text text-center">nombres de vues {{course.numberView}}
-        <a  class="btn btn-primary" href="{{ path('course', {id:course.id}) }}">Go somewhere</a>
+        <a  class="btn btn-primary" href="{{ path('course', {id:course.id}) }}">Voir le cours</a>
         {# {{ path('categorieCour', {id:course.id}) }} #}
     </div>
     </div>

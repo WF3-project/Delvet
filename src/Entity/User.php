@@ -2,9 +2,13 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -21,7 +25,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * 
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
      */
+    
     private $email;
 
     /**
@@ -34,11 +44,37 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+ 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Courses", inversedBy="users")
+     */
+    private $course;
+
+    public function __construct()
+    {
+        $this->course = new ArrayCollection();
+    }
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $resetToken;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $enabled;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $ConfirmationToken;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nickname;
+
 
     public function getId(): ?int
     {
@@ -129,4 +165,72 @@ class User implements UserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection|Courses[]
+     */
+    public function getCourse(): Collection
+    {
+        return $this->course;
+    }
+
+    public function addCourse(Courses $course): self
+    {
+        if (!$this->course->contains($course)) {
+            $this->course[] = $course;
+        }
+
+        return $this;
+    }
+
+    public function removeCourse(Courses $course): self
+    {
+        if ($this->course->contains($course)) {
+            $this->course->removeElement($course);
+        }
+
+        return $this;
+    }
+
+    public function getEnabled(): ?bool
+    {
+        return $this->enabled;
+    }
+
+    public function setEnabled(?bool $enabled): self
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    public function getConfirmationToken(): ?bool
+    {
+        return $this->ConfirmationToken;
+    }
+
+    public function setConfirmationToken(?bool $ConfirmationToken): self
+    {
+        $this->ConfirmationToken = $ConfirmationToken;
+
+        return $this;
+    }
+
+    public function __ToString(){
+        return $this->email;
+    }
+
+    public function getNickname(): ?string
+    {
+        return $this->nickname;
+    }
+
+    public function setNickname(string $nickname): self
+    {
+        $this->nickname = $nickname;
+
+        return $this;
+    }
+
+   
 }

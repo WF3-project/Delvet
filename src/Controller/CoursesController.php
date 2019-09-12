@@ -7,6 +7,7 @@ use App\Entity\Courses;
 use App\Form\CoursesType;
 use App\Repository\CategoriesRepository;
 use App\Repository\CoursesRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,17 +30,20 @@ class CoursesController extends AbstractController
      /**
      * @Route("/list/{page}", name="courses")
      */
-    public function listCourses($page=1 , CoursesRepository $coursesRepository, CategoriesRepository $categoriesRepository
+    public function listCourses($page=1 ,UserRepository $userRepository, CoursesRepository $coursesRepository, CategoriesRepository $categoriesRepository
     ): Response
-    {
+    {  
+        
+        
         $max_pages = ceil($coursesRepository->count([]) / 25);
         $courses = $coursesRepository->findAllWithPagination($page);
-
+           
         return $this->render('courses/listCourses.html.twig', [
             'courses' => $courses,
             'categories' => $categoriesRepository->findAll(),
             'max_pages' => $max_pages,
             'current_page' => $page,
+            'user' => $this->getUser()
 
         ]);
     } 
@@ -47,13 +51,24 @@ class CoursesController extends AbstractController
     /**
     * @Route("/course/{id}", name="course")
     */
-   public function Course(Courses $id , CoursesRepository $coursesRepository
+   public function Course(Courses $id ,UserRepository $userRepository, CoursesRepository $coursesRepository
    ): Response
    {
-       dump($id);
-       dump($coursesRepository->findById($id));
+     
+       $course=$coursesRepository->findById($id);
+        $cour=$course[0];
+       
+
+        
+        $cour->setNumberview($cour->getNumberView() + 1);
+       
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($cour);
+        $entityManager->flush();
        return $this->render('courses/Course.html.twig', [
            'course' => $id,
+           'user' => $this->getUser()
+
            
 
        ]);
@@ -68,6 +83,7 @@ class CoursesController extends AbstractController
         $form = $this->createForm(CoursesType::class, $course);
         $form->handleRequest($request);
 
+        $course->addContributor( $this->getUser() );
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($course);

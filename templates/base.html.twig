@@ -58,19 +58,19 @@
 
 <div class="btn-group dropup">
   
-  <div class="dropdown-menu">
-    <section class="chat">
-    <div class="messages">
+    <div class="dropdown-menu">
+        <section class="chat">
+            <div class="messages">
+            </div>
+            <div class="user-inputs">
+                <form class="chatform">
+                    <div id="author">{{ pseudo }}</div>
+                    <input type="text" id="content" name="content" placeholder="Ecrivez votre message ici">
+                    <button type="submit"> Send !</button>
+                </form>
+            </div>
+        </section>
     </div>
-    <div class="user-inputs">
-      <form class="chatform">
-      <div id="author">{{ pseudo }}</div>
-        <input type="text" id="content" name="content" placeholder="Ecrivez votre message ici">
-        <button type="submit"> Send !</button>
-      </form>
-    </div>
-  </section>
-  </div>
   <button type="button" id ="buttonchat"class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropup
   </button>

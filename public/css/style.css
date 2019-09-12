@@ -516,7 +516,17 @@ font-weight: bold;
 .chat{
   position: fixed;
   width:700px;
-  top:100px;
+  left: -0.5em;
+}
+#author{
+  display: flex;
+  align-items: center;
+  color:grey;
+  border: 1px solid;
+  border-color: lightgrey;
+  margin-right: 1em;
+  justify-content: center;
+  background-color: white;
 }
 /*------------ Responsive design ------------ */
 @media screen and (max-width: 1000px) {

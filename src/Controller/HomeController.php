@@ -46,7 +46,7 @@ class HomeController extends AbstractController
         $message= new Messages();
         $form = $this->createForm(MessagesType::class, $message);
         $form->submit( array(
-            'author' => $this->getUser()->getEmail(),
+            'author' => $this->getUser()->getNickname(),
             'content' => $request->request->get('content'),
         ));
         

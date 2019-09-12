@@ -1,5 +1,11 @@
 easy_admin:
-   entities:
+    design: 
+        menu:
+            - { entity: Courses }
+            - { entity: User, permission: ROLE_ADMIN }
+            - { entity: Categories, permission: ROLE_ADMIN }
+    site_name: 'Delvet Manager'
+    entities:
         Courses:
             class : App\Entity\Courses
             form:
@@ -13,5 +19,3 @@ easy_admin:
             class:  App\Entity\User
         Categories:
             class: App\Entity\Categories
-
-

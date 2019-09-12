@@ -86,7 +86,6 @@ class CoursesController extends AbstractController
         $form = $this->createForm(CoursesType::class, $course);
         $form->handleRequest($request);
 
-        $course->addContributor( $this->getUser() );
         if ($form->isSubmitted() && $form->isValid()) 
         {
             $entityManager = $this->getDoctrine()->getManager();
@@ -109,6 +108,11 @@ class CoursesController extends AbstractController
             {
                 $contributor = new Contributors();
                 $user->setRoles('ROLE_PROF');
+
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($user);
+                $entityManager->flush();
+                
                 $contributor->setUser($user);
     
                 $entityManager = $this->getDoctrine()->getManager();
@@ -118,7 +122,8 @@ class CoursesController extends AbstractController
             
             
             $course->setContributors($contributor);
-            
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($course);
             $entityManager->flush();
 
 

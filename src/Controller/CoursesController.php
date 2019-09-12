@@ -24,8 +24,11 @@ class CoursesController extends AbstractController
     /**
      * @Route("/indexcourses", name="indexcourses")
      */
-    public function index(CoursesRepository $coursesRepository): Response
+    public function index(CoursesRepository $coursesRepository,ContributorsRepository $contributorsRepository): Response
     {
+        $user=$this->getUser();
+        
+         $contributorsRepository->findByUserId($user->getId());
         return $this->render('courses/index.html.twig', [
             'courses' => $coursesRepository->findAll(),
         ]);

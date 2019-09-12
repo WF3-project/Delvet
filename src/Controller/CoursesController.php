@@ -80,7 +80,7 @@ class CoursesController extends AbstractController
     /**
      * @Route("/new", name="courses_new", methods={"GET","POST"})
      */
-    public function new(Request $request, ContributorsRepository $contributorsRepository): Response
+    public function new(Request $request, ContributorsRepository $contributorsRepository, \Swift_Mailer $mailer): Response
     {
         $course = new Courses();
         $form = $this->createForm(CoursesType::class, $course);
@@ -118,6 +118,7 @@ class CoursesController extends AbstractController
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($contributor);
                 $entityManager->flush();
+
             }
             
             
@@ -125,9 +126,7 @@ class CoursesController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($course);
             $entityManager->flush();
-
-
-            
+          
             return $this->redirectToRoute('courses');
         }
 

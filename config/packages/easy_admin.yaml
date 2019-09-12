@@ -1,5 +1,11 @@
 easy_admin:
-   entities:
+    design: 
+        menu:
+            - { entity: Courses }
+            - { entity: User, permission: ROLE_ADMIN }
+            - { entity: Categories, permission: ROLE_ADMIN }
+    site_name: 'Delvet Manager'
+    entities:
         Courses:
             class : App\Entity\Courses
             form:
@@ -13,18 +19,3 @@ easy_admin:
             class:  App\Entity\User
         Categories:
             class: App\Entity\Categories
-
-    design:
-        menu:
-            # no permission defined, so all users can see this menu item
-            - { entity: 'Courses' }
-
-            # only users with the ROLE_SUPER_ADMIN role will see this menu item
-            - { entity: 'User', permission: 'ROLE_ADMIN' }
-            - { entity: 'Categories', permission: 'ROLE_ADMIN' }
-
-            # when defining multiple roles, the user must have at least one of them
-            # or all of them, depending on the configuration of your Symfony application
-            # by default: user must have at least one of the roles
-            # see https://symfony.com/doc/current/security/access_control.html#access-enforcement
-            

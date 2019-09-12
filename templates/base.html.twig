@@ -34,8 +34,7 @@
                 {% endif %}
               {% endfor %}
             {% endif %}
-<<<<<<< HEAD
-             {% if app.user != null %}
+            {% if app.user != null %}
            {{dump(app.user.roles)}}
              {% for role in app.user.roles %}
                 {% if role == 'ROLE_PROF' %}
@@ -49,12 +48,6 @@
               <a href="{{ path('contributors') }}" class="{{ app.user == NULL ? 'invisible' : "" }}">Professeurs</a>
               <a href="{{ path('user') }}" class="{{ app.user == NULL ? 'invisible' : "" }}">Profil</a>
               <a href="{{ path('legal_mentions') }}">A propos</a>
-=======
-              <a href="{{ path('courses') }}" class="{{ app.user == NULL ? 'invisible' : "" }}">Cours</a>
-              <a href="{{ path('contributors') }}">Professeurs</a>
-              <a href="{{ path('user') }}">Profil</a>
-              <a href="#">A propos</a>
->>>>>>> 14647625d4c9100d6a6687c37638d9e2c32c6265
 
         </div>
         <div class="right">

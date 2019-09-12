@@ -571,6 +571,12 @@ font-weight: bold;
 {
   color: #4682b4;
 }
+
+/* Style User*/
+.container button{
+  width: 60%;
+  box-shadow: 5px 5px 5px grey;
+}
 /*------------ Responsive design ------------ */
 @media screen and (max-width: 1000px) {
 

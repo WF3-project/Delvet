@@ -77,4 +77,14 @@ class CoursesRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+    public function findByCoursesContrib($id)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.contributors_id = :val')
+            ->setParameter('val', $id)
+            ->orderBy('p.contributors_id') // LIMIT 27, 9// Only 9 products one time
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

@@ -27,8 +27,17 @@ class CoursesController extends AbstractController
     public function index(CoursesRepository $coursesRepository,ContributorsRepository $contributorsRepository): Response
     {
         $user=$this->getUser();
+        $contributor= $contributorsRepository->findByUserId($user->getId());
+        $id=$contributor->getId();
+        $courses=$contributor->getCourseCreate();
+        
+
+       
+
+       
         return $this->render('courses/index.html.twig', [
-            'courses' => $coursesRepository->findAll(),
+            'courses' => $courses,
+            
         ]);
     }
      /**

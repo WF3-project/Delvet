@@ -123,7 +123,8 @@ class CoursesController extends AbstractController
             
             
             $course->setContributors($contributor);
-            
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($course);
             $entityManager->flush();
 
 

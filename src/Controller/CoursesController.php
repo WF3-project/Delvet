@@ -109,6 +109,11 @@ class CoursesController extends AbstractController
             {
                 $contributor = new Contributors();
                 $user->setRoles('ROLE_PROF');
+
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($user);
+                $entityManager->flush();
+                
                 $contributor->setUser($user);
     
                 $entityManager = $this->getDoctrine()->getManager();

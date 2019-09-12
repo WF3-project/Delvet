@@ -18,8 +18,11 @@ class HomeController extends AbstractController
      */
     public function index()
     {
+        $pseudo = $this->getUser()->getNickname();
+
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
+            'pseudo' => $pseudo,
         ]);
     }
    /**
@@ -43,7 +46,7 @@ class HomeController extends AbstractController
         $message= new Messages();
         $form = $this->createForm(MessagesType::class, $message);
         $form->submit( array(
-            'author' => $this->getUser()->getEmail(),
+            'author' => $this->getUser()->getNickname(),
             'content' => $request->request->get('content'),
         ));
         

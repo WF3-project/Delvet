@@ -20,11 +20,11 @@
    
  <!-- debut de la nav -->
  <header>
-     <a href="/"><img src="/logos/delvet.png"></a>
+    <a href="{{ path('home') }}"><img src="/logos/delvet.png" alt=""></a>
  <nav>
     <div id="fullnav">
         <div class="left">
-            
+              <a href="{{ path('easyadmin') }}" class="{{ app.user == null ? 'invisible' : "" }}">Admin</a>
               <a href="{{ path('courses') }}">Cours</a>
               <a href="{{ path('contributors') }}">Professeurs</a>
               <a href="{{ path('user') }}">Profil</a>
@@ -57,22 +57,23 @@
 <!-- début du footer-->
 
 <div class="btn-group dropup">
-  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  
+    <div class="dropdown-menu">
+        <section class="chat">
+            <div class="messages">
+            </div>
+            <div class="user-inputs">
+                <form class="chatform">
+                    <div id="author">{{ pseudo }}</div>
+                    <input type="text" id="content" name="content" placeholder="Ecrivez votre message ici">
+                    <button type="submit"> Send !</button>
+                </form>
+            </div>
+        </section>
+    </div>
+  <button type="button" id ="buttonchat"class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropup
   </button>
-  <div class="dropdown-menu">
-    <section class="chat">
-    <div class="messages">
-    </div>
-    <div class="user-inputs">
-      <form class="chatform">
-      <div class="chatuser">{{app.user}}</div>
-        <input type="text" id="content" name="content" placeholder="Ecrivez votre message ici">
-        <button type="submit"> Send !</button>
-      </form>
-    </div>
-  </section>
-  </div>
 </div>
 
 

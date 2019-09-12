@@ -314,6 +314,10 @@ font-size: 20px;
 padding-bottom: 5px;
 }
 
+.container3 ul li{
+  font-size: 20px;
+  padding-bottom: 5px;
+}
 /* Style de l'inscription */
 
 .register
@@ -503,6 +507,27 @@ background-color:#4682b4;
 #lastcourses .card-body p:first-child{
 font-weight: bold;
 }
+/* -----------------Affichage du chat ------------------- */
+#buttonchat{
+  position: fixed;
+  display: block;
+  bottom:30px;
+  right: 30px;
+}
+.chat{
+  width:700px;
+  left: 0.1em;
+}
+#author{
+  display: flex;
+  align-items: center;
+  color:grey;
+  border: 1px solid;
+  border-color: lightgrey;
+  margin-right: 1em;
+  justify-content: center;
+  background-color: white;
+}
 /*------------ Responsive design ------------ */
 @media screen and (max-width: 1000px) {
 
@@ -558,4 +583,5 @@ font-weight: bold;
   width:100%;
   box-shadow: 5px 5px 5px grey;
 }
+
 }

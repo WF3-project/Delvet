@@ -53,6 +53,6 @@ security:
     #     ROLE_USER:
     access_control:
         
-         - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
-         - { path: ^/admin/, roles: ROLE_PROF }
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/easyadmin, roles: ROLE_USER }
+         - { path: ^/product, roles: ROLE_ADMIN }

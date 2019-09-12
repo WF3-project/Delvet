@@ -38,7 +38,7 @@
               <a href="{{ path('contributors') }}" class="{{ app.user == NULL ? 'invisible' : "" }}">Professeurs</a>
               {# {{ app.user.roles == 'ROLE_ANNO' ? 'invisible' : "" }} #}
               <a href="{{ path('user') }}">Profil</a>
-              <a href="#">A propos</a>
+              <a href="{{ path('legal_mentions') }}">A propos</a>
 
         </div>
         <div class="right">
@@ -66,27 +66,24 @@
         {% block body %}{% endblock %}
 <!-- début du footer-->
 
-<div class="btn-group dropup">
-  
+
+<div class="dropdown">
     <div class="dropdown-menu">
         <section class="chat">
             <div class="messages">
             </div>
             <div class="user-inputs">
                 <form class="chatform">
-<<<<<<< HEAD
-                    <div id="author">PSEUDO</div>
-=======
                     <div id="author">pseudo</div>
->>>>>>> fc051a01ac81c41813edb76fc0d1d3dc23a2716d
                     <input type="text" id="content" name="content" placeholder="Ecrivez votre message ici">
                     <button type="submit"> Send !</button>
                 </form>
             </div>
         </section>
     </div>
+
   <button type="button" id ="buttonchat"class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropup
+    Chat
   </button>
 </div>
 

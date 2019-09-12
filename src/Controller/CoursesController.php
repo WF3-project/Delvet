@@ -4,8 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Categories;
 use App\Entity\Courses;
+use App\Entity\User;
+use App\Entity\Contributors;
 use App\Form\CoursesType;
 use App\Repository\CategoriesRepository;
+use App\Repository\ContributorsRepository;
 use App\Repository\CoursesRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -77,18 +80,49 @@ class CoursesController extends AbstractController
     /**
      * @Route("/new", name="courses_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, ContributorsRepository $contributorsRepository): Response
     {
         $course = new Courses();
         $form = $this->createForm(CoursesType::class, $course);
         $form->handleRequest($request);
 
         $course->addContributor( $this->getUser() );
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($course);
             $entityManager->flush();
 
+            $conts=$contributorsRepository->findAll();
+            $user=$this->get('security.token_storage')->getToken()->getUser();   
+            foreach($conts as $cont )
+            {   
+                
+                if(  $cont->getUserId() == $user->getId() )
+                {
+                    $contributor= $contributorsRepository->findByUserId($user->getId());
+                    
+                }
+         
+            }
+            if( !isset($contributor))
+            {
+                $contributor = new Contributors();
+                $user->setRoles('ROLE_PROF');
+                $contributor->setUser($user);
+    
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($contributor);
+                $entityManager->flush();
+            }
+            
+            
+            $course->setContributors($contributor);
+            
+            $entityManager->flush();
+
+
+            
             return $this->redirectToRoute('courses');
         }
 

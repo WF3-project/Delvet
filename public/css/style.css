@@ -511,12 +511,12 @@ font-weight: bold;
 #buttonchat{
   position: fixed;
   display: block;
-  top:10px;
+  bottom:30px;
+  right: 30px;
 }
 .chat{
-  position: fixed;
   width:700px;
-  left: -0.5em;
+  left: 0.1em;
 }
 #author{
   display: flex;

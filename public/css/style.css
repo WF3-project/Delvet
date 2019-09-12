@@ -39,32 +39,47 @@ font-family: 'Roboto Condensed', sans-serif;
 }
 
 .left{
-display: flex;
-flex: auto;
-justify-content: center;
+  display: flex;
+  flex: auto;
+  justify-content: center;
+  vertical-align: center;
 }
 
 .left a{
-margin-right: 65px;
+  margin-right: 65px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .right{
-display: flex;
-flex: auto;
-justify-content: flex-end;
-text-transform: uppercase;
-font-weight: bold;  
-margin-right: 10px;
-
+  display: flex;
+  flex: auto;
+  justify-content: flex-end;
+  text-transform: uppercase;
+  font-weight: bold;  
+  margin-right: 10px 10px;
+  
 }
-
-.right a{
-border:  solid  #4682B4;
-border-radius: 5px 5px 5px 5px;
-padding: 5px;
-margin: 3px;
-color: #4682B4;
-
+  
+.right button
+{
+  margin : auto 5px;
+  
+}
+#leftbtn
+{
+  background-color: white;
+  color:#007bff;
+  box-shadow: 5px 5px 5px #007bff;
+}
+#leftbtn:hover
+{
+  background-color: whitesmoke;
+}
+#rightbtn
+{
+  box-shadow: 5px 5px 5px grey;
 }
 
 .right #sign{
@@ -80,6 +95,7 @@ align-items: center;
 align-self: center;
 justify-content: center;
 margin-bottom: 35px;
+margin-top: 10px;
 }
 
 #searchbar form{
@@ -266,7 +282,7 @@ font-weight: bold;
 display: flex;
 flex-direction: column-reverse;
 padding: 20px;
-border-bottom:    #4682B4 dotted ;
+border-bottom: #4682B4 dotted ;
 
 }
 
@@ -278,12 +294,10 @@ align-self: center;
 }
 
 #section3 h3{
-width:60%;
-margin:15px auto;
-display: flex;
-justify-content: center;
-
-color: #4682B4;
+  margin: 25px;
+  display: flex;
+  justify-content: center;
+  color: #4682B4;
 }
 #section3 .li1
 {
@@ -314,15 +328,22 @@ text-align: center;
   color:#4682B4;
   font-size: smaller;
 }
-
-.container3 ul li{
-font-size: 20px;
-padding-bottom: 5px;
+#section3 li{
+  display:flex;
+  justify-content: center;
+  color: #4682B4;
 }
-
-.container3 ul li{
-  font-size: 20px;
-  padding-bottom: 5px;
+div .li2
+{
+  width:30%;
+}
+div .li1
+{
+  width:30%;
+}
+div .li3
+{
+  width:30%;
 }
 /* Style de l'inscription */
 
@@ -408,11 +429,26 @@ margin: 0 auto;
 }
 .login label
 {
-width:40%;
-margin : 5px auto;
+  margin: 0 auto;
+  width:40%;
+  display: flex;
+  justify-content: space-between;
 }
-
-
+.remember
+{
+  width:40%;
+  margin : 10px auto;
+}
+.frgtMdp
+{
+  width : 40%;
+  margin: 0 auto;
+}
+.login a 
+{
+  display: flex;
+  justify-content: center;
+}
 /* Style du mdp oublié */
 
 .forgotten

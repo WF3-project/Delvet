@@ -20,15 +20,17 @@ class RegistrationController extends AbstractController
      * @Route("/register", name="app_register")
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, \Swift_Mailer $mailer, TokenAuthenticator $tokenGenerator): Response
-    {
+    {   
+        // On crée un nouvel utilisateur
         $user = new User();
+        // On crée le formulaire
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
-        $em = $this->getDoctrine()->getManager();
 
+        // Si le formulaire est soumis et si il est valide
         if ($form->isSubmitted() && $form->isValid() ) 
         {
-            // encode the plain password
+            // encode le mot de passe
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
@@ -37,12 +39,17 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            // On génére le token de confirmation
+            $user->setConfirmationToken($this->generateToken());
+            // On récupère le token
+            $confirmation = $user->getConfirmationToken(); 
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $token = $tokenGenerator->generateToken();
-            $url = $this->generateUrl('app_login', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
+            // On génère l'url du lien de confirmation dans le mail
+            $url = $this->generateUrl('confirm_mail', ['token' => $confirmation], UrlGeneratorInterface::ABSOLUTE_URL);
 
             // Envoie du mail avec swift mailer
             $message =(new \Swift_Message('Validation du mail'))
@@ -51,65 +58,57 @@ class RegistrationController extends AbstractController
                 ->setBody("Click on the following link to validate your account: " . $url, 'text/html');
 
             $mailer->send($message);
-
-            $this->addFlash('notice', 'Mail send');
-            return $this->redirectToRoute('app_login');
+                return $this->redirectToRoute('app_login');
 
         }
-
-        return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form->createView(),
-        ]);
+            return $this->render('registration/register.html.twig', [
+                'registrationForm' => $form->createView(),
+            ]);
     }
 
-    public function confirmAccount($token, $username): Response
+    // Fonction qui génère les tokens
+    public function generateToken()
     {
-        $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository(User::class)->findOneBy(['username' => $username]);
-        $tokenExist = $user->getConfirmationToken();
-        if($token === $tokenExist) {
-           $user->setConfirmationToken(null);
-           $user->setEnabled(true);
-           $em->persist($user);
-           $em->flush();
-           return $this->redirectToRoute('app_login');
-        } else {
-            return $this->render('registration/register.html.twig');
-        }
+        return rtrim(strtr(base64_encode(random_bytes(32)), '+/','-_'), '=');
     }
+
+
+    // Fonction qui confirme la validité du token et setup le booléen sur true
     /**
-     * @Route("/send-token-confirmation", name="send_confirmation_token")
-     * @param Request $request
-     * @param \Swift_Mailer $mailer
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     * @throws \Exception
+     * @Route("/confirm-mail/{token}", name="confirm_mail")
      */
-    public function sendConfirmationToken(Request $request, \Swift_Mailer $mailer): RedirectResponse
+    public function confirmAccount( $token ): Response
     {
         $em = $this->getDoctrine()->getManager();
-        $email = $request->request->get('email');
-        $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['email' => $email]);
-        if($user === null) {
+        $user = $em->getRepository(User::class)->findOneBy(['ConfirmationToken' => $token]);
+        
+        // si l'utilisateur n'existe pas
+        if($user === null) 
+        {
+            // Message d'erreur
             $this->addFlash('not-user-exist', 'utilisateur non trouvé');
+
+            //Redirection vers l'inscription
             return $this->redirectToRoute('app_register');
+        } 
+        // sinon     
+        else
+        {
+            // On setup le token de confirmation sur null
+           $user->setConfirmationToken(null);
+
+           // On setup la confirmation sur true
+           $user->setEnabled(true);
+
+           // on envoie données en bdd
+           $em->flush();
+
+           // redirection sur la page login
+           return $this->redirectToRoute('app_login');
         }
-        $user->setConfirmationToken($this->generateToken());
-        $em->persist($user);
-        $em->flush();
-        $token = $user->getConfirmationToken();
-        $email = $user->getEmail(); 
-        $url = $this->generateUrl('app_login', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
-
-        // Envoie du mail avec swift mailer
-        $message =(new \Swift_Message('Validation du mail'))
-            ->setFrom('no_reply.delvet@gmail.com')
-            ->setTo($user->getEmail())
-            ->setBody("Click on the following link to validate your account: " . $url, 'text/html');
-
-        $mailer->send($message);
-        return $this->redirectToRoute('app_login');
     }
 
+    
 
     /**
      * @Route("/forgotten_password", name="forgotten_password")
@@ -118,22 +117,25 @@ class RegistrationController extends AbstractController
     public function forgottenPassword(Request $request, UserPasswordEncoderInterface $encoder, \Swift_Mailer $mailer, TokenAuthenticator $tokenGenerator)
     {
         if($request->isMethod('POST'))
-        {
+        {   
             $email = $request->request->get('email');
             $em = $this->getDoctrine()->getManager();
             $user = $em->getRepository(User::class)->findOneByEmail($email);
             /**@var $user User */
 
+            // si l'utilisateur n'existe pas
             if($user === null)
             {
                 $this->addFlash('danger', 'cette email n\'est pas valide');
                 return $this->render('security/forgotten_password.html.twig');
             }
 
+            // On génere le token d'oublie du mdp
             $token = $tokenGenerator->generateToken();
             try
             {
                 $user->setResetToken($token);
+                // On envoie données en bdd
                 $em->flush();
             }
             catch(\Exception $e)
@@ -142,6 +144,7 @@ class RegistrationController extends AbstractController
                 return $this->render('security/forgotten_password.html.twig');
             }
 
+            // On génère l'url d'oublie du mdp
             $url = $this->generateUrl('reset_password', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
 
             // Envoie du mail avec swift mailer
@@ -170,16 +173,23 @@ class RegistrationController extends AbstractController
         {
             $em = $this->getDoctrine()->getManager();
 
+            // On recherche l'utilisateur grace a son reset token
             $user = $em->getRepository(User::class)->findOneByResetToken($token);
 
+            // si l'utilisateur n'existe pas
             if($user === null)
             {
                 $this->addFlash('danger', 'impossible de mettre à jour le mot de passe');
                 return $this->render('security/reset_password.html.twig', ['token' => $token]);
             }
 
+            // on passe le reset token a null
             $user->setResetToken(null);
+
+            // on encode le nouveau mdp
             $user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('password')));
+
+            //envoie des données a la BDD
             $em->flush();
 
             $this->addFlash('notice', 'Mot de passe mis à jour');

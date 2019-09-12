@@ -649,10 +649,12 @@ box-shadow: 5px 5px 5px grey;
 }
 .table th
 {
+  vertical-align: middle;
   text-align: center;
 }
 .table td
 {
+  vertical-align: middle;
   text-align: center;
 }
 

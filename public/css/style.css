@@ -516,9 +516,7 @@ background-color:#4682b4;
 #usercourses .card-body p:first-child{
 font-weight: bold;
 }
-.card-body{
-  height: 100px;
-}
+
 #courssuivi{
   width:30%;
   height: 100%;
@@ -557,17 +555,17 @@ font-weight: bold;
 }
 
 /* Style contributeur */
-.container h2{
+#contrib h2{
   display:flex;
   justify-content: center;
   color: #4682b4;
 }
-.container p 
+#contrib p 
 {
   display:flex;
   justify-content: center;
 }
-.container button 
+#contrib button 
 {
   margin: 5px auto;
   display: flex;
@@ -579,9 +577,16 @@ font-weight: bold;
 }
 
 /* Style User*/
-.container button{
+#profil 
+{
+  display:flex;
+  justify-content: center;
+}
+#profil button{
   width: 60%;
+ 
   box-shadow: 5px 5px 5px grey;
+  margin-bottom: 15px;
 }
 /*------------ Responsive design ------------ */
 @media screen and (max-width: 1000px) {

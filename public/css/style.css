@@ -496,6 +496,13 @@ background-color:#4682b4;
 #usercourses .card-body p:first-child{
 font-weight: bold;
 }
+.card-body{
+  height: 100px;
+}
+#courssuivi{
+  width:30%;
+  height: 100%;
+}
 #lastcourses{
 display: flex;
 flex-direction: row;
@@ -507,6 +514,7 @@ background-color:#4682b4;
 #lastcourses .card-body p:first-child{
 font-weight: bold;
 }
+
 /* -----------------Affichage du chat ------------------- */
 #buttonchat{
   position: fixed;

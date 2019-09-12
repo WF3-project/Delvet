@@ -28,13 +28,21 @@
               <a href="{{ path('courses') }}">Cours</a>
               <a href="{{ path('contributors') }}">Professeurs</a>
               <a href="{{ path('user') }}">Profil</a>
-              <a href="{{ path('legal_mentions') }}">A propos</a>
+              <a href="#">A propos</a>
 
         </div>
         <div class="right">
-            <a id="sign" href="{{ path('app_register') }}" class="{{ app.user != null ? 'invisible' : "" }}">s'inscrire</a>
-            <a href="{{ path('app_login') }}" class="{{ app.user != null ? 'invisible' : "" }}">se connecter</a>
-              <a href="{{ path('app_logout') }}" class="{{ app.user == null ? 'invisible' : "" }}">Se deconnecter</a>
+        <ul>
+             <button class="btn btn-lg btn-primary {{ app.user != null ? 'invisible' : "" }}" id="leftbtn"  type="submit" onclick="location.href='{{ path('app_register') }}';">
+            S'inscrire
+            </button>
+            <button class="btn btn-lg btn-primary {{ app.user != null ? 'invisible' : "" }}" id = "rightbtn" type="submit" onclick="location.href='{{ path('app_login') }}';">   
+            Se connecter
+            </button>
+             <button class="btn btn-lg btn-primary {{ app.user == null ? 'invisible' : "" }}" id = "rightbtn" type="submit" onclick="location.href='{{ path('app_logout') }}';">   
+            Se déconnecter
+            </button>
+        </ul>
         </div>
     </div>
     
@@ -64,6 +72,7 @@
             </div>
             <div class="user-inputs">
                 <form class="chatform">
+                    <div id="author"></div>
                     <input type="text" id="content" name="content" placeholder="Ecrivez votre message ici">
                     <button type="submit"> Send !</button>
                 </form>

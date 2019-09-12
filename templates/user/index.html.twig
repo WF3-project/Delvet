@@ -23,7 +23,7 @@
                         {{course.name}}
                     </div>
                     <div class="d-flex">
-                        <img src="{{ asset( 'images/cour/' ~ course.fileName ) }}" id="courssuivi"class="card-img-top {{ course.fileName == null ? 'invisible' : ''}}">
+                        <img src="{{ asset( 'images/cour/' ~ course.fileName ) }}" class="card-img-top {{ course.fileName == null ? 'invisible' : ''}}" style="width: 200px;" >
                         <div class="card-body ">
                             <p class="card-text">{{course.description}}</p>
                         </div>

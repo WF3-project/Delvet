@@ -18,6 +18,11 @@ font-family: 'Roboto Condensed', sans-serif;
   margin : auto 5px;
   
 }
+.right ul
+{
+  width:100%;
+  margin:0 auto;
+}
 #leftbtn
 {
   background-color: white;
@@ -246,7 +251,6 @@ justify-content: center;
 margin:15px auto;
 color: #4682B4;
 font-weight: bold;
-padding-right: 45px;
 }
 
 #section2 .container ul{
@@ -307,6 +311,8 @@ text-align: center;
 #section3 p
 {
   margin: 15px 0;
+  color:#4682B4;
+  font-size: smaller;
 }
 
 .container3 ul li{
@@ -362,7 +368,20 @@ display: flex;
 flex-wrap: wrap;
 flex-direction: column;
 }
-
+.login #checkbox
+{
+  width: 40%;
+  margin: 0 auto;
+  display:flex;
+  justify-content: center;
+}
+.forgotLink 
+{
+  width:40%;
+  margin : 0 auto;  
+  display: flex;
+  justify-content: center;
+}
 .login h1
 {
 font-size: 40px;
@@ -454,6 +473,7 @@ margin:0 auto;
 
 #section3 li{
 font-weight: bold;
+text-align: center;
 }
 
 #section4{
@@ -514,7 +534,6 @@ background-color:#4682b4;
 #lastcourses .card-body p:first-child{
 font-weight: bold;
 }
-
 /* -----------------Affichage du chat ------------------- */
 #buttonchat{
   position: fixed;
@@ -539,57 +558,275 @@ font-weight: bold;
 /*------------ Responsive design ------------ */
 @media screen and (max-width: 1000px) {
 
-#fullnav{
-  display: flex;
-  flex-direction: column-reverse;
-  padding-left: 2em;
+  #fullnav{
+    width:100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  #fullnav .right{
+    width: 60%;
+    display:flex;
+    justify-content: center; 
+  }
+  #fullnav .right:last-child{
+  
+    align-items: center;  
+  }
+  #fullnav .left{
+    width:60%;
+    display:flex;
+    flex-direction: column;
+  }
+  .left a{
+    width:100%;
+  }
+  .container3 ul{
+    width:100%;
+    flex-direction: column;
+    text-align: center;
+  }
+  .container3 ul li{
+    width:100%;
+    display:flex;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  #section3 ul
+  {
+    width:100%;
+    align-items: center;
+  }
+  #section4 a{
+    display: flex;
+    justify-content: center;
+  }
+  #footer{
+    align-items: center;
+    flex-direction: column;
+  }
+  #leftbtn
+  {
+    width:100%;
+    background-color: white;
+    color:#007bff;
+    box-shadow: 5px 5px 5px #007bff;
+    display: flex;
+    justify-content: center;
+    
+  }
+  #rightbtn
+  {
+    margin-top: 5px;
+    width:100%;
+    box-shadow: 5px 5px 5px grey;
+    
+    
+  }
+  .right
+  {
+    width:100%;
+  }
+
+  /* Style du login */
+
+.login
+{
+width: 100%;
+margin: 0 auto;
+display: flex;
+flex-wrap: wrap;
+flex-direction: column;
 }
-#fullnav .right{
+.login #checkbox
+{
+  width: 100%;
+  display:flex;
+  flex-wrap: wrap;
   justify-content: center;
-  padding-left: 6em;    
 }
-#fullnav .right:last-child{
-  padding-right: 6em;
-  align-items: center;  
+.forgotLink 
+{
+  width: 100%; 
+  display: flex;
+  align-self: center;
+  justify-content: center;
 }
-#fullnav .left{
-  flex-direction: column;
+.login h1
+{
+  width: 100%;
+font-size: 40px;
+margin: 5px auto;
+display:flex;
+justify-content: center
 }
-.container3 ul{
-  flex-direction: column;
+
+.login a
+{
+  width: 100%;
+margin: 5px auto;
+display:flex;
+justify-content: center
+}
+.login button
+{
+  width: 60%;
+margin: 5px auto;
+}
+.login p
+{
+  width: 100%;
+margin: 5px auto;
+display:flex;
+justify-content: center;
+}
+
+.login label
+{
+width: 60%;
+margin : 5px auto;
+display:flex;
+justify-content: center
+}
+
+/* Style Respônsive register*/
+.register
+{
+width : 40%;
+margin: 0 auto;
+}
+.register form
+{
+display: flex;
+flex-direction: column;
+}
+
+
+
+.register h1
+{
+  width:100%;
+display: flex;
+justify-content: center;
+font-weight: bold;
+}
+.register form button
+{
+margin: 0 auto;
+}
+.register form div
+{
+margin: 0 auto;
+}
+.register label
+{
+  width:100%;
+  display: flex;
+  justify-content: center;
+  margin: 5px auto;
   text-align: center;
-  padding-right: 4em;
 }
-.container3 ul li{
-  text-align: center;
+
+/* Style du mdp oublié */
+
+.forgotten
+{
+width: 100%;
+margin: 0 auto;
+display: flex;
+flex-wrap: wrap;
+flex-direction: column;
 }
+.forgotten h1
+{
+margin: 5px auto;
+font-size: 40px;
+font-weight: bold;
+text-align: center;
+}
+.forgotten button
+{
+  width:60%;
+margin: 5px auto;
+}
+.forgotten input
+{
+width: 40%;
+margin: 0 auto;
+}
+.forgotten p
+{
+margin: 5px auto;
+}
+
+/* Style du reset password */
+
+.reset
+{
+width: 100%;
+margin: 0 auto;
+display :flex;
+justify-content:center;
+}
+.reset h1
+{
+width:60%; 
+font-weight: bold;
+font-size: 40px;
+display:flex;
+text-align: center;
+justify-content: center;
+margin: 5px auto;
+}
+
+.reset button
+{
+  width:60%;
+margin: 5px auto;
+}
+.reset input
+{
+width: 40%;
+margin:0 auto;
+}
+
 #section2 h2
 {
-  padding-left: 45px;
+  width:60%;
 }
-#section3 ul
-{
-  align-items: center;
-}
-#section4 a{
-  display: flex;
+#section2 ul{
+  width:100%;
+  display:flex;
   justify-content: center;
 }
-#footer{
-  align-items: center;
-  flex-direction: column;
+#section2 ul li
+{
+  width:30%;
+  display:flex;
+  justify-content: center;
+  text-align: center;
 }
-#leftbtn
+#section2 .container
 {
   width:100%;
-  background-color: white;
-  color:#007bff;
-  box-shadow: 5px 5px 5px #007bff;
+  text-align: center;
 }
-#rightbtn
+#section2 p 
 {
   width:100%;
-  box-shadow: 5px 5px 5px grey;
+  display:flex;
+  justify-content: center;
+  text-align: center;
+}
+#section h1
+{
+  width:100%;
+  text-align: center;
+}
+#section p
+{
+  text-align: center;
 }
 
 }

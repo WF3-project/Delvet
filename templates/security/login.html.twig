@@ -30,12 +30,12 @@
         Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
         See https://symfony.com/doc/current/security/remember_me.html
     #}
-        <div class="checkbox mb-3">
+        <div class="checkbox mb-3" id ="checkbox">
             <label>
                 <input type="checkbox" name="_remember_me"> Se souvenir de moi
             </label>
         </div>
-        <div>
+        <div class ="forgotLink">
         <a href="{{ path('forgotten_password') }}">Mot de passe oublié</a>
         </div>
     

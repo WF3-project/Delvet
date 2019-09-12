@@ -25,7 +25,7 @@ class Contributors
 
     
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\courses", mappedBy="contributors")
+     * @ORM\OneToMany(targetEntity="App\Entity\Courses", mappedBy="contributors")
      */
     private $course_create;
 

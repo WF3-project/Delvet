@@ -17,8 +17,11 @@ class ContributorsController extends AbstractController
      */
     public function index(ContributorsRepository $contributorsRepository)
     {
-       
-       
+       $user=$this->getUser();
+       if($user === null)
+       {
+            return $this->redirectToRoute('app_register');
+       }
         return $this->render('contributors/index.html.twig', [
             'contributors' => $contributorsRepository->findAll(),
            

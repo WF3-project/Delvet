@@ -18,11 +18,11 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $pseudo = $this->getUser()->getNickname();
+        
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
-            'pseudo' => $pseudo,
+            
         ]);
     }
    /**

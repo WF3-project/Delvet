@@ -555,6 +555,34 @@ font-weight: bold;
   justify-content: center;
   background-color: white;
 }
+
+/* Style contributeur */
+.container h2{
+  display:flex;
+  justify-content: center;
+  color: #4682b4;
+}
+.container p 
+{
+  display:flex;
+  justify-content: center;
+}
+.container button 
+{
+  margin: 5px auto;
+  display: flex;
+  justify-content: center;
+}
+#liste
+{
+  color: #4682b4;
+}
+
+/* Style User*/
+.container button{
+  width: 60%;
+  box-shadow: 5px 5px 5px grey;
+}
 /*------------ Responsive design ------------ */
 @media screen and (max-width: 1000px) {
 
@@ -828,5 +856,22 @@ margin:0 auto;
 {
   text-align: center;
 }
-
+ /* style contributeur*/
+ 
+ #contrib h2
+ {
+    text-align: center;
+ }
+ #contrib p
+ {
+   text-align: center;
+ }
+ #contrib button
+ {
+   width:60%;
+   margin: 5px auto;
+ }
+ .container{
+   text-align: center;
+ }
 }

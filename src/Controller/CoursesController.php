@@ -205,7 +205,7 @@ class CoursesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('courses');
+            return $this->redirectToRoute('indexcourses');
         }
 
         return $this->render('courses/edit.html.twig', [
@@ -225,7 +225,7 @@ class CoursesController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('courses');
+        return $this->redirectToRoute('indexcourses');
     }
 
 

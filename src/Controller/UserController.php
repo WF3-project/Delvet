@@ -19,7 +19,7 @@ class UserController extends AbstractController
         {     
             
             $user = $this->getUser();
-            dump($user);
+            
             $courses=$coursesRepository->findLastCreatedAt();
 
             
@@ -37,7 +37,7 @@ class UserController extends AbstractController
 
           
             return $this->render('user/indexAnon.html.twig', [
-                        'user' => $user
+                        
             ]);
             
         }
@@ -52,11 +52,11 @@ class UserController extends AbstractController
     
     public function coursesAdd( Courses $course, CoursesRepository $coursesRepository )
     {     
-        dump($course);
+       
         $user = $this->getUser();
-        dump($user);
+       
         $user->addCourse($course);
-        dump($user);
+       
 
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($user);

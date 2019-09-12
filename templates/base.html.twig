@@ -31,7 +31,7 @@
               <a href="{{ path('user') }}" class="{{ app.user == NULL ? 'invisible' : "" }}">Profil</a>
               {% if app.user != null %}
              {% for role in app.user.roles %}
-                {% if role == 'ROLE_ADMIN' %}
+                {% if role == 'ROLE_PROF' %}
                 
                     <a href="{{ path('easyadmin') }}" >Admin</a>
                     {# {{ app.user.roles == 'ROLE_PROF' ? 'invisible' : "" }} #}

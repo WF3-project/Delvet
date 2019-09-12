@@ -86,7 +86,7 @@ class CoursesController extends AbstractController
         $form = $this->createForm(CoursesType::class, $course);
         $form->handleRequest($request);
 
-        $course->addContributor( $this->getUser() );
+        
         if ($form->isSubmitted() && $form->isValid()) 
         {
             $entityManager = $this->getDoctrine()->getManager();

@@ -1,7 +1,7 @@
 easy_admin:
     design: 
         menu:
-            - { entity: Courses }
+            - { entity: Courses ,params: { action: 'edit', id:  }}
             - { entity: User, permission: ROLE_ADMIN }
             - { entity: Categories, permission: ROLE_ADMIN }
     site_name: 'Delvet Manager'

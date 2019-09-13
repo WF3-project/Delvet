@@ -15,7 +15,6 @@ easy_admin:
                     - { property : content , type : fos_ckeditor, type_options: { config_name: my_config } }
                     - { property : image, type : file}
                     - { property : categories}
-        User:
-            class:  App\Entity\User
+       
         Categories:
             class: App\Entity\Categories

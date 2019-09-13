@@ -39,7 +39,7 @@ class Courses
      *
      * @var string|null
      */
-    private $fileName;
+    private $fileName = 'no_image.jpg';
 
 
     /**

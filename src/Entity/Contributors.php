@@ -103,5 +103,4 @@ class Contributors
         return $this;
     }
     
-   
 }

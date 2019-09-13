@@ -62,7 +62,7 @@ class CoursesRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('p')
             ->setFirstResult(($page - 1) * 25) // LIMIT 27, 9
-            ->setMaxResults(25) // Only 9 products one time
+            ->setMaxResults(24) // Only 9 products one time
             ->getQuery()
             ->getResult()
         ;

@@ -1,33 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Courses index{% endblock %}
+{% block title %}Index des cours{% endblock %}
 
 {% block body %}
-    <h1>Courses index</h1>
- 
+    <h1 class="indcours">Index des cours :</h1>
+    <button class="btn btn-lg btn-primary" id="newcours"  type="submit" onclick="location.href='{{ path('app_register') }}';">
+            Créer un nouveau cours
+    </button>
 
-    <table class="table">
+    <table class= "table" id="con">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
+                <th>Nom</th>
                 <th>Image</th>
-                <th>Date_create</th>
+                <th>Date de création</th>
                 <th>Description</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for course in courses %}
             <tr>
-                <td>{{ course.id }}</td>
+                <th>{{ course.id }}</th>
                 <td>{{ course.name }}</td>
                 <td>{{ course.image }}</td>
                 <td>{{ course.dateCreate ? course.dateCreate|date('Y-m-d') : '' }}</td>
                 <td>{{ course.description }}</td>
                 <td>
-                    <a href="{{ path('courses_show', {'id': course.id}) }} " class="btn btn-info">show</a>
-                    <a href="{{ path('courses_edit', {'id': course.id}) }}" class="btn btn-primary">edit</a>
+                    <button class="btn btn-lg btn-primary" id="leftbtn"  type="submit" onclick="location.href='{{ path('courses_show', {'id': course.id}) }}';">
+                    Voir
+                    </button>
+                    <button class="btn btn-lg btn-primary" id="rightbtn"  type="submit" onclick="location.href='{{ path('courses_edit', {'id': course.id}) }}';">     
+                    Modifier
+                    </button>
                 </td>
             </tr>
         {% else %}
@@ -38,5 +44,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('courses_new') }}" class="btn btn-success">Create new</a>
+    <a href="{{ path('courses_new') }}" class="btn btn-success">Créer un nouveau cours</a>
 {% endblock %}

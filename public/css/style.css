@@ -3,6 +3,17 @@
   margin: 0;
 }
 
+.apple
+{
+  color:black;
+}
+.spray
+{
+
+  border: 0.5px solid rgba(0,0,0,.1);
+  
+}
+
 #body{
 text-decoration: none;
 font-family: 'Roboto Condensed', sans-serif;
@@ -10,7 +21,6 @@ font-family: 'Roboto Condensed', sans-serif;
 
 #fullnav{
   display: flex;
-  margin-top: 10px;
   font-size: 20px;
 }
 .right button
@@ -26,8 +36,11 @@ font-family: 'Roboto Condensed', sans-serif;
 #leftbtn
 {
   background-color: white;
-  color:#007bff;
-  box-shadow: 5px 5px 5px #007bff;
+  color: #46bcc6;
+  box-shadow: 5px 5px 5px #46bcc6;
+  border: 1px solid #46bcc6;
+
+ 
 }
 #leftbtn:hover
 {
@@ -35,6 +48,8 @@ font-family: 'Roboto Condensed', sans-serif;
 }
 #rightbtn
 {
+  border: 1px solid #46bcc6;
+  background-color: #46bcc6;
   box-shadow: 5px 5px 5px grey;
 }
 
@@ -42,7 +57,7 @@ font-family: 'Roboto Condensed', sans-serif;
   display: flex;
   flex: auto;
   justify-content: center;
-  vertical-align: center;
+  align-items: center;
 }
 
 .left a{
@@ -50,12 +65,17 @@ font-family: 'Roboto Condensed', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: #4682b4;
+  
 }
+
+
 
 .right{
   display: flex;
   flex: auto;
   justify-content: flex-end;
+  align-items: center;
   text-transform: uppercase;
   font-weight: bold;  
   margin-right: 10px 10px;
@@ -64,15 +84,9 @@ font-family: 'Roboto Condensed', sans-serif;
   
 .right button
 {
-  margin : auto 5px;
-  
+  margin : auto 5px; 
 }
-#leftbtn
-{
-  background-color: white;
-  color:#007bff;
-  box-shadow: 5px 5px 5px #007bff;
-}
+
 #leftbtn:hover
 {
   background-color: whitesmoke;
@@ -250,14 +264,18 @@ width: 20%;
 /* Debut index */
 
 #section{
-background-color: #4682B4;
+background:  linear-gradient(60deg, #4688b6,#46b8c5, #47e2d1);;
 color: white;
 height: 300px;
 display: flex;
 justify-content: center;
-align-self: center;
 align-items: center;
 flex-direction: column; 
+}
+
+#section2
+{
+  margin: 0 auto;
 }
 
 #section2 h2{
@@ -279,11 +297,18 @@ font-weight: bold;
 }
 
 #section2 .container ul li{
+  width:10%;
 display: flex;
 flex-direction: column-reverse;
 padding: 20px;
 border-bottom: #4682B4 dotted ;
 
+}
+#section2 p 
+{
+  width:100%;
+  display: flex;
+  justify-content: center;
 }
 
 #section2 img{
@@ -331,7 +356,7 @@ text-align: center;
 #section3 li{
   display:flex;
   justify-content: center;
-  color: #4682B4;
+  color: black;
 }
 div .li2
 {
@@ -366,7 +391,10 @@ font-weight: bold;
 }
 .register form button
 {
-margin: 0 auto;
+margin: 15px auto;
+border: 1px solid #46bcc6;
+background-color: #46bcc6;
+box-shadow: 5px 5px 5px grey;
 }
 .register form div
 {
@@ -415,7 +443,10 @@ margin: 5px auto;
 }
 .login button
 {
-margin: 5px auto;
+margin: 15px auto;
+border: 1px solid #46bcc6;
+background-color: #46bcc6;
+box-shadow: 5px 5px 5px grey;
 }
 .login p
 {
@@ -467,7 +498,10 @@ font-weight: bold;
 }
 .forgotten button
 {
-margin: 5px auto;
+margin: 15px auto;
+border: 1px solid #46bcc6;
+background-color: #46bcc6;
+box-shadow: 5px 5px 5px grey;
 }
 .forgotten input
 {
@@ -498,7 +532,11 @@ margin: 5px auto;
 
 .reset button
 {
-margin: 5px auto;
+margin: 15px auto;
+border: 1px solid #46bcc6;
+background-color: #46bcc6;
+box-shadow: 5px 5px 5px grey;
+
 }
 .reset input
 {
@@ -506,6 +544,17 @@ width: 40%;
 margin:0 auto;
 
 }
+
+/* Style création des cours*/
+
+#h3mat
+{
+  width:50%;
+  margin:0 auto;
+ 
+  
+}
+
 
 #section3 li{
 font-weight: bold;
@@ -515,7 +564,7 @@ text-align: center;
 #section4{
   display: flex;
   justify-content: center;
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
 
 #section4 h3{
@@ -589,7 +638,17 @@ font-weight: bold;
   justify-content: center;
   background-color: white;
 }
+/* bouton */
+#newbtn
+{
+  margin : 15px auto;
+  display: flex;
+  justify-content: center;
+  border: 1px solid #46bcc6;
+  background-color: #46bcc6;
+  box-shadow: 5px 5px 5px grey;
 
+}
 /* Style contributeur */
 #contrib h2{
   display:flex;
@@ -612,6 +671,14 @@ font-weight: bold;
   color: #4682b4;
 }
 
+#con th
+{
+  vertical-align: middle;
+}
+#con td
+{
+  vertical-align: middle;
+}
 /* Style User*/
 #profil 
 {
@@ -624,6 +691,71 @@ font-weight: bold;
   box-shadow: 5px 5px 5px grey;
   margin-bottom: 15px;
 }
+
+/* Style de la liste des cours*/
+.indcours
+{
+  color: #4682b4;
+  display:flex;
+  justify-content: center;
+}
+#newcours
+{
+margin: 15px auto;
+display: flex;
+justify-content: center;  
+border: 1px solid #46bcc6;
+background-color: #46bcc6;
+box-shadow: 5px 5px 5px grey;
+}
+.table th
+{
+  vertical-align: middle;
+  text-align: center;
+}
+.table td
+{
+  vertical-align: middle;
+  text-align: center;
+}
+
+.sup
+{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin : 15px auto;
+}
+#h4mat
+{
+  color:#4682b4;
+}
+ /* Le burger de la mort */
+
+ /* Nom catégories */
+
+ #h2
+ {
+    background: #46bcc6;
+ }
+
+ #trop
+ {
+   background: #46bcc6;
+  border: #46bcc6;
+  }
+ .page-item
+ {
+  background: #46bcc6;
+ }
+#cedric
+{
+ margin : 0 auto;
+}
+
+
+/** style form création de cours*/
+
 /*------------ Responsive design ------------ */
 @media screen and (max-width: 1000px) {
 
@@ -647,8 +779,14 @@ font-weight: bold;
     display:flex;
     flex-direction: column;
   }
+
+  .left 
+  {
+    margin: 15px 0;
+  }
   .left a{
     width:100%;
+    margin : 0 auto;
   }
   .container3 ul{
     width:100%;
@@ -678,11 +816,8 @@ font-weight: bold;
   #leftbtn
   {
     width:100%;
-    background-color: white;
-    color:#007bff;
-    box-shadow: 5px 5px 5px #007bff;
-    display: flex;
-    justify-content: center;
+    margin-top:5px;
+    
     
   }
   #rightbtn
@@ -915,4 +1050,6 @@ margin:0 auto;
  .container{
    text-align: center;
  }
+
+
 }

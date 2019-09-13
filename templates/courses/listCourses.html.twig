@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 {% block title %}tout nos cours{% endblock %}
 {% block body  %}
-<div class="container ">
+<div class="container">
     <div class="card bg-light m-2 cardlist" style="width: 18rem;">
-        <div class="card-header  text-white text-uppercase"><i class="fa fa-list"></i> Catégories</div>
+        <div class="card-header text-white text-uppercase text-center">Catégories</div>
 
-        <ul class="list-group  ">
+        <ul class="list-group text-center topnav" id="myTopnav">
 
             {% for category in categories %}
             <li class="list-group-item">
@@ -13,7 +13,9 @@
             </li>
             {% endfor %}
         </ul>
+        </div>
     </div>
+    
 
 
 
@@ -24,10 +26,10 @@
     {% for course in courses %}
 
     
-    <div class="card d-flex mr-2 mb-2  " style="width: 15em;">
-        <div class="card-header  text-white text-uppercase"><i class="fa fa-list"></i>{{course.name}}</div>
+    <div class="card d-flex  mb-2 m-2" style="width: 15em;">
+        <div class="card-header  text-white text-uppercase text-center"><i class="fa fa-list"></i>{{course.name}}</div>
         <img src="{{ asset( 'images/cour/' ~ course.fileName ) }}"
-            class="card-img-top {{ course.fileName == null ? 'invisible' : ''}}">
+            class="card-img-top {{ course.fileName == null ? 'invisible' : ''}} mt-5">
         <div class="card-body text-center">
 
             <h5 class="card-title font-weight-bold">
@@ -38,9 +40,9 @@
                 <form>
                     <input class="number_view" id="number_view" type="hidden" value="{{course.numberView + 1 }}">
                     <div class="d-flex justify-content-center flex-wrap">
-                        <p><a class="btn btn-primary" href="{{ path('course', {id:course.id}) }}">Voir le cours</a></p>
+                        <p><a class="btn btn-primary" id="trop" href="{{ path('course', {id:course.id}) }}">Voir le cours</a></p>
                         <p><a class="btn btn-success {{ user == null ? 'invisible' : ''  }}"
-                                href="{{ path('userCourse', {id:course.id}) }}">Ajouter le cour à votre liste</a></p>
+                                href="{{ path('userCourse', {id:course.id}) }}">Ajouter le cours à votre liste</a></p>
                     </div>
                 </form>
 

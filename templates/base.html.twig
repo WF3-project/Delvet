@@ -67,6 +67,7 @@
     
 
 </nav>
+<hr>
     <div id="searchbar">
         <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="The Delvet Search !" aria-label="Search">
@@ -124,9 +125,9 @@
             <h3>Autres</h3>
             <ul>
                 
-                <li>- Mentions légales </li>
-                <li>- Politique de confidentialité </li>
-                <li>- Charte éditoriale </li>
+                <a href="{{ path('legal_mentions') }}" class="apple"><li>- Mentions légales </li></a>
+                <a href="{{ path('legal_mentions') }}" class="apple"><li>- Politique de confidentialité </li></a>
+                <a href="{{ path('legal_mentions') }}" class="apple"><li>- Charte éditoriale </li></a>
                
             </ul>
             </div>

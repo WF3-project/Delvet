@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index des cours{% endblock %}
+
+{% block body %}
+    <h1 class="indcours">Index des cours :</h1>
+    <button class="btn btn-lg btn-primary" id="newcours"  type="submit" onclick="location.href='{{ path('app_register') }}';">
+            Créer un nouveau cours
+    </button>
+
+    <table class= "table" id="con">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Image</th>
+                <th>Date de création</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for course in courses %}
+            <tr>
+                <th>{{ course.id }}</th>
+                <td>{{ course.name }}</td>
+                <td>{{ course.image }}</td>
+                <td>{{ course.dateCreate ? course.dateCreate|date('Y-m-d') : '' }}</td>
+                <td>{{ course.description }}</td>
+                <td>
+                    <button class="btn btn-lg btn-primary" id="leftbtn"  type="submit" onclick="location.href='{{ path('courses_show', {'id': course.id}) }}';">
+                    Voir
+                    </button>
+                    <button class="btn btn-lg btn-primary" id="rightbtn"  type="submit" onclick="location.href='{{ path('courses_edit', {'id': course.id}) }}';">     
+                    Modifier
+                    </button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

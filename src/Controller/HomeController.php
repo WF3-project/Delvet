@@ -62,4 +62,9 @@ class HomeController extends AbstractController
         ));
         
     }
+
+    public function notfound()
+    {
+        throw $this->createNotFoundException();
+    }
 }
